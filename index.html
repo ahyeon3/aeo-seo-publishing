@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="ko">
+<html lang="ko" data-theme="dark">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -904,9 +904,8 @@ try { setFocus(localStorage.getItem("aeo-focus") || ""); } catch(e) { setFocus("
 document.getElementById("btnSide").addEventListener("click", () => app.classList.toggle("no-side"));
 document.getElementById("btnRight").addEventListener("click", () => app.classList.toggle("no-right"));
 document.getElementById("btnTheme").addEventListener("click", () => {
-  const r = document.documentElement, cur = r.getAttribute("data-theme");
-  const isDark = cur ? cur==="dark" : matchMedia("(prefers-color-scheme: dark)").matches;
-  r.setAttribute("data-theme", isDark ? "light" : "dark");
+  const r = document.documentElement;
+  r.setAttribute("data-theme", r.getAttribute("data-theme")==="dark" ? "light" : "dark");
 });
 
 // ===== 검색 =====
