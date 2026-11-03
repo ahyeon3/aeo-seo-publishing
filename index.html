@@ -479,6 +479,15 @@ button.notif:hover{background:var(--fg5)}
           <div class="tier"><span class="tier-l">P3</span><div class="chips" id="kwM3"><span class="chip">라이브커머스</span></div></div>
         </div>
       </div>
+      <div class="block" style="--cc:var(--c-press)">
+        <h2><span class="dot"></span>언론보도<span class="cnt num" id="kwCntP"></span></h2>
+        <div class="tier"><span class="tier-l">P1 · 제목에 넣기</span><div class="chips" id="kwP1">
+          <span class="chip p1">굿투그레이트</span><span class="chip p1">AEO 마케팅</span><span class="chip p1">GEO 마케팅</span><span class="chip p1">AI 검색 노출</span><span class="chip p1">체험단 운영 기준</span><span class="chip p1">리뷰 마케팅</span><span class="chip p1">통합마케팅</span></div></div>
+        <div class="tier"><span class="tier-l">P2 · 본문에 넣기</span><div class="chips" id="kwP2">
+          <span class="chip">실구매 리뷰</span><span class="chip">리뷰 캠페인</span><span class="chip">광고 표기 기준</span><span class="chip">첫 리뷰 확보</span><span class="chip">AI 답변 인용</span><span class="chip">해외 진출 셀러</span><span class="chip">쿠팡 리뷰</span></div></div>
+        <div class="tier"><span class="tier-l">넥스트몽 · 바꿔 쓰기</span><div class="chips">
+          <span class="chip"><s>네이버 AI 브리핑 노출</s> → AI 브리핑 노출</span><span class="chip"><s>블로그체험단</s> → SNS 체험단</span><span class="chip"><s>블로그 체험단 비용</s> → 체험단 비용</span><span class="chip"><s>리뷰 체험단 대행사 추천</s> → 리뷰 체험단 대행사 고르는 기준</span></div></div>
+      </div>
       <div class="block">
         <h2>운영 원칙</h2>
         <ul class="plain">
@@ -489,6 +498,7 @@ button.notif:hover{background:var(--fg5)}
           <li>'상품' 표시는 판매 상품 가이드, '시장' 표시는 국내외 시장·업계 동향에서 뽑은 추가분, 검색량 확인 후 등급 확정</li>
           <li>블로그·웹사이트 키워드·주제는 이서연·김영광이 매주 함께 선정, 보고 후 확정</li>
           <li>언론보도 키워드·내용은 김승일·김영광이 매주 함께 조율, 화요일 주제 컨펌</li>
+          <li>언론보도는 제목에 회사명과 P1 키워드 1개 이상, 홈페이지 키워드 중 넥스트몽에 걸리는 단어는 바꿔 쓰기</li>
         </ul>
       </div>
     </section>
@@ -1139,6 +1149,7 @@ function renderPool(){
     el.insertAdjacentHTML("beforeend", `<span class="chip mkt ${k.tier==="P1"?"p1":""}" data-tip="${esc(`${k.kw}\n시장 · ${k.region} · ${k.why}`)}">${k.kw}</span>`); });
   document.getElementById("kwCntR").textContent = document.querySelectorAll("#kwR1 .chip,#kwR2 .chip,#kwR3 .chip").length+"개";
   document.getElementById("kwCntM").textContent = document.querySelectorAll("#kwM1 .chip,#kwM2 .chip,#kwM3 .chip").length+"개";
+  document.getElementById("kwCntP").textContent = document.querySelectorAll("#kwP1 .chip,#kwP2 .chip").length+"개";
   // 보도 후보
   const PI = [...PRESS_IDEAS.map(x => ({...x, ref:x.product})), ...MPRESS.map(x => ({...x, ref:`시장 · ${x.region}`}))];
   document.getElementById("pressIdeaBlock").hidden = !PI.length;
