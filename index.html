@@ -171,14 +171,11 @@ button.card:focus-visible{outline-offset:0;border-radius:16px}
 
 /* 오늘 할 일 */
 .today{display:grid}
-.today li{display:grid;grid-template-columns:92px 1fr auto;gap:12px;align-items:start;padding:10px 0;border-top:1px solid var(--fg10);position:relative}
+.today li{display:grid;grid-template-columns:1fr auto;gap:12px;align-items:start;padding:10px 0;border-top:1px solid var(--fg10);position:relative}
 .today li:first-child{border-top:0;padding-top:0}
 .today li.empty{opacity:.45}
-.today .tm{font-size:12px;line-height:18px;color:var(--fg40);padding-top:2px}
 .today .nm{display:flex;align-items:center;gap:8px;min-width:0;flex-wrap:wrap}
 .today .nm small{flex-basis:100%}
-.today li.now::before{content:"";position:absolute;left:-24px;top:10px;bottom:10px;width:4px;border-radius:2px;background:var(--brand)}
-.today li.now .tm{color:var(--fg);font-weight:600}
 
 /* 단계 카드 */
 .flow{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:8px}
@@ -215,16 +212,7 @@ button.card:focus-visible{outline-offset:0;border-radius:16px}
 .theme{color:var(--fg40);font-size:12px;line-height:18px;font-weight:400}
 
 /* 일별 타임라인 */
-.tl-wrap,.cal-wrap,.table.wide{overflow-x:auto;margin:0 -4px;padding:0 4px}
-.tl{display:grid;grid-template-columns:104px repeat(18,minmax(26px,1fr));grid-auto-rows:36px;align-items:center;min-width:820px}
-.tl .hr{grid-row:1;font-size:12px;line-height:18px;color:var(--fg40);align-self:end;padding-bottom:4px;border-left:1px solid var(--fg10);padding-left:4px}
-.tl .lane{grid-column:1;font-size:12px;line-height:18px;display:flex;align-items:center;gap:6px;padding-right:8px;border-top:1px solid var(--fg10);height:100%}
-.tl .bg{border-top:1px solid var(--fg10);height:100%;grid-column:2/-1}
-.tl .lunch{background:repeating-linear-gradient(135deg,var(--fg5) 0 4px,transparent 4px 10px);height:100%;grid-row:2/span 5}
-.tl .blk{border-radius:8px;background:var(--cc);color:var(--ink);font-size:12px;line-height:18px;padding:0 8px;height:28px;display:flex;align-items:center;gap:6px;overflow:hidden;white-space:nowrap;margin:0 2px;z-index:1}
-.tl .blk span:first-child{overflow:hidden;text-overflow:ellipsis;min-width:0}
-.tl .blk .w{margin-left:auto;font-size:10px;font-weight:600;opacity:.75;flex:none}
-.tl .blk.g{background:var(--fg5);color:var(--fg)}
+.cal-wrap,.table.wide{overflow-x:auto;margin:0 -4px;padding:0 4px}
 
 /* 표 */
 .table{display:grid}
@@ -233,12 +221,11 @@ button.card:focus-visible{outline-offset:0;border-radius:16px}
 .tr .d{font-size:12px;line-height:18px;color:var(--fg40);padding-top:1px}
 .tr .h{font-weight:600}
 .tr .h small{display:block;font-weight:400;color:var(--fg40);font-size:12px;line-height:18px}
-.tr.t5{grid-template-columns:92px 1fr 130px 170px;min-width:640px}
+.tr.t5{grid-template-columns:minmax(0,1fr) 130px 170px;min-width:520px}
 .tr.t5.empty{opacity:.45}
 .tr.m4{grid-template-columns:minmax(0,1fr) minmax(0,2fr) 130px 52px}
 .tr.press{grid-template-columns:72px 92px 1fr 88px}
 .tr.pool{grid-template-columns:72px 44px minmax(0,1fr) minmax(0,160px)}
-.tr .tm{font-size:12px;line-height:18px;color:var(--fg40);padding-top:1px}
 .tr .out{font-size:12px;line-height:18px;color:var(--fg40)}
 .brief{display:grid;gap:8px}
 .brief li{display:grid;grid-template-columns:84px 1fr;gap:12px;padding:8px 0;border-top:1px solid var(--fg10)}
@@ -339,8 +326,7 @@ button.notif:hover{background:var(--fg5)}
   .cols2{grid-template-columns:1fr}
   .search{width:auto;flex:1;max-width:160px}
   .hide-m{display:none}
-  .today li{grid-template-columns:72px 1fr}.today li>.whos{grid-column:2}
-  .today li.now::before{left:-20px}
+  .today li{grid-template-columns:1fr}
   .tr.m4{grid-template-columns:1fr 1fr}.tr.m4 .h{grid-column:1/-1}
   .tr.mk{min-width:0;grid-template-columns:56px 1fr}.tr.mk>span:nth-child(2){display:none}.tr.mk .out{grid-column:2}
   .tr.pool{grid-template-columns:64px 1fr}.tr.pool .pfmt{display:none}.tr.pool .out{grid-column:2}
@@ -354,7 +340,7 @@ button.notif:hover{background:var(--fg5)}
   <symbol id="i-side" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="4" width="15" height="12" rx="2.5"/><path d="M7.5 4v12"/></symbol>
   <symbol id="i-search" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="9" cy="9" r="5.5"/><path d="M13.2 13.2L17 17"/></symbol>
   <symbol id="i-sun" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="10" cy="10" r="3.5"/><path d="M10 2.5v2M10 15.5v2M2.5 10h2M15.5 10h2M4.7 4.7l1.4 1.4M13.9 13.9l1.4 1.4M4.7 15.3l1.4-1.4M13.9 6.1l1.4-1.4"/></symbol>
-  <symbol id="i-clock" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="10" r="7"/><path d="M10 6.5V10l2.5 1.5"/></symbol>
+  <symbol id="i-list" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7.5 5.5H16M7.5 10H16M7.5 14.5H16M4 5.5h.01M4 10h.01M4 14.5h.01"/></symbol>
   <symbol id="i-chev" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 4l4 4-4 4"/></symbol>
   <symbol id="i-pie" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"><path d="M10 2.5a7.5 7.5 0 1 0 7.5 7.5H10z"/><path d="M12 2.8A7.5 7.5 0 0 1 17.2 8H12z"/></symbol>
   <symbol id="i-key" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10h9M12 10v3M8.5 10v2"/><rect x="2.5" y="6" width="15" height="8" rx="2.5"/></symbol>
@@ -380,9 +366,9 @@ button.notif:hover{background:var(--fg5)}
   </div>
   <div class="sec">
     <div class="sec-l">스케줄</div>
-    <button class="nav" data-t="daily" aria-selected="false"><svg class="chev"><use href="#i-chev"/></svg><svg class="ico"><use href="#i-clock"/></svg>일별 업무</button>
+    <button class="nav" data-t="daily" aria-selected="false"><svg class="chev"><use href="#i-chev"/></svg><svg class="ico"><use href="#i-list"/></svg>일별 업무</button>
     <button class="nav" data-t="schedule" aria-selected="false"><svg class="chev"><use href="#i-chev"/></svg><svg class="ico"><use href="#i-cal"/></svg>주간 발행</button>
-    <button class="nav" data-t="monthly" aria-selected="false"><svg class="chev"><use href="#i-chev"/></svg><svg class="ico"><use href="#i-grid"/></svg>월별 일정</button>
+    <button class="nav" data-t="monthly" aria-selected="false"><svg class="chev"><use href="#i-chev"/></svg><svg class="ico"><use href="#i-grid"/></svg>월·분기 일정</button>
   </div>
 </aside>
 
@@ -406,7 +392,7 @@ button.notif:hover{background:var(--fg5)}
       <button class="nav" data-t="overview" aria-selected="true">오늘</button>
       <button class="nav" data-t="daily" aria-selected="false">일별 업무</button>
       <button class="nav" data-t="schedule" aria-selected="false">주간 발행</button>
-      <button class="nav" data-t="monthly" aria-selected="false">월별 일정</button>
+      <button class="nav" data-t="monthly" aria-selected="false">월·분기 일정</button>
       <button class="nav" data-t="keywords" aria-selected="false">키워드</button>
       <button class="nav" data-t="pool" aria-selected="false">주제 후보</button>
       <button class="nav" data-t="market" aria-selected="false">시장·업계 동향</button>
@@ -558,12 +544,8 @@ button.notif:hover{background:var(--fg5)}
         <div class="group" style="gap:12px;flex-wrap:wrap"><span class="wknav"><button class="ib" id="dPrev" aria-label="이전 주"><svg style="transform:rotate(180deg)"><use href="#i-chev"/></svg></button><button class="t12 muted num" id="dLbl" style="padding:0 4px"></button><button class="ib" id="dNext" aria-label="다음 주"><svg><use href="#i-chev"/></svg></button></span><div class="seg" role="group" aria-label="요일" id="daySeg2"></div></div>
         <div class="chips"><span class="lgd"><span class="who" style="--pc:var(--fg20)">이름</span>주담당</span><span class="lgd"><span class="who co" style="--pc:var(--fg20)">이름</span>함께</span></div>
       </div>
-      <div class="block">
-        <h2>하루 업무 흐름<span class="cnt">10:00–19:00</span></h2>
-        <div class="tl-wrap"><div class="tl" id="dayTl"></div></div>
-      </div>
       <div class="row col21">
-        <div class="block"><h2>시간대별 업무<span class="cnt" id="dayTitle"></span></h2><div class="table wide" id="dayTable"></div></div>
+        <div class="block"><h2>하루 업무<span class="cnt" id="dayTitle"></span></h2><div class="table wide" id="dayTable"></div></div>
         <div class="block"><h2>이날 확정·고정 업무</h2><ul class="kv" id="dayFixed"></ul></div>
       </div>
     </section>
@@ -577,18 +559,18 @@ button.notif:hover{background:var(--fg5)}
       <div class="row cols3" id="dayView"></div>
     </section>
 
-    <!-- 월별 일정 -->
+    <!-- 월·분기 일정 -->
     <section class="view" id="v-monthly" hidden>
       <div class="sched-h">
         <div class="seg" role="group" aria-label="월" id="monSeg"></div>
         <div class="chips" id="calLegend"></div>
       </div>
       <div class="row cols4" id="monKpi"></div>
-      <div class="block">
+      <div class="block" id="calBlock">
         <h2 id="calTitle">달력</h2>
         <div class="cal-wrap"><div class="cal" id="cal"></div></div>
       </div>
-      <div class="block"><h2>월간 업무</h2><div class="table" id="monTable"></div></div>
+      <div class="block"><h2 id="monTableTitle">월간 업무</h2><div class="table" id="monTable"></div></div>
     </section>
 
     <!-- 언론보도 -->
@@ -709,7 +691,6 @@ const md = d => (d.getMonth()+1)+"/"+d.getDate();
 const mdw = d => `${md(d)}(${DOW[d.getDay()]})`;
 const addD = (d,n) => { const x = new Date(d); x.setDate(x.getDate()+n); return x; };
 const same = (a,b) => a && b && ymd(a)===ymd(b);
-const hm = t => (t<10?"0":"")+Math.floor(t)+":"+(t%1?"30":"00");
 const esc = s => String(s).replace(/&/g,"&amp;").replace(/"/g,"&quot;").replace(/</g,"&lt;");
 const HOL = {"2026-12-25":"성탄절"};                 // 2026년 11~12월 공휴일, 대체휴일 없음
 const START = D("2026-11-04"), END = D("2026-12-31");
@@ -730,7 +711,6 @@ const WHO = w => `<span class="whos">${w.map(([k,r]) => `<span class="who ${r===
 const PS = w => (w||[]).map(x => x[0]).join(" ");
 const whoText = w => { const m = w.filter(x=>x[1]==="main").map(x=>PEOPLE[x[0]][0]), c = w.filter(x=>x[1]==="co").map(x=>PEOPLE[x[0]][0]); return [m.length?"담당 "+m.join(" · "):"", c.length?"함께 "+c.join(" · "):""].filter(Boolean).join(" / "); };
 const tipOf = (title, desc, who) => esc([title, desc, who && who.length ? whoText(who) : ""].filter(Boolean).join("\n"));
-const mainName = w => { const m = w.filter(x=>x[1]==="main"); return m.map(x=>PEOPLE[x[0]][0]).join("·"); };
 
 // ===== 언론보도 =====
 const PRESS = [
@@ -842,23 +822,23 @@ function tasksOn(d){
 }
 const DAILY_AM = {name:"오늘 주제·키워드 점검",short:"주제 점검",desc:"오늘 발행할 3묶음의 키워드·내용 확인, 4주 중복 확인",who:W("lee","kim"),kind:"daily"};
 const CHROWS = [
-  {lane:"review",s:10.5,e:12.5,name:"리뷰홈 3건 작성·업로드",short:"리뷰홈 3건",desc:"HT·QA·FAQ 3건 업로드",who:W("lee","kim+"),ci:0},
-  {lane:"main",s:13.5,e:15.5,name:"메인홈 3건 작성·업로드",short:"메인홈 3건",desc:"HT·QA·FAQ 3건 업로드",who:W("lee","kim+"),ci:1},
-  {lane:"blog",s:15.5,e:17,name:"블로그 3건 작성·업로드",short:"블로그 3건",desc:"사례 글 3건 업로드, 당일 홈페이지 글 링크",who:W("lee","kim+"),ci:2}
+  {lane:"review",name:"리뷰홈 3건 작성·업로드",short:"리뷰홈 3건",desc:"HT·QA·FAQ 3건 업로드",who:W("lee","kim+"),ci:0},
+  {lane:"main",name:"메인홈 3건 작성·업로드",short:"메인홈 3건",desc:"HT·QA·FAQ 3건 업로드",who:W("lee","kim+"),ci:1},
+  {lane:"blog",name:"블로그 3건 작성·업로드",short:"블로그 3건",desc:"사례 글 3건 업로드, 당일 홈페이지 글 링크",who:W("lee","kim+"),ci:2}
 ];
 const LANES = {review:"리뷰 홈페이지",main:"메인 홈페이지",blog:"네이버 블로그",press:"언론보도",g:"공통"};
-function group(lane,s,e,list){
-  if (!list.length) return {lane,s,e,name:lane==="press"?"보도 단계 없음":"고정 업무 없음",short:"",desc:"",who:[],empty:true,items:[]};
-  return {lane,s,e,name:list.map(x=>x.name).join(" · "),short:list.map(x=>x.short).join(" · "),desc:list.map(x=>x.desc+(x.kind==="press"?` (${x.freq})`:"")).join(" / "),who:mergeWho(list.map(x=>x.who)),items:list};
+function group(lane,list){
+  if (!list.length) return {lane,name:lane==="press"?"보도 단계 없음":"고정 업무 없음",short:"",desc:"",who:[],empty:true,items:[]};
+  return {lane,name:list.map(x=>x.name).join(" · "),short:list.map(x=>x.short).join(" · "),desc:list.map(x=>x.desc+(x.kind==="press"?` (${x.freq})`:"")).join(" / "),who:mergeWho(list.map(x=>x.who)),items:list};
 }
 function dayRows(d){
   const tk = tasksOn(d), tp = topicOf(d), am = tk.am || DAILY_AM;
-  return [{lane:"g",s:10,e:10.5,...am,items:[am]},
+  return [{lane:"g",...am,items:[am]},
     ...CHROWS.map(c => ({...c, theme: tp ? tp.theme[c.ci] : "", titles: tp ? tp[c.lane] : null, st: tp ? tp.st : ""})),
-    group("press",17,18,tk.press), group("g",18,19,tk.pm)];
+    group("press",tk.press), group("g",tk.pm)];
 }
 const rowSub = r => r.ci!==undefined ? `${r.theme ? r.theme + (r.st==="후보" ? " · 후보" : "") : "주제 미정"} · ${r.desc}` : r.desc;
-const rowTip = r => tipOf(`${hm(r.s)}–${hm(r.e)} ${r.name}`, r.ci!==undefined ? (r.theme ? `주제 ${r.theme}${r.st==="후보"?" (후보)":""}\n`+r.titles.map((t,i)=>`${FMT[i]} ${t}`).join("\n") : "주제 미정") : r.desc, r.who);
+const rowTip = r => tipOf(r.name, r.ci!==undefined ? (r.theme ? `주제 ${r.theme}${r.st==="후보"?" (후보)":""}\n`+r.titles.map((t,i)=>`${FMT[i]} ${t}`).join("\n") : "주제 미정") : r.desc, r.who);
 
 // ===== 툴팁 =====
 const tip = document.createElement("div"); tip.className = "tip"; tip.hidden = true; document.body.appendChild(tip);
@@ -890,7 +870,7 @@ addEventListener("scroll", hideTip, true);
 // ===== 탭 =====
 const app = document.getElementById("app");
 const navs = document.querySelectorAll(".nav[data-t]");
-const titles = {overview:"오늘",keywords:"키워드",pool:"주제 후보",market:"시장·업계 동향",daily:"일별 업무",schedule:"주간 발행",monthly:"월별 일정",press:"언론보도",guide:"작성 기준"};
+const titles = {overview:"오늘",keywords:"키워드",pool:"주제 후보",market:"시장·업계 동향",daily:"일별 업무",schedule:"주간 발행",monthly:"월·분기 일정",press:"언론보도",guide:"작성 기준"};
 function openTab(t){
   if (!titles[t]) t = "overview";
   navs.forEach(b => b.setAttribute("aria-selected", b.dataset.t===t));
@@ -955,11 +935,7 @@ function renderToday(){
   document.getElementById("kNextSub").textContent = nb ? (ns.big==="미정" ? "주제 미정" : ns.big==="후보" ? "일부 후보" : "확정") : "";
 
   document.getElementById("todayHead").textContent = same(BASE,TODAY) ? "" : `${mdw(BASE)} 기준`;
-  const now = new Date(), nowH = now.getHours() + now.getMinutes()/60;
-  document.getElementById("todayList").innerHTML = dayRows(BASE).map(r => {
-    const on = same(BASE,TODAY) && nowH >= r.s && nowH < r.e;
-    return `<li class="${on?"now":""} ${r.empty?"empty":""}" data-ps="${PS(r.who)}"><span class="tm num">${hm(r.s)}–${hm(r.e)}</span><span class="nm"><span class="tag ${r.lane==="g"?"g":""}" style="--cc:var(--c-${r.lane})">${LANES[r.lane]}</span><span>${r.name}</span>${rowSub(r)?`<small class="muted t12">${rowSub(r)}</small>`:""}</span>${WHO(r.who)}</li>`;
-  }).join("");
+  document.getElementById("todayList").innerHTML = dayRows(BASE).map(r => `<li class="${r.empty?"empty":""}" data-ps="${PS(r.who)}"><span class="nm"><span class="tag ${r.lane==="g"?"g":""}" style="--cc:var(--c-${r.lane})">${LANES[r.lane]}</span><span>${r.name}</span>${rowSub(r)?`<small class="muted t12">${rowSub(r)}</small>`:""}</span>${WHO(r.who)}</li>`).join("");
 
   document.getElementById("weekFlow").innerHTML = milestones(BASE_M).map(x => {
     const last = x.d2 || x.d, done = last < TODAY, on = TODAY >= x.d && TODAY <= last;
@@ -1004,7 +980,6 @@ function renderPress(){
 
 // ===== 일별 업무 =====
 let dOff = 0, dSel = (BASE.getDay()+6)%7;
-const col = t => 2 + Math.round((t-10)*2);
 function weekDays(M){ return [0,1,2,3,4].map(i => addD(M,i)); }
 function defIdx(M){ const i = weekDays(M).findIndex(active); return i < 0 ? 0 : i; }
 function segHtml(M, sel){ return weekDays(M).map((d,i) => `<button aria-pressed="${i===sel}" data-i="${i}" class="${same(d,TODAY)?"td":""} ${active(d)?"":"off"}">${DOW[d.getDay()]}<small class="num">${md(d)}</small></button>`).join(""); }
@@ -1013,18 +988,8 @@ function renderDaily(){
   document.getElementById("dLbl").textContent = dOff===0 ? "이번 주" : `${md(M)}~${md(addD(M,4))}`;
   document.getElementById("daySeg2").innerHTML = segHtml(M, dSel);
   document.getElementById("dayTitle").textContent = mdw(d) + (act ? "" : " · " + offText(d));
-  let h = "";
-  for (let t=10;t<19;t++) h += `<div class="hr num" style="grid-column:${col(t)}/span 2">${t}:00</div>`;
-  ["review","main","blog","press","g"].forEach((k,li) => { h += `<div class="lane" style="grid-row:${li+2};--cc:var(--c-${k})">${k==="g"?"":'<span class="dot"></span>'}${LANES[k]}</div><div class="bg" style="grid-row:${li+2}"></div>`; });
-  h += `<div class="lunch" style="grid-column:${col(12.5)}/${col(13.5)}"></div>`;
-  if (act) rows.forEach(r => {
-    if (r.empty) return;
-    const li = ["review","main","blog","press","g"].indexOf(r.lane);
-    h += `<div class="blk ${r.lane==="g"?"g":""}" data-ps="${PS(r.who)}" style="grid-row:${li+2};grid-column:${col(r.s)}/${col(r.e)};--cc:var(--c-${r.lane})" data-tip="${rowTip(r)}"><span>${r.short||r.name}</span><span class="w">${mainName(r.who)}</span></div>`;
-  });
-  document.getElementById("dayTl").innerHTML = h;
-  document.getElementById("dayTable").innerHTML = act ? `<div class="tr th t5"><span>시간</span><span>업무</span><span>담당</span><span>산출물</span></div>` +
-    rows.map(r => `<div class="tr t5 ${r.empty?"empty":""}" data-ps="${PS(r.who)}"><span class="tm num">${hm(r.s)}–${hm(r.e)}</span><span><span class="tag ${r.lane==="g"?"g":""}" style="--cc:var(--c-${r.lane})">${LANES[r.lane]}</span> ${r.name}${r.ci!==undefined?` <span class="theme">${r.theme||"주제 미정"}${r.st==="후보"?" · 후보":""}</span>`:""}</span>${WHO(r.who)}<span class="out">${r.ci!==undefined?r.desc:r.desc}</span></div>`).join("")
+  document.getElementById("dayTable").innerHTML = act ? `<div class="tr th t5"><span>업무</span><span>담당</span><span>산출물</span></div>` +
+    rows.map(r => `<div class="tr t5 ${r.empty?"empty":""}" data-ps="${PS(r.who)}" ${r.empty?"":`data-tip="${rowTip(r)}"`}><span><span class="tag ${r.lane==="g"?"g":""}" style="--cc:var(--c-${r.lane})">${LANES[r.lane]}</span> ${r.name}${r.ci!==undefined?` <span class="theme">${r.theme||"주제 미정"}${r.st==="후보"?" · 후보":""}</span>`:""}</span>${WHO(r.who)}<span class="out">${r.ci!==undefined?r.desc:r.desc}</span></div>`).join("")
     : `<p class="muted t12">${offText(d)}</p>`;
   const items = [...(tk.am ? [tk.am] : []), ...tk.press, ...tk.pm];
   document.getElementById("dayFixed").innerHTML = items.length ? items.map(x => `<li data-ps="${PS(x.who)}"><b>${x.name}<span class="freq">${x.freq||""}</span></b><span>${x.desc}<br>${WHO(x.who)}</span></li>`).join("") : `<li><span class="muted t12">없음</span><span></span></li>`;
@@ -1057,7 +1022,7 @@ document.getElementById("sPrev").addEventListener("click", () => { sOff--; rende
 document.getElementById("sNext").addEventListener("click", () => { sOff++; renderSchedule(); });
 document.getElementById("sLbl").addEventListener("click", () => { sOff = 0; sSel = null; renderSchedule(); });
 
-// ===== 월별 일정 =====
+// ===== 월·분기 일정 =====
 const CC = {review:"var(--c-review)",main:"var(--c-main)",blog:"var(--c-blog)",press:"var(--c-press)",blue:"var(--blue)",purple:"var(--purple)",yellow:"var(--yellow)",mint:"var(--mint)",oneoff:"var(--c-review)",g:"var(--fg5)"};
 function calEvents(d){
   const k = ymd(d), ev = [], tk = tasksOn(d);
@@ -1072,35 +1037,44 @@ function calEvents(d){
 const MONTHS = [[2026,10],[2026,11]];
 const curM = Math.max(0, MONTHS.findIndex(m => m[0]===BASE.getFullYear() && m[1]===BASE.getMonth()));
 const monSeg = document.getElementById("monSeg");
-monSeg.innerHTML = MONTHS.map((m,i) => `<button aria-pressed="${i===curM}" data-i="${i}">${m[1]+1}월<small class="num">${m[0]}</small></button>`).join("");
+monSeg.innerHTML = MONTHS.map((m,i) => `<button aria-pressed="${i===curM}" data-i="${i}">${m[1]+1}월<small class="num">${m[0]}</small></button>`).join("") +
+  `<button aria-pressed="false" data-i="q">4분기<small class="num">${md(START)}~${md(END)}</small></button>`;
 const MROWS = [
   ["pub","언론보도 게재",STEPS[5].who],["prep","첫 보도 준비",PREP.who],
   ["step0","보도 내용 조율",STEPS[0].who],["step1","보도 주제 컨펌",STEPS[1].who],["step2","보도 원고·배너 제작",STEPS[2].who],["step3","보도 초안 컨펌 후 수정",STEPS[3].who],["step4","보도 최종 컨펌 후 발행 요청",STEPS[4].who],
   ["blogsel","블로그·웹 주제 선정",W("lee","kim")],["blogfix","블로그·웹 주제 보고·확정",W("lee","kim","t")],
   ["ai","AI 인용 체크",WK.ai.who],["perf","주간 성과 확인",WK.perf.who],["inflow","상담 유입 경로 집계",WK.inflow.who],["oneoff","공지·승인",W("t")]
 ];
+function monthStats(y,m){
+  let pub = 0, pubDays = 0; const rows = [];
+  for (let d = new Date(y,m,1); d.getMonth()===m; d = addD(d,1)){
+    if (active(d)) { pub += 9; pubDays++; }
+    calEvents(d).forEach(x => { if (x.kind) rows.push([d, x]); });
+  }
+  return {pub, pubDays, rows};
+}
+const monKpiHtml = (label, pub, pubDays, cnt) => `
+    <div class="card tint blue"><span class="t14s">${label} 발행</span><div class="v"><span class="big num">${pub}건</span><span class="delta num">발행일 ${pubDays}일 × 9건</span></div></div>
+    <div class="card"><span class="t14s">언론보도 게재</span><div class="v"><span class="big num">${cnt("pub")}건</span><span class="delta muted">월요일</span></div></div>
+    <div class="card"><span class="t14s">블로그·웹 주제 확정</span><div class="v"><span class="big num">${cnt("blogfix")}회</span><span class="delta muted">주 1회</span></div></div>
+    <div class="card tint purple"><span class="t14s">보도 컨펌</span><div class="v"><span class="big num">${cnt("step1")+cnt("step3")+cnt("step4")}회</span><span class="delta">주제 · 초안 · 최종</span></div></div>`;
 function showMonth(i){
-  const [y,m] = MONTHS[i];
+  const [y,m] = MONTHS[i], {pub, pubDays, rows} = monthStats(y,m);
   monSeg.querySelectorAll("button").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.i==i)));
+  document.getElementById("calBlock").hidden = false;
+  document.getElementById("monTableTitle").textContent = "월간 업무";
   const first = new Date(y,m,1), lead = (first.getDay()+6)%7;
   let h = ["월","화","수","목","금","토","일"].map(x => `<div class="dow">${x}</div>`).join("");
   for (let k=0;k<lead;k++) h += `<div class="day out"></div>`;
-  let pub = 0, pubDays = 0; const rows = [];
   for (let d = new Date(first); d.getMonth()===m; d = addD(d,1)){
     const ev = calEvents(d), act = active(d);
-    if (act) { pub += 9; pubDays++; }
-    ev.forEach(x => { if (x.kind) rows.push([d, x]); });
     h += `<div class="day ${isWD(d)?"":"off"} ${same(d,TODAY)?"today":""}"><div class="dn"><span class="num">${d.getDate()}</span>${act?`<small class="num">9건</small>`:""}</div>` +
       ev.map(x => `<div class="ev ${x.c==="g"?"g":x.c==="hol"?"hol":""}" style="--cc:${CC[x.c]||"var(--fg5)"}" ${x.who?`data-ps="${PS(x.who)}"`:""} ${x.tip?`data-tip="${x.tip}"`:""}>${x.t}</div>`).join("") + `</div>`;
   }
   document.getElementById("cal").innerHTML = h;
   document.getElementById("calTitle").textContent = `${y}년 ${m+1}월`;
   const cnt = k => rows.filter(r => r[1].kind===k).length;
-  document.getElementById("monKpi").innerHTML = `
-    <div class="card tint blue"><span class="t14s">${m+1}월 발행</span><div class="v"><span class="big num">${pub}건</span><span class="delta num">발행일 ${pubDays}일 × 9건</span></div></div>
-    <div class="card"><span class="t14s">언론보도 게재</span><div class="v"><span class="big num">${cnt("pub")}건</span><span class="delta muted">월요일</span></div></div>
-    <div class="card"><span class="t14s">블로그·웹 주제 확정</span><div class="v"><span class="big num">${cnt("blogfix")}회</span><span class="delta muted">주 1회</span></div></div>
-    <div class="card tint purple"><span class="t14s">보도 컨펌</span><div class="v"><span class="big num">${cnt("step1")+cnt("step3")+cnt("step4")}회</span><span class="delta">주제 · 초안 · 최종</span></div></div>`;
+  document.getElementById("monKpi").innerHTML = monKpiHtml(`${m+1}월`, pub, pubDays, cnt);
   document.getElementById("monTable").innerHTML = `<div class="tr th m4"><span>업무</span><span>일정</span><span>담당</span><span>횟수</span></div>` +
     `<div class="tr m4" data-ps="lee kim"><span class="h">콘텐츠 발행</span><span class="num">평일 매일 · ${pubDays}일<small style="display:block;color:var(--fg40)">리뷰홈 3 · 메인홈 3 · 블로그 3</small></span>${WHO(W("lee","kim+"))}<span class="out num">${pub}건</span></div>` +
     MROWS.map(([k,label,who]) => { const r = rows.filter(x => x[1].kind===k); if (!r.length) return "";
@@ -1108,7 +1082,21 @@ function showMonth(i){
       return `<div class="tr m4" data-ps="${PS(who)}"><span class="h">${label}</span><span class="num">${r.map(x => md(x[0])).join(" · ")}${sub?`<small style="display:block;color:var(--fg40)">${sub}</small>`:""}</span>${WHO(who)}<span class="out num">${r.length}${k==="pub"?"건":"회"}</span></div>`; }).join("");
   document.getElementById("calLegend").innerHTML = [["보도 게재","var(--c-press)"],["보도 단계","var(--fg20)"],["블로그·웹 주제","var(--mint)"],["AI 인용","var(--blue)"],["주간 성과","var(--purple)"],["상담 집계","var(--yellow)"],["공지·승인","var(--c-review)"]].map(l => `<span class="lg" style="--cc:${l[1]}"><i></i>${l[0]}</span>`).join("");
 }
-monSeg.addEventListener("click", e => { const b = e.target.closest("button"); if (b) showMonth(+b.dataset.i); });
+function showQuarter(){
+  const ms = MONTHS.map(([y,m]) => monthStats(y,m)), label = i => `${MONTHS[i][1]+1}월`;
+  const pub = ms.reduce((a,x) => a+x.pub, 0), pubDays = ms.reduce((a,x) => a+x.pubDays, 0);
+  const cntOf = (x,k) => x.rows.filter(r => r[1].kind===k).length, cnt = k => ms.reduce((a,x) => a+cntOf(x,k), 0);
+  monSeg.querySelectorAll("button").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.i==="q")));
+  document.getElementById("calBlock").hidden = true;
+  document.getElementById("calLegend").innerHTML = "";
+  document.getElementById("monTableTitle").textContent = "분기 업무";
+  document.getElementById("monKpi").innerHTML = monKpiHtml("4분기", pub, pubDays, cnt);
+  document.getElementById("monTable").innerHTML = `<div class="tr th m4"><span>업무</span><span>월별</span><span>담당</span><span>횟수</span></div>` +
+    `<div class="tr m4" data-ps="lee kim"><span class="h">콘텐츠 발행</span><span class="num">${ms.map((x,i) => `${label(i)} ${x.pub}건`).join(" · ")}<small style="display:block;color:var(--fg40)">리뷰홈 3 · 메인홈 3 · 블로그 3</small></span>${WHO(W("lee","kim+"))}<span class="out num">${pub}건</span></div>` +
+    MROWS.map(([k,name,who]) => { const n = cnt(k), u = k==="pub" ? "건" : "회"; if (!n) return "";
+      return `<div class="tr m4" data-ps="${PS(who)}"><span class="h">${name}</span><span class="num">${ms.map((x,i) => `${label(i)} ${cntOf(x,k)}${u}`).join(" · ")}</span>${WHO(who)}<span class="out num">${n}${u}</span></div>`; }).join("");
+}
+monSeg.addEventListener("click", e => { const b = e.target.closest("button"); if (b) b.dataset.i==="q" ? showQuarter() : showMonth(+b.dataset.i); });
 
 // ===== 주제 후보 (판매 상품 기반) =====
 const PRODUCTS = [{"name": "상위노출 관리 (상세페이지 제작 중)", "summary": "네이버 쇼핑·쿠팡·플레이스·자사몰 채널별 상위노출 관리, 상품 정보·판매 지표·후기 관리", "channel": "메인홈", "fit": "중", "why": "'광고 끄면 주문 0', '어떤 키워드를 얼마나' 같은 셀러 고민형 질문에 답변 가능, 진행 방법 설명은 비공개 방침과 상충", "caution": "진행 방법(슬롯·타수·리워드 등) 공개 금지, '1위 보장'·'안전' 단정 금지, 사례 순위 수치는 증빙 보관 후 사용"}, {"name": "일반구매 리뷰 (실구매)", "summary": "실제 리뷰어가 구매·수령 후 3~10일 내 포토 리뷰 작성, 쿠팡 로켓은 실구매만 가능", "channel": "리뷰홈", "fit": "상", "why": "'구매평 체험단' 정의·일정·규칙 설명형 답변 구성 가능", "caution": "리뷰비·페이백 제공 사실과 대가 표시 안내 필요(공정위 추천·보증 심사지침), 리뷰비 금액 기재 금지"}, {"name": "구매형 체험단", "summary": "블로거 선구매 후 포스팅 완료 시 제품비 페이백, 스토어 구매평 동시 요청 가능", "channel": "리뷰홈", "fit": "상", "why": "블로그 후기와 구매평 동시 확보 구조로 '구매평 체험단' 질문에 직접 대응", "caution": "블로그·구매평 모두 대가 제공 표시 필요, '내돈내산' 표기 불가"}, {"name": "블로그 체험단 (배송형·방문형)", "summary": "블로거가 제품 수령·매장 방문 후 1,500자·사진 7장 이상 포스팅, 6개월 유지", "channel": "메인홈", "fit": "상", "why": "실체험 후기 기반이라 AI 답변 추천 대상, 절차·기준 수치 명확", "caution": "대가성 표시 필수, 병의원은 치료경험담 광고 금지(의료법 제56조)로 별도 검토"}, {"name": "언론보도", "summary": "원고·이미지 매체 데스크 송출 후 기사 URL 전달, 보통 2~3일 소요", "channel": "언론보도", "fit": "상", "why": "언론 기사는 AI 답변 출처로 인용 빈도 높은 형식", "caution": "증빙 없는 수치·효능 단정은 반려, 마케팅 B2B 주제는 중간 이상 매체 필요"}, {"name": "통합 AEO (SEO·AEO·GEO 연계)", "summary": "리뷰로 쌓은 신뢰를 HOW TO·FAQ·Q&A 원고로 블로그·웹·언론·영상에 발행", "channel": "메인홈", "fit": "상", "why": "자사 서비스 자체가 AEO라 실행 사례 원고로 신뢰 근거 구성 가능", "caution": "범위·일정 별도 견적, 효과 수치 자료 없음, 노출 보장 표현 금지"}, {"name": "쿠팡 TOP 리뷰어 캠페인", "summary": "쿠팡 리뷰어 랭킹 1000위 이내 리뷰어만 사전 모집 후 확정 수량 진행, 실배송·가구매(빈박스) 모두 가능 (로켓 상품은 실배송만)", "channel": "리뷰홈", "fit": "중", "why": "일반 체험단과의 차이 비교형 답변에 적합, 검색 수요는 제한적", "caution": "AI 인용 대상 원고는 실배송형 중심, 가구매형은 기존 원칙대로 네이버 유입용 키워드에서만 다룸, 수량 보장 불가·랭킹 수시 변동 명시"}, {"name": "기자단", "summary": "체험 없이 광고주 제공 사진·원고로 블로그 포스팅 배포", "channel": "메인홈", "fit": "중", "why": "체험단과의 비교 질문 수요 존재, 단독 추천 근거는 약함", "caution": "실제 체험 후기처럼 표현 금지, 광고 표기 필수"}, {"name": "블로그·인스타 인플루언서", "summary": "네이버 인플루언서 블로거·인스타 마이크로 인플루언서 모집, 모집 약 7일", "channel": "메인홈", "fit": "중", "why": "협찬 비용 구조 질문에 답변 가능, 단가는 별도 견적", "caution": "팔로워 구간별 단가 기재 금지, 협찬 표기 안내 필요"}, {"name": "라이브방송 사전모집·홈쇼핑 리뷰", "summary": "방송 시간 할인가 구매 리뷰어 사전 모집, 방송일 일괄 구매 후 리뷰", "channel": "블로그", "fit": "중", "why": "실구매 기반 운영 사례로 설명 가능, 검색 수요는 작음", "caution": "대가 제공 리뷰 표시 필요, 내부 수치 공개 시 근거 확인"}, {"name": "일반구매 리뷰 (가구매·빈박스)", "summary": "빈박스 출고 후 업체 제공 이미지로 리뷰 작성", "channel": "리뷰홈", "fit": "하", "why": "실사용 없는 후기 구조로 AI 답변 추천 대상 외", "caution": "표시광고법·플랫폼 정책 위반 소지, AI 인용 원고 금지, 네이버용 P3 키워드만 유지"}, {"name": "쿠팡·네이버 자동구매", "summary": "리뷰어 모집 없이 시스템이 구매·리뷰 작성", "channel": "리뷰홈", "fit": "하", "why": "실구매자 아닌 시스템 리뷰로 AI 추천·인용 불가", "caution": "가이드에 블라인드·계정 정지 위험 명시, 공개 콘텐츠·키워드 제외"}, {"name": "회송", "summary": "로켓·로켓그로스 상품 자동구매 후 실물 회수, 약 10일", "channel": "리뷰홈", "fit": "하", "why": "판매실적·리뷰 생성 후 회수하는 구조로 공개 불가", "caution": "공개 콘텐츠 전면 제외"}, {"name": "플레이스 리뷰 (영수증·예약자)·배포형 블로그 리뷰", "summary": "영수증 인증 방문자 리뷰, 예약자 리뷰, 대필 블로그 배포", "channel": "메인홈", "fit": "하", "why": "실방문·실체험 근거 부족", "caution": "공개 원고는 방문형 체험단·매장 정보 정비 관점으로만 작성"}, {"name": "트래픽·슬롯", "summary": "플레이스·네이버 쇼핑·쿠팡 검색 순위 상승 작업", "channel": "메인홈", "fit": "하", "why": "순위 조작 성격으로 AI 답변 인용 불가", "caution": "네이버 전용 P3 키워드만, 기본 세팅(상품명 40자·카테고리·주소)만 정책 이해 관점으로 활용"}, {"name": "카페침투·SNS 부스팅·특수 캠페인", "summary": "카페 글·댓글 세트, 조회수·시청자 증대, Q&A·화환 리뷰", "channel": "블로그", "fit": "하", "why": "광고 숨김·지표 증대 구조로 공개 설명 부적합", "caution": "기만 광고 소지, AEO 대상 제외"}];
