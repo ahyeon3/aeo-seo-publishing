@@ -2,6 +2,7 @@
 <html lang="ko" data-theme="dark">
 <head>
 <meta charset="utf-8">
+<script>try{var u=JSON.parse(localStorage.getItem("aeo-ui")||"{}");if(u.theme)document.documentElement.setAttribute("data-theme",u.theme)}catch(e){}</script>
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>AEO·SEO 콘텐츠 발행</title>
 <meta property="og:title" content="AEO·SEO 콘텐츠 발행">
@@ -16,7 +17,7 @@
 /* 레이아웃: Snow Dashboard UI Kit(eCommerce) — 사이드바 212 · 헤더 68 · 콘텐츠 · 라이트바 280, 카드 라운드 16 · 패딩 24 · 간격 28 */
 :root{
   --bg:#FFFFFF; --fg:#1C1C1C;
-  --fg40:rgba(28,28,28,.4); --fg20:rgba(28,28,28,.2); --fg10:rgba(28,28,28,.1); --fg5:rgba(28,28,28,.05);
+  --fg60:rgba(28,28,28,.68); --surface:#FFFFFF; --fg40:rgba(28,28,28,.4); --fg20:rgba(28,28,28,.2); --fg10:rgba(28,28,28,.1); --fg5:rgba(28,28,28,.05);
   --light:#F7F9FB; --blue:#E3F5FF; --purple:#E5ECF6; --brand:#1C1C1C; --ink:#1C1C1C; --ink60:rgba(28,28,28,.6);
   --c-review:#FFCB83; --c-main:#95A4FC; --c-blog:#A1E3CB; --c-press:#C6C7F8; --red:#FF4747; --yellow:#FFE999; --mint:#BAEDBD; --logo:#7094F4;
   --tip:rgba(28,28,28,.88); --tipfg:#FFFFFF;
@@ -24,11 +25,11 @@
 }
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
   --bg:#1C1C1C; --fg:#FFFFFF;
-  --fg40:rgba(255,255,255,.4); --fg20:rgba(255,255,255,.2); --fg10:rgba(255,255,255,.1); --fg5:rgba(255,255,255,.05);
+  --fg60:rgba(255,255,255,.7); --surface:#26262A; --fg40:rgba(255,255,255,.4); --fg20:rgba(255,255,255,.2); --fg10:rgba(255,255,255,.1); --fg5:rgba(255,255,255,.05);
   --light:rgba(255,255,255,.05); --brand:#C6C7F8; --tip:rgba(255,255,255,.92); --tipfg:#1C1C1C; color-scheme:dark}}
 :root[data-theme="dark"]{
   --bg:#1C1C1C; --fg:#FFFFFF;
-  --fg40:rgba(255,255,255,.4); --fg20:rgba(255,255,255,.2); --fg10:rgba(255,255,255,.1); --fg5:rgba(255,255,255,.05);
+  --fg60:rgba(255,255,255,.7); --surface:#26262A; --fg40:rgba(255,255,255,.4); --fg20:rgba(255,255,255,.2); --fg10:rgba(255,255,255,.1); --fg5:rgba(255,255,255,.05);
   --light:rgba(255,255,255,.05); --brand:#C6C7F8; --tip:rgba(255,255,255,.92); --tipfg:#1C1C1C; color-scheme:dark}
 
 *{box-sizing:border-box}
@@ -44,7 +45,7 @@ svg{display:block;flex:none}
 .num{font-variant-numeric:tabular-nums}
 .t12{font-size:12px;line-height:18px}
 .t14s{font-size:14px;line-height:20px;font-weight:600}
-.muted{color:var(--fg40)}
+.muted{color:var(--fg60)}
 
 /* 앱 프레임 */
 .app{display:grid;grid-template-columns:212px minmax(0,1fr) 280px;min-height:100%}
@@ -58,14 +59,10 @@ svg{display:block;flex:none}
 .badge{display:flex;align-items:center;gap:8px;padding:4px;border-radius:8px}
 .avatar{width:24px;height:24px;border-radius:50%;background:var(--logo);color:#fff;display:grid;place-items:center;font-size:12px;font-weight:600}
 .sec{display:flex;flex-direction:column;gap:4px;padding-bottom:12px}
-.sec-l{padding:4px 12px;color:var(--fg40)}
+.sec-l{padding:4px 12px;color:var(--fg60)}
 .nav{display:flex;align-items:center;gap:4px;height:28px;padding:4px 8px;border-radius:8px;width:100%;position:relative;color:var(--fg)}
 .nav:hover{background:var(--fg5)}
-.nav[aria-selected="true"]{background:var(--fg5)}
-.nav[aria-selected="true"]::before{content:"";position:absolute;left:0;top:6px;width:4px;height:16px;border-radius:2px;background:var(--brand)}
-.nav .chev{width:16px;height:16px;color:var(--fg20)}
 .nav .ico{width:20px;height:20px}
-.nav[aria-selected="true"] .chev{transform:rotate(90deg)}
 
 /* 헤더 */
 .main{min-width:0;display:flex;flex-direction:column}
@@ -82,13 +79,13 @@ svg{display:block;flex:none}
 .search input{flex:1;min-width:0;border:0;background:none;color:var(--fg);font:inherit;outline:0}
 .search input::placeholder{color:var(--fg20)}
 .search kbd{font:inherit;color:var(--fg20)}
-.search .cnt{font-size:12px;color:var(--fg40);white-space:nowrap}
+.search .cnt{font-size:12px;color:var(--fg60);white-space:nowrap}
 
 /* 콘텐츠 */
 .content{padding:28px;padding-right:max(28px,env(safe-area-inset-right,0px));display:flex;flex-direction:column;gap:16px;flex:1}
 .ptitle{padding:4px 8px;display:flex;align-items:center;justify-content:space-between;gap:8px 16px;flex-wrap:wrap}
 .ptitle .l{display:flex;align-items:baseline;gap:8px;font-weight:600}
-.ptitle .date{font-weight:400;color:var(--fg40)}
+.ptitle .date{font-weight:400;color:var(--fg60)}
 .view{display:grid;gap:28px}
 .row{display:grid;gap:28px}
 .cols4{grid-template-columns:repeat(4,minmax(0,1fr))}
@@ -109,17 +106,17 @@ button.card:focus-visible{outline-offset:0;border-radius:16px}
 
 .block{border-radius:16px;padding:24px;background:var(--light);display:flex;flex-direction:column;gap:16px;min-width:0}
 .block>h2{font-size:14px;line-height:20px;font-weight:600;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
-.block>h2 .cnt{margin-left:auto;font-weight:400;color:var(--fg40);white-space:nowrap}
-.block>h2 .lnk{margin-left:auto;font-weight:400;color:var(--fg40);font-size:12px}
+.block>h2 .cnt{margin-left:auto;font-weight:400;color:var(--fg60);white-space:nowrap}
+.block>h2 .lnk{margin-left:auto;font-weight:400;color:var(--fg60);font-size:12px}
 .block>h2 .lnk:hover{color:var(--fg)}
 
 /* 칩·태그 */
 .chips{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
 .chip{display:inline-flex;align-items:center;gap:4px;padding:2px 8px;border-radius:8px;background:var(--fg5);font-size:12px;line-height:18px;max-width:100%}
 .chip.p1{background:var(--cc);color:var(--ink)}
-.chip.new::after{content:"NEW";font-size:10px;font-weight:600;letter-spacing:.04em;color:var(--fg40)}
+.chip.new::after{content:"NEW";font-size:10px;font-weight:600;letter-spacing:.04em;color:var(--fg60)}
 .chip.p1.new::after{color:var(--ink60)}
-.chip.prod::after{content:"상품";font-size:10px;font-weight:600;color:var(--fg40)}
+.chip.prod::after{content:"상품";font-size:10px;font-weight:600;color:var(--fg60)}
 .chip.p1.prod::after{color:var(--ink60)}
 .tag{display:inline-flex;align-items:center;gap:4px;padding:2px 8px;border-radius:8px;font-size:12px;line-height:18px;background:var(--cc);color:var(--ink);white-space:nowrap}
 .tag .dot{background:var(--ink)}
@@ -128,11 +125,10 @@ button.card:focus-visible{outline-offset:0;border-radius:16px}
 .whos{display:inline-flex;gap:4px;flex-wrap:wrap}
 .who{display:inline-flex;align-items:center;padding:0 6px;border-radius:4px;background:var(--pc);color:var(--ink);font-size:11px;line-height:16px;font-weight:600;white-space:nowrap;border:1px solid var(--pc)}
 .who.co{background:transparent;color:var(--fg);font-weight:500}
-.chip.hide,.post.hide,.tr.hide,.pool.hide{display:none}
 .status{display:inline-flex;align-items:center;gap:6px;font-size:12px;line-height:18px;white-space:nowrap;font-weight:400;color:var(--fg)}
 .status::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--fg20)}
 .status.on::before{background:var(--brand)} .status.done::before{background:var(--c-blog)}
-.lgd{display:inline-flex;align-items:center;gap:6px;font-size:12px;line-height:18px;color:var(--fg40)}
+.lgd{display:inline-flex;align-items:center;gap:6px;font-size:12px;line-height:18px;color:var(--fg60)}
 .fit{display:inline-grid;place-items:center;width:20px;height:20px;border-radius:4px;font-size:11px;font-weight:600;background:var(--fg5)}
 .fit.s{background:var(--c-blog);color:var(--ink)} .fit.m{background:var(--yellow);color:var(--ink)} .fit.l{background:var(--fg10)}
 
@@ -149,38 +145,32 @@ button.card:focus-visible{outline-offset:0;border-radius:16px}
 .legend{display:grid;gap:12px}
 .legend li{display:grid;grid-template-columns:auto 1fr auto;gap:8px;align-items:center}
 .legend li b{font-weight:400}
-.legend .ln{color:var(--fg40)}
+.legend .ln{color:var(--fg60)}
 
 /* 리스트류 */
 .todo{display:grid;gap:12px;counter-reset:t}
 .todo li{display:grid;grid-template-columns:24px 1fr;gap:8px;align-items:start;counter-increment:t}
 .todo li::before{content:counter(t);width:24px;height:24px;border-radius:8px;background:var(--fg5);display:grid;place-items:center;font-size:12px;font-weight:600}
 .todo b{font-weight:600}
-.todo small{display:block;color:var(--fg40);font-size:12px;line-height:18px}
+.todo small{display:block;color:var(--fg60);font-size:12px;line-height:18px}
 .kv{display:grid;gap:8px}
 .kv li{display:grid;grid-template-columns:110px 1fr;gap:12px;align-items:start;padding:8px 0;border-top:1px solid var(--fg10)}
 .kv li:first-child{border-top:0;padding-top:0}
 .kv b{font-weight:600}
-.kv .freq{display:block;color:var(--fg40);font-size:12px;line-height:18px;font-weight:400}
+.kv .freq{display:block;color:var(--fg60);font-size:12px;line-height:18px;font-weight:400}
 .kv .whos{margin-top:4px}
 .plain{display:grid;gap:8px}
 .plain li{display:grid;grid-template-columns:8px 1fr;gap:12px;align-items:start}
 .plain li::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--fg20);margin-top:7px}
 .tier{display:flex;flex-direction:column;gap:8px}
-.tier-l{font-size:12px;line-height:18px;color:var(--fg40)}
+.tier-l{font-size:12px;line-height:18px;color:var(--fg60)}
 
 /* 오늘 할 일 */
-.today{display:grid}
-.today li{display:grid;grid-template-columns:1fr auto;gap:12px;align-items:start;padding:10px 0;border-top:1px solid var(--fg10);position:relative}
-.today li:first-child{border-top:0;padding-top:0}
-.today li.empty{opacity:.45}
-.today .nm{display:flex;align-items:center;gap:8px;min-width:0;flex-wrap:wrap}
-.today .nm small{flex-basis:100%}
 
 /* 단계 카드 */
 .flow{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:8px}
 .step{display:flex;flex-direction:column;gap:4px;padding:12px;border-radius:8px;background:var(--bg);border:1px solid var(--fg10);min-width:0}
-.step .sd{font-size:12px;line-height:18px;color:var(--fg40);display:flex;justify-content:space-between;align-items:center;gap:8px}
+.step .sd{font-size:12px;line-height:18px;color:var(--fg60);display:flex;justify-content:space-between;align-items:center;gap:8px}
 .step b{font-weight:600}
 .step span{font-size:12px;line-height:18px}
 .step .w{margin-top:auto;padding-top:4px}
@@ -188,28 +178,28 @@ button.card:focus-visible{outline-offset:0;border-radius:16px}
 .step.done{opacity:.5}
 .flow.list{grid-template-columns:1fr;gap:4px}
 .flow.list .step{display:grid;grid-template-columns:64px minmax(0,1fr);align-items:start;gap:2px 8px;padding:8px 12px}
-.flow.list .step b small{display:block;font-weight:400;color:var(--fg40);font-size:12px;line-height:18px}
+.flow.list .step b small{display:block;font-weight:400;color:var(--fg60);font-size:12px;line-height:18px}
 .flow.list .w{margin:0;padding:2px 0 0;grid-column:2}
 .flow.c5{grid-template-columns:repeat(2,minmax(0,1fr))}
 
 /* 스케줄 */
 .seg{display:flex;gap:4px;flex-wrap:wrap}
-.seg button{height:28px;padding:4px 8px;border-radius:8px;display:flex;align-items:center;gap:4px;color:var(--fg40)}
+.seg button{height:28px;padding:4px 8px;border-radius:8px;display:flex;align-items:center;gap:4px;color:var(--fg60)}
 .seg button:hover{background:var(--fg5)}
 .seg button[aria-pressed="true"]{background:var(--fg5);color:var(--fg)}
 .seg button.off{opacity:.45}
-.seg small{font-size:12px;color:var(--fg40)}
+.seg small{font-size:12px;color:var(--fg60)}
 .seg button.td small::after{content:"오늘";margin-left:4px;color:var(--brand);font-weight:600}
 .sched-h{display:flex;align-items:center;justify-content:space-between;gap:12px 16px;flex-wrap:wrap}
 .wknav{display:inline-flex;align-items:center;gap:4px}
 .wknav .ib{width:24px;height:24px}
 .wknav .ib svg{width:16px;height:16px}
-.wkinfo{display:flex;flex-wrap:wrap;gap:8px 12px;align-items:center;font-size:12px;line-height:18px;color:var(--fg40)}
+.wkinfo{display:flex;flex-wrap:wrap;gap:8px 12px;align-items:center;font-size:12px;line-height:18px;color:var(--fg60)}
 .posts{display:grid}
 .post{display:grid;grid-template-columns:44px 1fr;gap:12px;padding:10px 0;border-top:1px solid var(--fg10);align-items:start}
 .post:first-child{border-top:0;padding-top:0}
 .fmt{font-size:12px;line-height:18px;font-weight:600;text-align:center;border-radius:4px;background:var(--cc);color:var(--ink);padding:1px 0;margin-top:1px}
-.theme{color:var(--fg40);font-size:12px;line-height:18px;font-weight:400}
+.theme{color:var(--fg60);font-size:12px;line-height:18px;font-weight:400}
 
 /* 일별 타임라인 */
 .cal-wrap,.table.wide{overflow-x:auto;margin:0 -4px;padding:0 4px}
@@ -217,26 +207,19 @@ button.card:focus-visible{outline-offset:0;border-radius:16px}
 /* 표 */
 .table{display:grid}
 .tr{display:grid;grid-template-columns:72px 92px 1fr;gap:12px;align-items:start;padding:12px 8px;border-top:1px solid var(--fg10);min-width:0}
-.tr.th{border-top:0;border-bottom:1px solid var(--fg20);padding:8px;color:var(--fg40);font-size:12px;line-height:18px}
-.tr .d{font-size:12px;line-height:18px;color:var(--fg40);padding-top:1px}
+.tr.th{border-top:0;border-bottom:1px solid var(--fg20);padding:8px;color:var(--fg60);font-size:12px;line-height:18px}
+.tr .d{font-size:12px;line-height:18px;color:var(--fg60);padding-top:1px}
 .tr .h{font-weight:600}
-.tr .h small{display:block;font-weight:400;color:var(--fg40);font-size:12px;line-height:18px}
+.tr .h small{display:block;font-weight:400;color:var(--fg60);font-size:12px;line-height:18px}
 .tr.t5{grid-template-columns:minmax(0,1fr) 130px 170px;min-width:520px}
 .tr.t5.empty{opacity:.45}
 .tr.m4{grid-template-columns:minmax(0,1fr) minmax(0,2fr) 130px 52px}
 .tr.press{grid-template-columns:72px 92px 1fr 88px}
-.tr.pool{grid-template-columns:72px 44px minmax(0,1fr) minmax(0,160px)}
-.tr .out{font-size:12px;line-height:18px;color:var(--fg40)}
+.tr .out{font-size:12px;line-height:18px;color:var(--fg60)}
 .brief{display:grid;gap:8px}
 .brief li{display:grid;grid-template-columns:84px 1fr;gap:12px;padding:8px 0;border-top:1px solid var(--fg10)}
 .brief li:first-child{border-top:0;padding-top:0}
 .brief b{font-weight:600}
-.prod{display:grid;gap:8px}
-.prod li{display:grid;grid-template-columns:20px minmax(0,1fr);gap:10px;padding:10px 0;border-top:1px solid var(--fg10);align-items:start}
-.prod li:first-child{border-top:0;padding-top:0}
-.prod b{font-weight:600}
-.prod small{display:block;font-size:12px;line-height:18px;color:var(--fg40)}
-.prod .cau{color:var(--red);opacity:.85}
 
 /* 시장 동향 */
 .mkgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px}
@@ -244,28 +227,27 @@ button.card:focus-visible{outline-offset:0;border-radius:16px}
 .mkh:hover{box-shadow:inset 0 0 0 1px var(--fg20)}
 .mkh[aria-pressed="true"]{box-shadow:inset 0 0 0 1px var(--brand)}
 .mkh b{font-weight:600;display:flex;justify-content:space-between;gap:8px}
-.mkh b small{font-weight:400;color:var(--fg40);font-size:12px}
-.mkh span{font-size:12px;line-height:18px;color:var(--fg40)}
+.mkh b small{font-weight:400;color:var(--fg60);font-size:12px}
+.mkh span{font-size:12px;line-height:18px;color:var(--fg60)}
 .tr.mk{grid-template-columns:96px 72px minmax(0,1fr) 200px;min-width:680px}
-.tr.mk .h small{display:block;font-weight:400;color:var(--fg40);font-size:12px;line-height:18px}
-.tr.mk a{color:var(--fg40);font-size:12px;line-height:18px;text-decoration:underline;text-underline-offset:2px;word-break:break-all}
+.tr.mk .h small{display:block;font-weight:400;color:var(--fg60);font-size:12px;line-height:18px}
+.tr.mk a{color:var(--fg60);font-size:12px;line-height:18px;text-decoration:underline;text-underline-offset:2px;word-break:break-all}
 .tr.mk a:hover{color:var(--fg)}
-.chip.mkt::after{content:"시장";font-size:10px;font-weight:600;color:var(--fg40)}
+.chip.mkt::after{content:"시장";font-size:10px;font-weight:600;color:var(--fg60)}
 .chip.p1.mkt::after{color:var(--ink60)}
 
 /* 달력 */
 .cal{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:4px;min-width:640px}
-.cal .dow{font-size:12px;line-height:18px;color:var(--fg40);text-align:center;padding:2px 0}
+.cal .dow{font-size:12px;line-height:18px;color:var(--fg60);text-align:center;padding:2px 0}
 .cal .day{min-height:96px;border-radius:8px;background:var(--bg);border:1px solid var(--fg10);padding:6px;display:flex;flex-direction:column;gap:3px;min-width:0}
-.cal .day.off{background:transparent;border-color:transparent;color:var(--fg40)}
+.cal .day.off{background:transparent;border-color:transparent;color:var(--fg60)}
 .cal .day.out{visibility:hidden}
-.cal .day.today{border-color:var(--brand);box-shadow:inset 0 0 0 1px var(--brand)}
-.cal .dn{display:flex;justify-content:space-between;align-items:baseline;font-size:12px;line-height:18px;font-weight:600}
-.cal .dn small{font-weight:400;color:var(--fg40)}
+.cal .day.cal .dn{display:flex;justify-content:space-between;align-items:baseline;font-size:12px;line-height:18px;font-weight:600}
+.cal .dn small{font-weight:400;color:var(--fg60)}
 .cal .ev{font-size:11px;line-height:16px;padding:1px 6px;border-radius:4px;background:var(--cc);color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .cal .ev.g{background:var(--fg5);color:var(--fg)}
 .cal .ev.hol{background:transparent;color:var(--red);padding-left:0}
-.lg{display:inline-flex;align-items:center;gap:6px;font-size:12px;line-height:18px;color:var(--fg40)}
+.lg{display:inline-flex;align-items:center;gap:6px;font-size:12px;line-height:18px;color:var(--fg60)}
 .lg i{width:10px;height:10px;border-radius:3px;background:var(--cc);display:inline-block}
 
 /* 작성 기준 */
@@ -284,7 +266,7 @@ button.card:focus-visible{outline-offset:0;border-radius:16px}
 .notif .ic svg{width:16px;height:16px}
 .notif .tx{min-width:0}
 .notif .tx>span{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.notif .tx small{display:block;color:var(--fg40);font-size:12px;line-height:18px}
+.notif .tx small{display:block;color:var(--fg60);font-size:12px;line-height:18px}
 button.notif:hover{background:var(--fg5)}
 .act{position:relative;display:grid;gap:4px}
 .act::before{content:"";position:absolute;left:15px;top:28px;bottom:28px;width:1px;background:var(--fg10)}
@@ -292,21 +274,165 @@ button.notif:hover{background:var(--fg5)}
 .act li.td{background:var(--fg5)}
 .act .av{width:24px;height:24px;border-radius:50%;background:var(--cc);color:var(--ink);display:grid;place-items:center;font-size:10px;font-weight:600}
 .act li span{display:block}
-.act li small{display:block;color:var(--fg40);font-size:12px;line-height:18px}
+.act li small{display:block;color:var(--fg60);font-size:12px;line-height:18px}
 
 /* 툴팁 */
 .tip{position:fixed;z-index:50;background:var(--tip);color:var(--tipfg);font-size:12px;line-height:18px;padding:6px 8px;border-radius:4px;max-width:320px;pointer-events:none;white-space:normal;word-break:keep-all;box-shadow:0 2px 8px rgba(0,0,0,.15)}
 .tip b{display:block;font-weight:600}
 .tip span{display:block;opacity:.85}
 
+/* 사용성 보강 */
+.view>*,.stackv>*{min-width:0}
+.stackv{display:grid;gap:28px;min-width:0}
+h1{margin:0}
+.ptitle .l{font-size:20px;line-height:28px;font-weight:600;margin:0}
+.ptitle .date{font-size:14px;line-height:20px}
+.nav[aria-current="page"]{background:var(--fg5)}
+.nav[aria-current="page"]::before{content:"";position:absolute;left:0;top:6px;width:4px;height:16px;border-radius:2px;background:var(--brand)}
+.nav{gap:8px;padding:4px 12px;height:32px}
+.search{cursor:pointer;color:var(--fg60)}
+.search .ph{flex:1;text-align:left}
+.search svg{color:var(--fg60)}
+.search kbd{color:var(--fg60);font-size:12px}
+.search:hover{background:var(--fg10)}
+.ib:disabled{opacity:.3;cursor:default}
+.ib:disabled:hover{background:none}
+a{color:inherit}
+.lnk{color:var(--fg60);font-size:12px;line-height:18px;text-decoration:underline;text-underline-offset:2px}
+.lnk:hover{color:var(--fg)}
+.block>h2 .lnk{text-decoration:none}
+.card .v{flex-direction:column;align-items:flex-start;gap:2px}
+.card .delta{text-align:left}
+.seg.sub{border-bottom:1px solid var(--fg10);padding-bottom:8px;gap:8px}
+.seg.sub button{height:32px;padding:4px 12px}
+.bar{position:sticky;top:calc(68px + env(safe-area-inset-top,0px));z-index:4;background:var(--bg);display:flex;flex-wrap:wrap;align-items:center;gap:8px 16px;padding:8px 0;margin:-8px 0}
+.bar .seg{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;max-width:100%}
+.bar .seg::-webkit-scrollbar{display:none}
+.bar .seg button{white-space:nowrap;flex:none}
+.bar .end{margin-left:auto;color:var(--fg60);font-size:12px;line-height:18px;white-space:nowrap}
+.find{display:flex;align-items:center;gap:8px;height:28px;flex:1 1 150px;min-width:140px;max-width:240px;padding:4px 8px;border-radius:8px;background:var(--fg5);color:var(--fg60)}
+.find svg{width:16px;height:16px}
+.find input{flex:1;min-width:0;border:0;background:none;color:var(--fg);font:inherit;outline:0}
+.find input::placeholder{color:var(--fg60)}
+.find:focus-within{box-shadow:inset 0 0 0 1px var(--fg20)}
+.more{width:100%;height:36px;border-radius:8px;background:var(--fg5);text-align:center;color:var(--fg)}
+.more:hover{background:var(--fg10)}
+.wkctl{display:flex;align-items:center;gap:8px 12px;flex-wrap:wrap}
+.wklbl{padding:0 4px;min-width:76px;text-align:center}
+.now{height:24px;padding:0 8px;border-radius:6px;background:var(--fg5);font-size:12px;margin-left:4px}
+.now:hover{background:var(--fg10)}
+
+/* 업무 행 */
+.drs{display:grid}
+.dr{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 16px;padding:12px 0;border-top:1px solid var(--fg10);align-items:start}
+.dr:first-child{border-top:0;padding-top:0}
+.dr:last-child{padding-bottom:0}
+.dr-m{display:flex;flex-wrap:wrap;align-items:center;gap:4px 8px;min-width:0}
+.dr-m b{font-weight:500}
+.dr-d{grid-column:1/-1;font-size:13px;line-height:20px;color:var(--fg60)}
+.dt{grid-column:1/-1}
+.dt summary{cursor:pointer;color:var(--fg60);font-size:12px;line-height:20px;list-style:none;display:inline-flex;gap:4px;align-items:center}
+.dt summary::-webkit-details-marker{display:none}
+.dt summary svg{width:12px;height:12px}
+.dt[open] summary svg{transform:rotate(90deg)}
+.dt summary:hover{color:var(--fg)}
+.tls{display:grid;gap:2px;margin-top:4px}
+.tl-i{display:grid;grid-template-columns:40px minmax(0,1fr);gap:8px;padding:4px;border-radius:6px;width:100%;align-items:start}
+button.tl-i:hover{background:var(--fg5)}
+
+/* 주간 표 */
+.wkgrid{display:grid}
+.wkr{display:grid;grid-template-columns:72px repeat(3,minmax(0,1fr));gap:12px;align-items:center;padding:10px 8px;border-top:1px solid var(--fg10);width:100%;border-radius:0}
+.wkr.th{border-top:0;color:var(--fg60);font-size:12px;line-height:18px;padding:0 8px 8px}
+button.wkr:hover{background:var(--fg5)}
+.wkr.sel{background:var(--fg5);border-radius:8px}
+.wkr.off{color:var(--fg60)}
+.wkr .dd{font-weight:600}
+.wkr .dd small{font-weight:400;color:var(--fg60);font-size:12px}
+.wkr.td .dd small::after{content:" 오늘";color:var(--brand);font-weight:600}
+.wkr .cell{display:flex;align-items:center;gap:6px;min-width:0;font-size:13px;line-height:18px}
+.wkr .cell.full{grid-column:2/-1}
+
+/* 주제 후보 */
+.plist{display:grid}
+.pi{display:grid;grid-template-columns:44px minmax(0,1fr);gap:12px;padding:10px 4px;border-top:1px solid var(--fg10);width:100%;align-items:start;border-radius:0}
+.pi:first-child{border-top:0}
+.pi:hover{background:var(--fg5)}
+.pt{display:grid;gap:2px;min-width:0}
+.pt small{font-size:12px;line-height:18px;color:var(--fg60)}
+.pgroup{display:grid;gap:12px}
+.pgroup h2{font-size:14px;line-height:20px;font-weight:600;display:flex;align-items:center;gap:8px;margin:0}
+.pgroup .cnt{margin-left:auto;font-weight:400;color:var(--fg60)}
+.pgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px}
+.pcard{border-radius:16px;padding:20px;background:var(--light);display:flex;flex-direction:column;gap:6px;min-width:0}
+.pcard b{font-weight:600}
+.pcard p{font-size:13px;line-height:20px}
+.pcard .cau{color:var(--red)}
+.pcard .lnk{margin-top:auto;align-self:flex-start;padding-top:4px}
+#prodList{display:grid;gap:28px}
+
+/* 시장 */
+.mlist{display:grid}
+.mi{display:grid;gap:4px;padding:14px 0;border-top:1px solid var(--fg10)}
+.mi:first-child{border-top:0;padding-top:0}
+.mi-h{display:flex;align-items:center;gap:8px}
+.mi b{font-weight:600}
+.mi p{font-size:13px;line-height:20px;color:var(--fg60)}
+.mi small{font-size:12px;line-height:18px;color:var(--fg60)}
+.mkgrid{grid-template-columns:repeat(auto-fill,minmax(240px,1fr))}
+.mkh span{color:var(--fg60);display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden}
+.mkh b small{color:var(--fg60)}
+
+/* 언론보도 */
+.tr.press{cursor:default}
+.tr.press[role="button"]{cursor:pointer;border-radius:0}
+.tr.press[role="button"]:hover{background:var(--fg5)}
+.tr.press.sel{background:var(--fg5);border-radius:8px}
+.tr.press.idea{grid-template-columns:92px 1fr}
+.tr .st{display:flex;flex-direction:column;gap:6px;align-items:flex-start}
+.prog{display:flex;gap:2px}
+.prog i{width:10px;height:4px;border-radius:2px;background:var(--fg10)}
+.prog i.f{background:var(--brand)}
+
+/* 달력 */
+.cal{grid-template-columns:repeat(5,minmax(0,1fr));min-width:0}
+.cal .day{cursor:pointer}
+.cal .day:hover{border-color:var(--fg20)}
+.cal .day.past{opacity:.6}
+.cal .dw{display:none}
+
+/* 전체 검색 */
+.pal{position:fixed;inset:0;z-index:40;background:rgba(0,0,0,.45);display:flex;justify-content:center;align-items:flex-start;padding:12vh 16px 16px}
+.pal-box{width:min(640px,100%);max-height:70vh;display:flex;flex-direction:column;background:var(--surface);border-radius:16px;box-shadow:0 12px 40px rgba(0,0,0,.35);overflow:hidden;border:1px solid var(--fg10)}
+.pal-in{display:flex;align-items:center;gap:8px;padding:12px 16px;border-bottom:1px solid var(--fg10)}
+.pal-in svg{width:20px;height:20px;color:var(--fg60)}
+.pal-in input{flex:1;min-width:0;border:0;background:none;color:var(--fg);font:inherit;font-size:16px;line-height:24px;outline:0}
+.pal-in input::placeholder{color:var(--fg60)}
+.pal-list{overflow:auto;padding:8px}
+.pal-g{display:flex;justify-content:space-between;padding:8px 8px 4px;color:var(--fg60);font-size:12px;line-height:18px}
+.pal-i{display:block;width:100%;padding:8px;border-radius:8px}
+.pal-i small{display:block;font-size:12px;line-height:18px;color:var(--fg60)}
+.pal-i.sel,.pal-i:hover{background:var(--fg5)}
+.pal-e{padding:24px 8px;text-align:center;color:var(--fg60)}
+mark{background:var(--yellow);color:var(--ink);border-radius:2px}
+
+.toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);z-index:45;background:var(--tip);color:var(--tipfg);font-size:13px;line-height:20px;padding:8px 14px;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,.2);white-space:nowrap}
+.scrim{position:fixed;inset:0;z-index:25;background:rgba(0,0,0,.45)}
+.rhead{display:none}
+.tabbar,.sheet{display:none}
+[data-ps]{transition:opacity .15s}
+.app[data-focus="lee"] .content [data-ps]:not([data-ps~="lee"]),
+.app[data-focus="kim"] .content [data-ps]:not([data-ps~="kim"]),
+.app[data-focus="ksi"] .content [data-ps]:not([data-ps~="ksi"]),
+.app[data-focus="t"] .content [data-ps]:not([data-ps~="t"]){opacity:.28}
+
 /* 모바일 */
-.mobile-nav{display:none}
 @media (max-width:1180px){
   .app,.app.no-side,.app.no-right,.app.no-side.no-right{grid-template-columns:212px minmax(0,1fr)}
   .app.no-side,.app.no-side.no-right{grid-template-columns:0 minmax(0,1fr)}
-  .right{grid-column:2;position:static;height:auto;border-left:0;border-top:1px solid var(--fg10);padding-left:max(28px,env(safe-area-inset-left,0px));padding-right:max(28px,env(safe-area-inset-right,0px))}
-  .app.no-right .right{display:none}
-  .app:not(.no-right) .right{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px;align-items:start}
+  .app .right{display:flex;position:fixed;top:0;right:0;bottom:0;height:auto;width:min(320px,88vw);z-index:30;background:var(--bg);transform:translateX(100%);visibility:hidden;padding-top:calc(16px + env(safe-area-inset-top,0px));padding-bottom:calc(16px + env(safe-area-inset-bottom,0px))}
+  .app.show-right .right{transform:none;visibility:visible}
+  .rhead{display:flex;justify-content:flex-end}
   .cols4{grid-template-columns:repeat(2,minmax(0,1fr))}
   .cols3,.col21{grid-template-columns:1fr}
   .flow:not(.list){grid-template-columns:repeat(3,minmax(0,1fr))}
@@ -314,30 +440,51 @@ button.notif:hover{background:var(--fg5)}
 @media (max-width:820px){
   .app,.app.no-side,.app.no-right,.app.no-side.no-right{grid-template-columns:minmax(0,1fr)}
   .side{display:none !important}
-  .right{grid-column:1}
-  .mobile-nav{display:flex;gap:4px;overflow-x:auto;padding:0 0 4px;margin:0 -4px;scrollbar-width:none}
-  .mobile-nav::-webkit-scrollbar{display:none}
-  .mobile-nav .nav{width:auto;white-space:nowrap;flex:none;padding:4px 12px}
-  .mobile-nav .nav[aria-selected="true"]::before{display:none}
   .top{padding:20px max(16px,env(safe-area-inset-right,0px)) 20px max(16px,env(safe-area-inset-left,0px))}
-  .content{padding:20px max(16px,env(safe-area-inset-right,0px)) 32px max(16px,env(safe-area-inset-left,0px));gap:12px}
-  .right{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
-  .view,.row{gap:16px}
+  .content{padding:16px max(16px,env(safe-area-inset-right,0px)) calc(84px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px));gap:12px}
+  .view,.row,.stackv{gap:16px}
   .cols2{grid-template-columns:1fr}
   .search{width:auto;flex:1;max-width:160px}
   .hide-m{display:none}
-  .today li{grid-template-columns:1fr}
+  .pf{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;max-width:100%}
+  .pf button{flex:none}
+  .tabbar{display:grid;grid-template-columns:repeat(5,1fr);position:fixed;left:0;right:0;bottom:0;z-index:20;background:var(--bg);border-top:1px solid var(--fg10);padding:6px max(8px,env(safe-area-inset-right,0px)) calc(6px + env(safe-area-inset-bottom,0px)) max(8px,env(safe-area-inset-left,0px))}
+  .tb{display:flex;flex-direction:column;align-items:center;gap:2px;padding:4px 0;border-radius:8px;color:var(--fg60);font-size:11px;line-height:14px;text-align:center}
+  .tb svg{width:20px;height:20px}
+  .tb[aria-current="page"],.tb.on{color:var(--fg);font-weight:600}
+  .sheet{display:grid;position:fixed;left:0;right:0;bottom:0;z-index:28;gap:4px;background:var(--bg);border-radius:16px 16px 0 0;padding:16px max(16px,env(safe-area-inset-right,0px)) calc(72px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px));box-shadow:0 -8px 24px rgba(0,0,0,.25)}
+  .sheet[hidden]{display:none}
+  .sheet .nav{height:44px}
+  .toast{bottom:calc(76px + env(safe-area-inset-bottom,0px))}
+  .dr{grid-template-columns:minmax(0,1fr)}
+  .dr>.whos{grid-row:auto}
+  .wkr{grid-template-columns:1fr;gap:4px}
+  .wkr.th{display:none}
+  .wkr.th+.wkr{border-top:0}
+  .wkr .cell.full{grid-column:auto}
   .tr.m4{grid-template-columns:1fr 1fr}.tr.m4 .h{grid-column:1/-1}
-  .tr.mk{min-width:0;grid-template-columns:56px 1fr}.tr.mk>span:nth-child(2){display:none}.tr.mk .out{grid-column:2}
-  .tr.pool{grid-template-columns:64px 1fr}.tr.pool .pfmt{display:none}.tr.pool .out{grid-column:2}
+  .bar{margin:-4px 0}
+  .bar .end{margin-left:0}
+  .find{flex:1 1 100%;max-width:none}
+  .pal{padding:0;align-items:stretch}
+  .pal-box{width:100%;max-height:none;border-radius:0;border:0}
+  /* 달력: 일정 목록 */
+  .cal{grid-template-columns:1fr;gap:6px}
+  .cal .dow,.cal .day.out,.cal .day.none{display:none}
+  .cal .day{min-height:0;padding:10px 12px}
+  .cal .dw{display:inline;font-weight:400;color:var(--fg60);margin-left:4px}
+  .cal .ev{white-space:normal;font-size:12px;line-height:18px;padding:2px 8px}
 }
-@media (max-width:520px){.cols4{grid-template-columns:1fr 1fr}.card{padding:20px}.block{padding:20px}.card .v{flex-direction:column;align-items:flex-start;gap:2px}.card .delta{text-align:left}.legend li{grid-template-columns:auto 1fr}.legend li b{grid-column:1/-1}.tr.press{grid-template-columns:64px 1fr}.tr.press .st{grid-column:2}.flow:not(.list){grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media (prefers-reduced-motion:no-preference){.nav,.ib,.chip,.seg button,button.card{transition:background .12s,box-shadow .12s}}
+@media (max-width:520px){.cols4{grid-template-columns:1fr 1fr}.card{padding:20px}.block{padding:20px}.legend li{grid-template-columns:auto 1fr}.legend li b{grid-column:1/-1}.tr.press{grid-template-columns:64px 1fr}.tr.press .st{grid-column:2}.tr.press.idea{grid-template-columns:1fr}.flow:not(.list){grid-template-columns:repeat(2,minmax(0,1fr))}.pgrid{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:no-preference){.nav,.ib,.chip,.seg button,button.card{transition:background .12s,box-shadow .12s}.app .right{transition:transform .18s}}
 </style>
 </head>
 <body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <symbol id="i-side" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="4" width="15" height="12" rx="2.5"/><path d="M7.5 4v12"/></symbol>
+  <symbol id="i-moon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"><path d="M16.5 12.2A7 7 0 0 1 7.8 3.5a7 7 0 1 0 8.7 8.7z"/></symbol>
+  <symbol id="i-more" viewBox="0 0 20 20" fill="currentColor"><circle cx="4.5" cy="10" r="1.5"/><circle cx="10" cy="10" r="1.5"/><circle cx="15.5" cy="10" r="1.5"/></symbol>
+  <symbol id="i-x" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M5 5l10 10M15 5L5 15"/></symbol>
   <symbol id="i-search" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="9" cy="9" r="5.5"/><path d="M13.2 13.2L17 17"/></symbol>
   <symbol id="i-sun" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="10" cy="10" r="3.5"/><path d="M10 2.5v2M10 15.5v2M2.5 10h2M15.5 10h2M4.7 4.7l1.4 1.4M13.9 13.9l1.4 1.4M4.7 15.3l1.4-1.4M13.9 6.1l1.4-1.4"/></symbol>
   <symbol id="i-list" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7.5 5.5H16M7.5 10H16M7.5 14.5H16M4 5.5h.01M4 10h.01M4 14.5h.01"/></symbol>
@@ -356,19 +503,24 @@ button.notif:hover{background:var(--fg5)}
 <aside class="side" aria-label="메뉴">
   <div class="badge"><span class="avatar">G</span><span>GOOD TO GREAT</span></div>
   <div class="sec">
-    <div class="sec-l">대시보드</div>
-    <button class="nav" data-t="overview" aria-selected="true"><svg class="chev"><use href="#i-chev"/></svg><svg class="ico"><use href="#i-pie"/></svg>오늘</button>
-    <button class="nav" data-t="keywords" aria-selected="false"><svg class="chev"><use href="#i-chev"/></svg><svg class="ico"><use href="#i-key"/></svg>키워드</button>
-    <button class="nav" data-t="pool" aria-selected="false"><svg class="chev"><use href="#i-chev"/></svg><svg class="ico"><use href="#i-box"/></svg>주제 후보</button>
-    <button class="nav" data-t="market" aria-selected="false"><svg class="chev"><use href="#i-chev"/></svg><svg class="ico"><use href="#i-globe"/></svg>시장·업계 동향</button>
-    <button class="nav" data-t="press" aria-selected="false"><svg class="chev"><use href="#i-chev"/></svg><svg class="ico"><use href="#i-news"/></svg>언론보도</button>
-    <button class="nav" data-t="guide" aria-selected="false"><svg class="chev"><use href="#i-chev"/></svg><svg class="ico"><use href="#i-book"/></svg>작성 기준</button>
+    <button class="nav" data-t="overview"><svg class="ico"><use href="#i-pie"/></svg>오늘</button>
   </div>
   <div class="sec">
     <div class="sec-l">스케줄</div>
-    <button class="nav" data-t="daily" aria-selected="false"><svg class="chev"><use href="#i-chev"/></svg><svg class="ico"><use href="#i-list"/></svg>일별 업무</button>
-    <button class="nav" data-t="schedule" aria-selected="false"><svg class="chev"><use href="#i-chev"/></svg><svg class="ico"><use href="#i-cal"/></svg>주간 발행</button>
-    <button class="nav" data-t="monthly" aria-selected="false"><svg class="chev"><use href="#i-chev"/></svg><svg class="ico"><use href="#i-grid"/></svg>월·분기 일정</button>
+    <button class="nav" data-t="daily"><svg class="ico"><use href="#i-list"/></svg>일별 업무</button>
+    <button class="nav" data-t="schedule"><svg class="ico"><use href="#i-cal"/></svg>주간 발행</button>
+    <button class="nav" data-t="monthly"><svg class="ico"><use href="#i-grid"/></svg>월·분기 일정</button>
+  </div>
+  <div class="sec">
+    <div class="sec-l">콘텐츠</div>
+    <button class="nav" data-t="keywords"><svg class="ico"><use href="#i-key"/></svg>키워드</button>
+    <button class="nav" data-t="pool"><svg class="ico"><use href="#i-box"/></svg>주제 후보</button>
+    <button class="nav" data-t="press"><svg class="ico"><use href="#i-news"/></svg>언론보도</button>
+    <button class="nav" data-t="guide"><svg class="ico"><use href="#i-book"/></svg>작성 기준</button>
+  </div>
+  <div class="sec">
+    <div class="sec-l">리서치</div>
+    <button class="nav" data-t="market"><svg class="ico"><use href="#i-globe"/></svg>시장·업계 동향</button>
   </div>
 </aside>
 
@@ -376,31 +528,21 @@ button.notif:hover{background:var(--fg5)}
   <header class="top">
     <div class="group" style="min-width:0">
       <button class="ib hide-m" id="btnSide" title="메뉴 접기" aria-label="메뉴 접기"><svg><use href="#i-side"/></svg></button>
-      <div class="crumb"><span class="muted hide-m">AEO·SEO 콘텐츠 발행</span><span class="sep hide-m">/</span><span class="cur" id="crumb">오늘</span></div>
+      <div class="crumb"><span class="cur">AEO·SEO 콘텐츠 발행</span></div>
     </div>
     <div class="group" style="gap:20px">
-      <label class="search"><svg><use href="#i-search"/></svg><input id="q" type="search" placeholder="검색" aria-label="키워드·제목 검색"><kbd class="hide-m" id="qKbd">⌘/</kbd><span class="cnt" id="qCnt" hidden></span></label>
+      <button class="search" id="btnSearch" aria-label="전체 검색"><svg><use href="#i-search"/></svg><span class="ph">검색</span><kbd class="hide-m">⌘K</kbd></button>
       <div class="group">
-        <button class="ib" id="btnTheme" title="테마 전환" aria-label="테마 전환"><svg><use href="#i-sun"/></svg></button>
+        <button class="ib" id="btnTheme"><svg><use id="icoTheme" href="#i-sun"/></svg></button>
         <button class="ib" id="btnRight" title="오른쪽 패널" aria-label="오른쪽 패널 접기"><svg style="transform:scaleX(-1)"><use href="#i-side"/></svg></button>
       </div>
     </div>
   </header>
 
   <div class="content">
-    <nav class="mobile-nav" aria-label="탭">
-      <button class="nav" data-t="overview" aria-selected="true">오늘</button>
-      <button class="nav" data-t="daily" aria-selected="false">일별 업무</button>
-      <button class="nav" data-t="schedule" aria-selected="false">주간 발행</button>
-      <button class="nav" data-t="monthly" aria-selected="false">월·분기 일정</button>
-      <button class="nav" data-t="keywords" aria-selected="false">키워드</button>
-      <button class="nav" data-t="pool" aria-selected="false">주제 후보</button>
-      <button class="nav" data-t="market" aria-selected="false">시장·업계 동향</button>
-      <button class="nav" data-t="press" aria-selected="false">언론보도</button>
-      <button class="nav" data-t="guide" aria-selected="false">작성 기준</button>
-    </nav>
+    
     <div class="ptitle">
-      <span class="l"><span id="ptitle">오늘</span><span class="date num" id="pdate"></span></span>
+      <h1 class="l"><span id="ptitle">오늘</span><span class="date num" id="pdate"></span></h1>
       <div class="seg pf" role="group" aria-label="담당자 보기" id="pf"></div>
     </div>
 
@@ -415,7 +557,7 @@ button.notif:hover{background:var(--fg5)}
       <div class="row col21">
         <div class="block">
           <h2>오늘 할 일<span class="cnt" id="todayHead"></span></h2>
-          <ul class="today" id="todayList"></ul>
+          <div class="drs" id="todayList"></div>
         </div>
         <div class="block">
           <h2>이번 주 확정·컨펌 일정<button class="lnk" data-go="monthly">달력 보기</button></h2>
@@ -446,6 +588,7 @@ button.notif:hover{background:var(--fg5)}
 
     <!-- 키워드 -->
     <section class="view" id="v-keywords" hidden>
+      <div class="bar"><label class="find"><svg><use href="#i-search"/></svg><input id="kwQ" type="search" placeholder="키워드 찾기" aria-label="키워드 찾기"></label><div class="seg" id="kwTier" role="group" aria-label="등급"></div><div class="seg" id="kwSrc" role="group" aria-label="출처"></div><span class="end num" id="kwCnt"></span></div>
       <div class="row cols2">
         <div class="block" style="--cc:var(--c-review)">
           <h2><span class="dot"></span>리뷰 홈페이지<span class="cnt num" id="kwCntR"></span></h2>
@@ -491,23 +634,13 @@ button.notif:hover{background:var(--fg5)}
 
     <!-- 주제 후보 -->
     <section class="view" id="v-pool" hidden>
-      <div class="row cols4" id="poolKpi"></div>
-      <div class="row col21">
-        <div class="block">
-          <h2>상품별 주제 후보<span class="cnt" id="poolCnt"></span></h2>
-          <div class="sched-h">
-            <div class="seg" role="group" aria-label="채널" id="poolSite"></div>
-            <div class="seg" role="group" aria-label="형식" id="poolFmt"></div>
-            <div class="seg" role="group" aria-label="출처" id="poolSrc"></div>
-          </div>
-          <div class="table wide" id="poolTable"></div>
-        </div>
-        <div class="block">
-          <h2>판매 상품<span class="cnt" id="prodCnt"></span></h2>
-          <ul class="prod" id="prodList"></ul>
-        </div>
+      <div class="seg sub" id="poolTabs" role="group" aria-label="보기"></div>
+      <div class="stackv" id="pT">
+        <div class="bar"><label class="find"><svg><use href="#i-search"/></svg><input id="poolQ" type="search" placeholder="제목·키워드·상품 찾기" aria-label="제목·키워드·상품 찾기"></label><div class="seg" id="poolSite" role="group" aria-label="채널"></div><div class="seg" id="poolFmt" role="group" aria-label="형식"></div><div class="seg" id="poolSrc" role="group" aria-label="출처"></div><span class="end num" id="poolCnt"></span></div>
+        <div class="block"><div class="plist" id="poolTable"></div><button class="more" id="poolMore" hidden></button></div>
       </div>
-      <div class="row cols2">
+      <div id="pP" hidden><div id="prodList"></div></div>
+      <div class="row cols2" id="pL" hidden>
         <div class="block">
           <h2>상위노출 상세페이지에서 가져올 것</h2>
           <ul class="plain" id="landReuse"></ul>
@@ -522,41 +655,42 @@ button.notif:hover{background:var(--fg5)}
     <!-- 시장 동향 -->
     <section class="view" id="v-market" hidden>
       <div class="sched-h">
-        <div class="seg" role="group" aria-label="지역" id="mkRegion"></div>
+        <div class="seg" id="mkRegion" role="group" aria-label="범위"></div>
         <span class="muted t12" id="mkAsOf"></span>
       </div>
-      <div class="row cols4" id="mkKpi"></div>
       <div class="mkgrid" id="mkHeads"></div>
-      <div class="block">
-        <h2>주요 동향<span class="cnt" id="mkCnt"></span></h2>
-        <div class="seg" role="group" aria-label="분야" id="mkKind"></div>
-        <div class="table wide" id="mkTable"></div>
-      </div>
-      <div class="block">
-        <h2>굿투그레이트 시사점</h2>
+      <div class="block" id="mkSum" hidden>
+        <h2 id="mkSumT"></h2>
+        <p id="mkHead"></p>
         <ul class="plain" id="mkImp"></ul>
+        <button class="lnk" id="mkTopics" style="justify-self:start;align-self:flex-start"></button>
+      </div>
+      <div class="stackv" style="gap:16px">
+        <div class="bar"><label class="find"><svg><use href="#i-search"/></svg><input id="mkQ" type="search" placeholder="동향 찾기" aria-label="동향 찾기"></label><div class="seg" id="mkKind" role="group" aria-label="분야"></div><span class="end num" id="mkCnt"></span></div>
+        <div class="block"><div class="mlist" id="mkTable"></div><button class="more" id="mkMore" hidden></button></div>
       </div>
     </section>
 
     <!-- 일별 업무 -->
     <section class="view" id="v-daily" hidden>
       <div class="sched-h">
-        <div class="group" style="gap:12px;flex-wrap:wrap"><span class="wknav"><button class="ib" id="dPrev" aria-label="이전 주"><svg style="transform:rotate(180deg)"><use href="#i-chev"/></svg></button><button class="t12 muted num" id="dLbl" style="padding:0 4px"></button><button class="ib" id="dNext" aria-label="다음 주"><svg><use href="#i-chev"/></svg></button></span><div class="seg" role="group" aria-label="요일" id="daySeg2"></div></div>
+        <div class="wkctl"><span class="wknav"><button class="ib" id="dPrev" aria-label="이전 주"><svg style="transform:rotate(180deg)"><use href="#i-chev"/></svg></button><span class="t12 num wklbl" id="dLbl"></span><button class="ib" id="dNext" aria-label="다음 주"><svg><use href="#i-chev"/></svg></button><button class="now" id="dNow" hidden>이번 주</button></span><div class="seg" role="group" aria-label="요일" id="daySeg2"></div></div>
         <div class="chips"><span class="lgd"><span class="who" style="--pc:var(--fg20)">이름</span>주담당</span><span class="lgd"><span class="who co" style="--pc:var(--fg20)">이름</span>함께</span></div>
       </div>
-      <div class="row col21">
-        <div class="block"><h2>하루 업무<span class="cnt" id="dayTitle"></span></h2><div class="table wide" id="dayTable"></div></div>
-        <div class="block"><h2>이날 확정·고정 업무</h2><ul class="kv" id="dayFixed"></ul></div>
-      </div>
+      <div class="block"><h2>하루 업무<span class="cnt" id="dayTitle"></span></h2><div class="drs" id="dayTable"></div></div>
     </section>
 
     <!-- 주간 발행 -->
     <section class="view" id="v-schedule" hidden>
       <div class="sched-h">
-        <div class="group" style="gap:12px;flex-wrap:wrap"><span class="wknav"><button class="ib" id="sPrev" aria-label="이전 주"><svg style="transform:rotate(180deg)"><use href="#i-chev"/></svg></button><button class="t12 muted num" id="sLbl" style="padding:0 4px"></button><button class="ib" id="sNext" aria-label="다음 주"><svg><use href="#i-chev"/></svg></button></span><div class="seg" role="group" aria-label="요일" id="daySeg"></div></div>
+        <div class="wkctl"><span class="wknav"><button class="ib" id="sPrev" aria-label="이전 주"><svg style="transform:rotate(180deg)"><use href="#i-chev"/></svg></button><span class="t12 num wklbl" id="sLbl"></span><button class="ib" id="sNext" aria-label="다음 주"><svg><use href="#i-chev"/></svg></button><button class="now" id="sNow" hidden>이번 주</button></span></div>
         <div class="wkinfo" id="wkInfo"></div>
       </div>
-      <div class="row cols3" id="dayView"></div>
+      <div class="block"><div class="wkgrid" id="wkGrid"></div></div>
+      <div class="stackv" style="gap:12px">
+        <div class="t14s" id="dayViewT"></div>
+        <div class="row cols3" id="dayView"></div>
+      </div>
     </section>
 
     <!-- 월·분기 일정 -->
@@ -575,15 +709,21 @@ button.notif:hover{background:var(--fg5)}
 
     <!-- 언론보도 -->
     <section class="view" id="v-press" hidden>
-      <div class="block">
-        <h2>주간 진행 절차<span class="cnt" id="pressFlowHead"></span></h2>
-        <div class="flow" id="pressFlow"></div>
-      </div>
-      <div class="row col21">
+      <div class="seg sub" id="pressTabs" role="group" aria-label="보기"></div>
+      <div class="stackv" id="prS">
+        <div class="block">
+          <h2><span id="pressFlowName"></span><span class="cnt" id="pressFlowHead"></span></h2>
+          <div class="flow" id="pressFlow"></div>
+        </div>
         <div class="block">
           <h2>11~12월 보도<span class="cnt num" id="pressCnt"></span></h2>
           <div class="table" id="pressTable"></div>
         </div>
+      </div>
+      <div class="stackv" id="prI" hidden>
+        <div class="block"><h2>상품·시장 연계 보도 후보</h2><div class="table" id="pressIdeas"></div></div>
+      </div>
+      <div class="stackv" id="prR" hidden>
         <div class="block">
           <h2>주제 컨펌 전에 정할 것</h2>
           <ul class="brief">
@@ -595,8 +735,7 @@ button.notif:hover{background:var(--fg5)}
             <li><b>연결 페이지</b><span>기사에서 이어질 홈페이지 글</span></li>
           </ul>
         </div>
-      </div>
-      <div class="row cols2">
+        <div class="row cols2">
         <div class="block">
           <h2>보도 주제·방향</h2>
           <ul class="plain">
@@ -605,16 +744,13 @@ button.notif:hover{background:var(--fg5)}
           </ul>
         </div>
         <div class="block">
-          <h2>넥스트몽 걸리는 단어<span class="cnt num">23개</span></h2>
-          <div class="chips">
+          <h2>넥스트몽 걸리는 단어<button class="lnk" id="copyNext">23개 복사</button></h2>
+          <div class="chips" id="nextWords">
             <span class="chip">1위</span><span class="chip">최저가</span><span class="chip">매니저</span><span class="chip">네이버</span><span class="chip">블로그</span><span class="chip">안전</span><span class="chip">최고</span><span class="chip">체모</span><span class="chip">상담</span><span class="chip">투자</span><span class="chip">주식</span><span class="chip">기타</span><span class="chip">일수</span><span class="chip">보장</span><span class="chip">식품</span><span class="chip">추천</span><span class="chip">무료</span><span class="chip">의사</span><span class="chip">블로거</span><span class="chip">공유</span><span class="chip">가입</span><span class="chip">관리자</span><span class="chip">운영자</span>
           </div>
           <p class="muted t12" style="margin-top:12px">보도 제목·원고에서 빼거나 다른 표현으로</p>
         </div>
       </div>
-      <div class="block" id="pressIdeaBlock" hidden>
-        <h2>상품 연계 보도 후보<span class="cnt" id="pressIdeaCnt"></span></h2>
-        <div class="table" id="pressIdeas"></div>
       </div>
     </section>
 
@@ -663,6 +799,7 @@ button.notif:hover{background:var(--fg5)}
 </div>
 
 <aside class="right" aria-label="보조 패널">
+  <div class="rhead"><button class="ib" id="btnRightX" aria-label="패널 닫기"><svg><use href="#i-x"/></svg></button></div>
   <div class="rsec">
     <h2>이번 주</h2>
     <ul class="act" id="weekStrip"></ul>
@@ -681,7 +818,26 @@ button.notif:hover{background:var(--fg5)}
 </aside>
 </div>
 
+<nav class="tabbar" aria-label="주요 메뉴"><button class="tb" data-t="overview"><svg><use href="#i-pie"/></svg>오늘</button><button class="tb" data-t="daily"><svg><use href="#i-list"/></svg>일별</button><button class="tb" data-t="schedule"><svg><use href="#i-cal"/></svg>주간</button><button class="tb" data-t="monthly"><svg><use href="#i-grid"/></svg>월·분기</button><button class="tb" id="tbMore"><svg><use href="#i-more"/></svg>더보기</button></nav>
+<div class="sheet" id="sheet" hidden>
+  <button class="nav" data-t="keywords"><svg class="ico"><use href="#i-key"/></svg>키워드</button>
+  <button class="nav" data-t="pool"><svg class="ico"><use href="#i-box"/></svg>주제 후보</button>
+  <button class="nav" data-t="press"><svg class="ico"><use href="#i-news"/></svg>언론보도</button>
+  <button class="nav" data-t="guide"><svg class="ico"><use href="#i-book"/></svg>작성 기준</button>
+  <button class="nav" data-t="market"><svg class="ico"><use href="#i-globe"/></svg>시장·업계 동향</button>
+  <button class="nav" id="sheetRight"><svg class="ico"><use href="#i-side"/></svg>이번 주·담당</button>
+</div>
+<div class="scrim" id="scrim" hidden></div>
+<div class="pal" id="pal" hidden role="dialog" aria-modal="true" aria-label="전체 검색">
+  <div class="pal-box">
+    <div class="pal-in"><svg><use href="#i-search"/></svg><input id="palQ" type="text" placeholder="키워드·주제·보도·동향 검색" autocomplete="off" aria-label="전체 검색"><button class="lnk" id="palX">닫기</button></div>
+    <div class="pal-list" id="palList" role="listbox"></div>
+  </div>
+</div>
+<div class="toast" id="toast" role="status" hidden></div>
+
 <script>
+
 // ===== 기본 =====
 const TODAY = new Date(); TODAY.setHours(0,0,0,0);
 const DOW = ["일","월","화","수","목","금","토"];
@@ -827,18 +983,20 @@ const CHROWS = [
   {lane:"blog",name:"블로그 3건 작성·업로드",short:"블로그 3건",desc:"사례 글 3건 업로드, 당일 홈페이지 글 링크",who:W("lee","kim+"),ci:2}
 ];
 const LANES = {review:"리뷰 홈페이지",main:"메인 홈페이지",blog:"네이버 블로그",press:"언론보도",g:"공통"};
-function group(lane,list){
-  if (!list.length) return {lane,name:lane==="press"?"보도 단계 없음":"고정 업무 없음",short:"",desc:"",who:[],empty:true,items:[]};
-  return {lane,name:list.map(x=>x.name).join(" · "),short:list.map(x=>x.short).join(" · "),desc:list.map(x=>x.desc+(x.kind==="press"?` (${x.freq})`:"")).join(" / "),who:mergeWho(list.map(x=>x.who)),items:list};
-}
-function dayRows(d){
+function flatRows(d){
   const tk = tasksOn(d), tp = topicOf(d), am = tk.am || DAILY_AM;
-  return [{lane:"g",...am,items:[am]},
+  return [{lane:"g",...am},
     ...CHROWS.map(c => ({...c, theme: tp ? tp.theme[c.ci] : "", titles: tp ? tp[c.lane] : null, st: tp ? tp.st : ""})),
-    group("press",tk.press), group("g",tk.pm)];
+    ...tk.press.map(x => ({...x, lane:"press", desc: x.desc+(x.kind==="press"?` (${x.freq})`:"")})),
+    ...tk.pm.map(x => ({lane:"g",...x}))];
 }
-const rowSub = r => r.ci!==undefined ? `${r.theme ? r.theme + (r.st==="후보" ? " · 후보" : "") : "주제 미정"} · ${r.desc}` : r.desc;
-const rowTip = r => tipOf(r.name, r.ci!==undefined ? (r.theme ? `주제 ${r.theme}${r.st==="후보"?" (후보)":""}\n`+r.titles.map((t,i)=>`${FMT[i]} ${t}`).join("\n") : "주제 미정") : r.desc, r.who);
+function rowHtml(r, open){
+  const ch = r.ci !== undefined;
+  const sub = ch ? `${r.theme ? r.theme + (r.st==="후보" ? " · 후보" : "") : "주제 미정"} · ${r.desc}` : r.desc;
+  const list = ch && r.titles ? `<details class="dt" ${open?"open":""}><summary><svg><use href="#i-chev"/></svg>글 3건</summary><div class="tls" style="--cc:var(--c-${r.lane})">${r.titles.map((t,i) => `<button class="tl-i" data-copy="${esc(t)}"><span class="fmt">${FMT[i]}</span><span>${t}</span></button>`).join("")}</div></details>` : "";
+  return `<div class="dr" data-ps="${PS(r.who)}"><div class="dr-m"><span class="tag ${r.lane==="g"?"g":""}" style="--cc:var(--c-${r.lane})">${LANES[r.lane]}</span><b>${r.name}</b></div>${WHO(r.who)}<div class="dr-d">${sub}</div>${list}</div>`;
+}
+
 
 // ===== 툴팁 =====
 const tip = document.createElement("div"); tip.className = "tip"; tip.hidden = true; document.body.appendChild(tip);
@@ -865,49 +1023,76 @@ function tipFor(target){
 document.addEventListener("mouseover", e => { const f = tipFor(e.target); if (f) showTip(f[0], f[1]); else hideTip(); });
 document.addEventListener("mouseout", e => { if (!tipFor(e.relatedTarget)) hideTip(); });
 document.addEventListener("touchstart", e => { const f = tipFor(e.target); if (f) { showTip(f[0], f[1]); setTimeout(hideTip, 2500); } else hideTip(); }, {passive:true});
+document.addEventListener("focusin", e => { if (e.target.matches && e.target.matches("[data-tip]")) showTip(e.target, e.target.dataset.tip); });
+document.addEventListener("focusout", hideTip);
 addEventListener("scroll", hideTip, true);
 
-// ===== 탭 =====
-const app = document.getElementById("app");
-const navs = document.querySelectorAll(".nav[data-t]");
-const titles = {overview:"오늘",keywords:"키워드",pool:"주제 후보",market:"시장·업계 동향",daily:"일별 업무",schedule:"주간 발행",monthly:"월·분기 일정",press:"언론보도",guide:"작성 기준"};
-function openTab(t){
-  if (!titles[t]) t = "overview";
-  navs.forEach(b => b.setAttribute("aria-selected", b.dataset.t===t));
-  document.querySelectorAll(".view").forEach(v => v.hidden = v.id !== "v-"+t);
-  document.getElementById("ptitle").textContent = titles[t];
-  document.getElementById("crumb").textContent = titles[t];
-  document.getElementById("pdate").textContent = t==="overview" ? mdw(TODAY) : "";
-  try { history.replaceState(null,"","#"+t); } catch(e) {}
-  window.scrollTo(0,0); hideTip();
+// ===== 공통 UI =====
+const $ = id => document.getElementById(id);
+const UI = (() => { try { return JSON.parse(localStorage.getItem("aeo-ui") || "{}"); } catch(e) { return {}; } })();
+const saveUI = () => { try { localStorage.setItem("aeo-ui", JSON.stringify(UI)); } catch(e) {} };
+const isNarrow = () => matchMedia("(max-width:1180px)").matches;
+let toastT;
+function toast(m){ const t = $("toast"); t.textContent = m; t.hidden = false; clearTimeout(toastT); toastT = setTimeout(() => t.hidden = true, 1800); }
+async function copy(text, label){
+  try { await navigator.clipboard.writeText(text); }
+  catch(e) { const a = document.createElement("textarea"); a.value = text; a.style.position = "fixed"; a.style.opacity = 0; document.body.appendChild(a); a.select(); try { document.execCommand("copy"); } catch(_) {} a.remove(); }
+  toast(label || "복사 완료");
 }
-navs.forEach(b => b.addEventListener("click", () => openTab(b.dataset.t)));
-document.addEventListener("click", e => { const b = e.target.closest("[data-go]"); if (!b) return; if (b.dataset.wk) { sOff = +b.dataset.wk; renderSchedule(); } openTab(b.dataset.go); });
+document.addEventListener("click", e => { const c = e.target.closest("[data-copy]"); if (c) copy(c.dataset.copy, "제목 복사 완료"); });
+document.addEventListener("keydown", e => { if ((e.key==="Enter" || e.key===" ") && e.target.matches && e.target.matches('[role="button"]')) { e.preventDefault(); e.target.click(); } });
+const segBtns = (opts, cur) => opts.map(([v,l]) => `<button aria-pressed="${v===cur}" data-v="${esc(v)}">${l}</button>`).join("");
+const onSeg = (id, fn) => $(id).addEventListener("click", e => { const b = e.target.closest("button"); if (b) fn(b.dataset.v); });
+const SITE_C = {"리뷰홈":"review","메인홈":"main","블로그":"blog"};
 
-// ===== 담당자 보기 =====
-const pf = document.getElementById("pf");
-pf.innerHTML = `<button data-p="" aria-pressed="true">전체</button>` + ["lee","ksi","kim"].map(k => `<button data-p="${k}" aria-pressed="false"><span class="pd" style="--pc:${PEOPLE[k][1]}"></span>${PEOPLE[k][0]}</button>`).join("");
-function setFocus(p){ app.dataset.focus = p; pf.querySelectorAll("button").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.p===p))); try { localStorage.setItem("aeo-focus", p); } catch(e) {} }
-pf.addEventListener("click", e => { const b = e.target.closest("button"); if (b) setFocus(b.dataset.p); });
-try { setFocus(localStorage.getItem("aeo-focus") || ""); } catch(e) { setFocus(""); }
-
-// ===== 패널·테마 =====
-document.getElementById("btnSide").addEventListener("click", () => app.classList.toggle("no-side"));
-document.getElementById("btnRight").addEventListener("click", () => app.classList.toggle("no-right"));
-document.getElementById("btnTheme").addEventListener("click", () => {
-  const r = document.documentElement;
-  r.setAttribute("data-theme", r.getAttribute("data-theme")==="dark" ? "light" : "dark");
+// ===== 탭 =====
+const app = $("app");
+const titles = {overview:"오늘",daily:"일별 업무",schedule:"주간 발행",monthly:"월·분기 일정",keywords:"키워드",pool:"주제 후보",press:"언론보도",guide:"작성 기준",market:"시장·업계 동향"};
+const FOCUS_TABS = new Set(["overview","daily","monthly","press"]);
+const BOTTOM = new Set(["overview","daily","schedule","monthly"]);
+function closeOverlays(){ $("sheet").hidden = true; app.classList.remove("show-right"); $("scrim").hidden = true; }
+function showTab(t){
+  if (!titles[t]) t = "overview";
+  document.querySelectorAll(".nav[data-t],.tb[data-t]").forEach(b => { if (b.dataset.t===t) b.setAttribute("aria-current","page"); else b.removeAttribute("aria-current"); });
+  $("tbMore").classList.toggle("on", !BOTTOM.has(t));
+  document.querySelectorAll(".view").forEach(v => v.hidden = v.id !== "v-"+t);
+  $("ptitle").textContent = titles[t];
+  $("pdate").textContent = t==="overview" ? mdw(TODAY) : "";
+  $("pf").hidden = !FOCUS_TABS.has(t);
+  document.title = `${titles[t]} · AEO·SEO 콘텐츠 발행`;
+  window.scrollTo(0,0); hideTip(); closeOverlays();
+}
+function openTab(t){ if (location.hash.slice(1)===t) showTab(t); else location.hash = t; }
+addEventListener("hashchange", () => showTab(location.hash.slice(1)));
+document.addEventListener("click", e => {
+  const n = e.target.closest(".nav[data-t],.tb[data-t]"); if (n) { openTab(n.dataset.t); return; }
+  const b = e.target.closest("[data-go]"); if (!b) return;
+  if (b.dataset.wk) { sOff = weekOff(addD(BASE_M, +b.dataset.wk*7)); sSel = defIdx(addD(BASE_M, sOff*7)); renderSchedule(); }
+  openTab(b.dataset.go);
 });
 
-// ===== 검색 =====
-const q = document.getElementById("q"), qCnt = document.getElementById("qCnt"), qKbd = document.getElementById("qKbd");
-function applySearch(){
-  const s = q.value.trim().toLowerCase(); let n = 0;
-  document.querySelectorAll(".chip, .post, .tr.press, .tr.pool, .tr.mk").forEach(el => { if (el.classList.contains("th")) return; const hit = !s || el.textContent.toLowerCase().includes(s); el.classList.toggle("hide", !hit); if (s && hit) n++; });
-  qCnt.hidden = !s; qKbd.hidden = !!s; qCnt.textContent = n+"건";
-}
-q.addEventListener("input", applySearch);
-document.addEventListener("keydown", e => { if ((e.metaKey||e.ctrlKey) && e.key === "/") { e.preventDefault(); q.focus(); } });
+// ===== 담당자 보기 =====
+const pf = $("pf");
+pf.innerHTML = `<button data-p="" aria-pressed="true">전체</button>` + ["lee","ksi","kim","t"].map(k => `<button data-p="${k}" aria-pressed="false"><span class="pd" style="--pc:${PEOPLE[k][1]}"></span>${PEOPLE[k][0]}</button>`).join("");
+function setFocus(p){ app.dataset.focus = p; pf.querySelectorAll("button").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.p===p))); UI.focus = p; saveUI(); }
+pf.addEventListener("click", e => { const b = e.target.closest("button"); if (b) setFocus(b.dataset.p); });
+setFocus(UI.focus || "");
+
+// ===== 패널·테마 =====
+const setThemeIcon = () => { const dark = document.documentElement.getAttribute("data-theme")==="dark"; $("icoTheme").setAttribute("href", dark ? "#i-sun" : "#i-moon"); $("btnTheme").setAttribute("aria-label", dark ? "라이트 모드" : "다크 모드"); $("btnTheme").title = dark ? "라이트 모드" : "다크 모드"; };
+setThemeIcon();
+$("btnTheme").addEventListener("click", () => { const r = document.documentElement, n = r.getAttribute("data-theme")==="dark" ? "light" : "dark"; r.setAttribute("data-theme", n); UI.theme = n; saveUI(); setThemeIcon(); });
+if (UI.side) app.classList.add("no-side");
+if (UI.right) app.classList.add("no-right");
+$("btnSide").addEventListener("click", () => { UI.side = app.classList.toggle("no-side"); saveUI(); });
+$("btnRight").addEventListener("click", () => {
+  if (isNarrow()) { const on = app.classList.toggle("show-right"); $("scrim").hidden = !on; }
+  else { UI.right = app.classList.toggle("no-right"); saveUI(); }
+});
+$("btnRightX").addEventListener("click", closeOverlays);
+$("scrim").addEventListener("click", closeOverlays);
+$("tbMore").addEventListener("click", () => { const on = $("sheet").hidden; $("sheet").hidden = !on; $("scrim").hidden = !on; });
+$("sheetRight").addEventListener("click", () => { $("sheet").hidden = true; app.classList.add("show-right"); });
 
 // ===== 오늘 =====
 function milestones(M){
@@ -921,106 +1106,132 @@ function milestones(M){
   return out.sort((a,b) => a.d - b.d);
 }
 function renderToday(){
-  const kT = document.getElementById("kToday"), kS = document.getElementById("kTodaySub");
+  const kT = $("kToday"), kS = $("kTodaySub");
   if (active(TODAY)) { kT.textContent = "9건"; kS.textContent = "리뷰 3 · 메인 3 · 블로그 3"; }
   else { kT.textContent = "0건"; kS.textContent = TODAY < START ? `${mdw(START)}부터 하루 9건` : offText(TODAY); }
-  const days = [0,1,2,3,4].map(i=>addD(BASE_M,i)).filter(active);
-  document.getElementById("kWeek").textContent = (days.length*9)+"건";
-  document.getElementById("kWeekSub").textContent = `${md(BASE_M)}~${md(addD(BASE_M,4))} · 발행일 ${days.length}일`;
+  const days = weekDays(BASE_M).filter(active);
+  $("kWeek").textContent = (days.length*9)+"건";
+  $("kWeekSub").textContent = `${md(BASE_M)}~${md(addD(BASE_M,4))} · 발행일 ${days.length}일`;
   const thisP = PRESS.find(p => same(D(p[0]), BASE_M)), nextP = PRESS.find(p => D(p[0]) > BASE_M);
-  document.getElementById("kPress").textContent = thisP ? "1건" : nextP ? "준비 중" : "0건";
-  document.getElementById("kPressSub").textContent = thisP ? `${md(BASE_M)} 게재 · ${thisP[2]}` : nextP ? `${md(D(nextP[0]))} 게재 준비` : "";
+  $("kPress").textContent = thisP ? "1건" : nextP ? "준비 중" : "0건";
+  $("kPressSub").textContent = thisP ? `${md(BASE_M)} 게재 · ${thisP[2]}` : nextP ? `${md(D(nextP[0]))} 게재 준비` : "";
   const nb = blogWeek(addD(BASE_M,7)), ns = weekStatus(addD(BASE_M,7));
-  document.getElementById("kNext").textContent = nb ? mdw(nb.fix) : "—";
-  document.getElementById("kNextSub").textContent = nb ? (ns.big==="미정" ? "주제 미정" : ns.big==="후보" ? "일부 후보" : "확정") : "";
-
-  document.getElementById("todayHead").textContent = same(BASE,TODAY) ? "" : `${mdw(BASE)} 기준`;
-  document.getElementById("todayList").innerHTML = dayRows(BASE).map(r => `<li class="${r.empty?"empty":""}" data-ps="${PS(r.who)}"><span class="nm"><span class="tag ${r.lane==="g"?"g":""}" style="--cc:var(--c-${r.lane})">${LANES[r.lane]}</span><span>${r.name}</span>${rowSub(r)?`<small class="muted t12">${rowSub(r)}</small>`:""}</span>${WHO(r.who)}</li>`).join("");
-
-  document.getElementById("weekFlow").innerHTML = milestones(BASE_M).map(x => {
+  $("kNext").textContent = nb ? mdw(nb.fix) : "—";
+  $("kNextSub").textContent = nb ? (ns.big==="미정" ? "주제 미정" : ns.big==="후보" ? "일부 후보" : "확정") : "";
+  $("todayHead").textContent = same(BASE,TODAY) ? "" : `${mdw(BASE)} 기준`;
+  $("todayList").innerHTML = flatRows(BASE).map(r => rowHtml(r, false)).join("");
+  $("weekFlow").innerHTML = milestones(BASE_M).map(x => {
     const last = x.d2 || x.d, done = last < TODAY, on = TODAY >= x.d && TODAY <= last;
     const dt = x.d2 ? `${md(x.d)}~${md(x.d2)}` : mdw(x.d);
     const sub = x.kind==="press" ? x.freq : x.grp + (x.b ? ` · ${md(x.b.M)}~ 주` : "");
-    return `<div class="step ${on?"on":done?"done":""}" data-ps="${PS(x.who)}" data-tip="${tipOf(x.name, x.desc, x.who)}"><span class="sd num">${dt}</span><b>${x.name}<small>${sub}</small></b><span class="w">${WHO(x.who)}</span></div>`;
+    return `<div class="step ${on?"on":done?"done":""}" data-ps="${PS(x.who)}"><span class="sd num">${dt}</span><b>${x.name}<small>${sub}</small></b><span class="w">${WHO(x.who)}</span></div>`;
   }).join("") || `<p class="muted t12">일정 없음</p>`;
 }
 
 // ===== 라이트바 =====
 function renderRight(){
-  document.getElementById("weekStrip").innerHTML = [0,1,2,3,4].map(i => {
-    const d = addD(BASE_M,i), tp = topicOf(d), act = active(d), tk = tasksOn(d);
+  $("weekStrip").innerHTML = weekDays(BASE_M).map((d,i) => {
+    const tp = topicOf(d), act = active(d), tk = tasksOn(d);
     const evs = [...(tk.am && tk.am.kind==="blogfix" ? [tk.am.short] : []), ...tk.pm.filter(x=>x.kind==="blogsel").map(x=>x.short), ...tk.press.map(x=>x.short)];
     const head = tp ? `${tp.theme[0]} · ${tp.theme[1]}` : act ? "주제 미정" : offText(d);
     const sub = act ? [md(d), ...evs].join(" · ") : md(d);
-    return `<li class="${same(d,TODAY)?"td":""}" style="--cc:var(--c-${["review","main","blog","press","review"][i]});${act?"":"opacity:.5"}" data-tip="${esc(head+(evs.length?"\n"+evs.join(" · "):""))}"><span class="av">${DOW[d.getDay()]}</span><span style="min-width:0"><span style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${head}</span><small class="num">${sub}</small></span></li>`;
+    return `<li role="button" tabindex="0" data-d="${ymd(d)}" class="${same(d,TODAY)?"td":""}" style="--cc:var(--c-${["review","main","blog","press","review"][i]});${act?"":"opacity:.55"}" data-tip="${esc(head+(evs.length?"\n"+evs.join(" · "):""))}"><span class="av">${DOW[d.getDay()]}</span><span style="min-width:0"><span style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${head}</span><small class="num">${sub}</small></span></li>`;
   }).join("");
-  const up = PRESS.filter(p => D(p[0]) >= BASE_M).slice(0,4);
-  document.getElementById("upcoming").innerHTML = up.map((p,i) => {
+  $("weekStrip").onclick = e => { const l = e.target.closest("[data-d]"); if (l) goDay(D(l.dataset.d)); };
+  const up = PRESS.map((p,i) => [p,i]).filter(([p]) => D(p[0]) >= BASE_M).slice(0,4);
+  $("upcoming").innerHTML = up.map(([p,idx],i) => {
     const ds = pressDates(p);
-    return `<button class="notif" data-go="press" data-ps="ksi kim" data-tip="${esc(`${p[3]}\n${p[4]}\n주제 컨펌 ${mdw(ds[1])} · 최종 컨펌 ${mdw(ds[4])} · ${mdw(ds[5])} 게재`)}"><span class="ic ${i%2?"p":""}"><svg><use href="#i-news"/></svg></span><span class="tx"><span>${p[3]}</span><small class="num">${md(ds[5])} 게재 · 주제 컨펌 ${md(ds[1])} · 최종 ${md(ds[4])}</small></span></button>`;
+    return `<button class="notif" data-pi="${idx}" data-tip="${esc(`${p[3]}\n${p[4]}\n주제 컨펌 ${mdw(ds[1])} · 최종 컨펌 ${mdw(ds[4])} · ${mdw(ds[5])} 게재`)}"><span class="ic ${i%2?"p":""}"><svg><use href="#i-news"/></svg></span><span class="tx"><span>${p[3]}</span><small class="num">${md(ds[5])} 게재 · 주제 컨펌 ${md(ds[1])} · 최종 ${md(ds[4])}</small></span></button>`;
   }).join("") || `<p class="muted t12" style="padding:4px">예정 보도 없음</p>`;
+  $("upcoming").onclick = e => { const b = e.target.closest("[data-pi]"); if (b) openPress(+b.dataset.pi); };
 }
 
 // ===== 언론보도 =====
-function renderPress(){
-  const nextP = PRESS.find(p => D(p[0]) > BASE_M) || PRESS[PRESS.length-1], ds = pressDates(nextP);
-  document.getElementById("pressFlowHead").textContent = `${md(ds[5])} 게재분 기준`;
-  document.getElementById("pressFlow").innerHTML = STEPS.map((st,i) => {
-    const d = ds[i], on = same(d,TODAY), done = d < TODAY;
-    return `<div class="step ${on?"on":done?"done":""}" data-ps="${PS(st.who)}"><span class="sd">${DOW[d.getDay()]}요일${i===5?" · 발행 주":""}<span class="num">${md(d)}</span></span><b>${st.name}</b><span>${st.desc}</span><span class="w">${WHO(st.who)}</span></div>`;
-  }).join("");
-  document.getElementById("pressCnt").textContent = PRESS.length+"건";
-  document.getElementById("pressTable").innerHTML = `<div class="tr th press"><span>게재</span><span>분류</span><span>주제 후보 · 준비할 것</span><span>상태</span></div>` + PRESS.map(p => {
-    const ds = pressDates(p); let st = "후보", cls = "";
-    if (TODAY >= ds[5]) { st = "게재"; cls = "done"; }
-    else if (TODAY >= ds[0]) { const i = [4,3,2,1,0].find(i => TODAY >= ds[i]); st = STEPS[i].short; cls = "on"; }
-    return `<div class="tr press" data-ps="ksi kim"><span class="d num">${mdw(ds[5])}</span><span class="pl" style="--cc:var(--c-${p[1]})"><span class="tag">${p[2]}</span></span><span class="h">${p[3]}<small>${p[4]} · 조율 ${md(ds[0])} · 주제 컨펌 ${md(ds[1])} · 초안 ${md(ds[3])} · 최종 ${md(ds[4])}</small></span><span class="status st ${cls}">${st}</span></div>`;
-  }).join("");
+let pressSel = Math.max(0, PRESS.findIndex(p => pressDates(p)[5] >= TODAY)), pressTab = "s";
+function pressState(p){
+  const ds = pressDates(p);
+  if (TODAY >= ds[5]) return {st:"게재", cls:"done", n:6};
+  if (TODAY >= ds[0]) { const i = [4,3,2,1,0].find(i => TODAY >= ds[i]); return {st:STEPS[i].short, cls:"on", n:i+1}; }
+  return {st:"후보", cls:"", n:0};
 }
+function renderPress(){
+  $("pressTabs").innerHTML = segBtns([["s",`일정 ${PRESS.length}`],["i",`보도 후보 ${PI.length}`],["r","작성 규칙"]], pressTab);
+  $("prS").hidden = pressTab!=="s"; $("prI").hidden = pressTab!=="i"; $("prR").hidden = pressTab!=="r";
+  const cur = PRESS[pressSel], ds = pressDates(cur);
+  $("pressFlowHead").textContent = `${mdw(ds[5])} 게재`;
+  $("pressFlowName").textContent = cur[3];
+  $("pressFlow").innerHTML = STEPS.map((st,i) => {
+    const d = ds[i], on = same(d,TODAY), done = d < TODAY;
+    return `<div class="step ${on?"on":done?"done":""}" data-ps="${PS(st.who)}"><span class="sd">${DOW[d.getDay()]}요일<span class="num">${md(d)}</span></span><b>${st.name}</b><span>${st.desc}</span><span class="w">${WHO(st.who)}</span></div>`;
+  }).join("");
+  $("pressCnt").textContent = PRESS.length+"건";
+  $("pressTable").innerHTML = `<div class="tr th press"><span>게재</span><span>분류</span><span>주제 후보 · 준비할 것</span><span>상태</span></div>` + PRESS.map((p,i) => {
+    const ds = pressDates(p), s = pressState(p);
+    return `<div class="tr press ${i===pressSel?"sel":""}" role="button" tabindex="0" data-i="${i}" data-ps="ksi kim"><span class="d num">${mdw(ds[5])}</span><span class="pl" style="--cc:var(--c-${p[1]})"><span class="tag">${p[2]}</span></span><span class="h">${p[3]}<small>${p[4]} · 조율 ${md(ds[0])} · 주제 컨펌 ${md(ds[1])} · 초안 ${md(ds[3])} · 최종 ${md(ds[4])}</small></span><span class="st"><span class="status ${s.cls}">${s.st}</span><span class="prog" aria-hidden="true">${STEPS.map((_,k) => `<i class="${k<s.n?"f":""}"></i>`).join("")}</span></span></div>`;
+  }).join("");
+  $("pressIdeas").innerHTML = PI.map(x => `<div class="tr press idea" data-ps="ksi kim"><span class="pl" style="--cc:var(--c-${CAT_C[x.cat]||"press"})"><span class="tag">${x.cat}</span></span><span class="h">${x.title}<small>${x.ref} · ${x.need}</small></span></div>`).join("");
+}
+function openPress(i){ pressSel = i; pressTab = "s"; renderPress(); openTab("press"); }
+onSeg("pressTabs", v => { pressTab = v; renderPress(); });
+$("pressTable").addEventListener("click", e => { const r = e.target.closest("[data-i]"); if (r) { pressSel = +r.dataset.i; renderPress(); } });
+$("copyNext").addEventListener("click", () => copy([...document.querySelectorAll("#nextWords .chip")].map(c => c.textContent).join(", "), "금지어 복사 완료"));
+
+// ===== 주 이동 공통 =====
+const MIN_M = mondayOf(START), MAX_M = mondayOf(END);
+const weekDays = M => [0,1,2,3,4].map(i => addD(M,i));
+const defIdx = M => { const i = weekDays(M).findIndex(active); return i < 0 ? 0 : i; };
+const weekOff = M => Math.round((M - BASE_M) / (7*864e5));
+const offMin = weekOff(MIN_M), offMax = weekOff(MAX_M);
+const baseIdx = (BASE.getDay()+6)%7;
+const wkLabel = M => `${md(M)}~${md(addD(M,4))}`;
+const setNav = (pre, off) => { $(pre+"Prev").disabled = off <= offMin; $(pre+"Next").disabled = off >= offMax; $(pre+"Lbl").textContent = wkLabel(addD(BASE_M, off*7)); $(pre+"Now").hidden = off === 0; };
 
 // ===== 일별 업무 =====
-let dOff = 0, dSel = (BASE.getDay()+6)%7;
-function weekDays(M){ return [0,1,2,3,4].map(i => addD(M,i)); }
-function defIdx(M){ const i = weekDays(M).findIndex(active); return i < 0 ? 0 : i; }
+let dOff = 0, dSel = baseIdx;
 function segHtml(M, sel){ return weekDays(M).map((d,i) => `<button aria-pressed="${i===sel}" data-i="${i}" class="${same(d,TODAY)?"td":""} ${active(d)?"":"off"}">${DOW[d.getDay()]}<small class="num">${md(d)}</small></button>`).join(""); }
 function renderDaily(){
-  const M = addD(BASE_M, dOff*7), d = addD(M, dSel), act = active(d), rows = dayRows(d), tk = tasksOn(d);
-  document.getElementById("dLbl").textContent = dOff===0 ? "이번 주" : `${md(M)}~${md(addD(M,4))}`;
-  document.getElementById("daySeg2").innerHTML = segHtml(M, dSel);
-  document.getElementById("dayTitle").textContent = mdw(d) + (act ? "" : " · " + offText(d));
-  document.getElementById("dayTable").innerHTML = act ? `<div class="tr th t5"><span>업무</span><span>담당</span><span>산출물</span></div>` +
-    rows.map(r => `<div class="tr t5 ${r.empty?"empty":""}" data-ps="${PS(r.who)}" ${r.empty?"":`data-tip="${rowTip(r)}"`}><span><span class="tag ${r.lane==="g"?"g":""}" style="--cc:var(--c-${r.lane})">${LANES[r.lane]}</span> ${r.name}${r.ci!==undefined?` <span class="theme">${r.theme||"주제 미정"}${r.st==="후보"?" · 후보":""}</span>`:""}</span>${WHO(r.who)}<span class="out">${r.ci!==undefined?r.desc:r.desc}</span></div>`).join("")
-    : `<p class="muted t12">${offText(d)}</p>`;
-  const items = [...(tk.am ? [tk.am] : []), ...tk.press, ...tk.pm];
-  document.getElementById("dayFixed").innerHTML = items.length ? items.map(x => `<li data-ps="${PS(x.who)}"><b>${x.name}<span class="freq">${x.freq||""}</span></b><span>${x.desc}<br>${WHO(x.who)}</span></li>`).join("") : `<li><span class="muted t12">없음</span><span></span></li>`;
+  const M = addD(BASE_M, dOff*7), d = addD(M, dSel), act = active(d);
+  setNav("d", dOff);
+  $("daySeg2").innerHTML = segHtml(M, dSel);
+  $("dayTitle").textContent = mdw(d) + (act ? "" : " · " + offText(d));
+  $("dayTable").innerHTML = act ? flatRows(d).map(r => rowHtml(r, true)).join("") : `<p class="muted">${offText(d)}</p>`;
 }
-document.getElementById("daySeg2").addEventListener("click", e => { const b = e.target.closest("button"); if (b) { dSel = +b.dataset.i; renderDaily(); } });
-document.getElementById("dPrev").addEventListener("click", () => { dOff--; dSel = defIdx(addD(BASE_M,dOff*7)); renderDaily(); });
-document.getElementById("dNext").addEventListener("click", () => { dOff++; dSel = defIdx(addD(BASE_M,dOff*7)); renderDaily(); });
-document.getElementById("dLbl").addEventListener("click", () => { dOff = 0; dSel = (BASE.getDay()+6)%7; renderDaily(); });
+function moveDay(n){
+  let o = dOff, s = dSel;
+  do { s += n; if (s > 4) { s = 0; o++; } if (s < 0) { s = 4; o--; } } while (o >= offMin && o <= offMax && !active(addD(BASE_M, o*7+s)) && !HOL[ymd(addD(BASE_M, o*7+s))]);
+  if (o < offMin || o > offMax) return;
+  dOff = o; dSel = s; renderDaily();
+}
+function goDay(d){ dOff = weekOff(mondayOf(d)); dSel = Math.min(4, (d.getDay()+6)%7); renderDaily(); openTab("daily"); }
+$("daySeg2").addEventListener("click", e => { const b = e.target.closest("button"); if (b) { dSel = +b.dataset.i; renderDaily(); } });
+$("dPrev").addEventListener("click", () => { dOff--; dSel = defIdx(addD(BASE_M,dOff*7)); renderDaily(); });
+$("dNext").addEventListener("click", () => { dOff++; dSel = defIdx(addD(BASE_M,dOff*7)); renderDaily(); });
+$("dNow").addEventListener("click", () => { dOff = 0; dSel = baseIdx; renderDaily(); });
 
 // ===== 주간 발행 =====
-let sOff = 0, sSel = null;
+let sOff = 0, sSel = baseIdx;
 function renderSchedule(){
   const M = addD(BASE_M, sOff*7);
-  if (sSel === null || sOff !== renderSchedule.lastOff) sSel = sOff===0 ? (BASE.getDay()+6)%7 : defIdx(M);
-  renderSchedule.lastOff = sOff;
-  document.getElementById("sLbl").textContent = sOff===0 ? "이번 주" : `${md(M)}~${md(addD(M,4))}`;
-  document.getElementById("daySeg").innerHTML = segHtml(M, sSel);
+  setNav("s", sOff);
   const ws = weekStatus(M), b = blogWeek(M);
-  document.getElementById("wkInfo").innerHTML = `<span class="status ${ws.cls}">${ws.t}</span>` + (b ? `<span>주제 선정 ${mdw(b.sel)} · 보고·확정 ${mdw(b.fix)}</span>${WHO(W("lee","kim","t"))}` : "");
-  const d = addD(M, sSel), tp = topicOf(d), view = document.getElementById("dayView");
-  if (!active(d)) { view.innerHTML = `<div class="block" style="grid-column:1/-1"><p class="muted t12">${offText(d)}</p></div>`; return; }
-  view.innerHTML = CH.map(([k,name],ci) => `<div class="block" style="--cc:var(--c-${k})" data-ps="lee kim">
+  $("wkInfo").innerHTML = `<span class="status ${ws.cls}">${ws.t}</span>` + (b ? `<span>선정 ${mdw(b.sel)} · 보고·확정 ${mdw(b.fix)}</span>${WHO(W("lee","kim","t"))}` : "");
+  $("wkGrid").innerHTML = `<div class="wkr th"><span>요일</span>${CH.map(c => `<span>${c[1]}</span>`).join("")}</div>` + weekDays(M).map((d,i) => {
+    const tp = topicOf(d), act = active(d);
+    return `<button class="wkr ${i===sSel?"sel":""} ${same(d,TODAY)?"td":""} ${act?"":"off"}" data-i="${i}" aria-pressed="${i===sSel}"><span class="dd num">${DOW[d.getDay()]} <small>${md(d)}</small></span>${act ? CH.map(([k,n],ci) => `<span class="cell" style="--cc:var(--c-${k})"><i class="dot"></i>${tp ? tp.theme[ci] : "주제 미정"}${tp && tp.st==="후보" ? " · 후보" : ""}</span>`).join("") : `<span class="cell full">${offText(d)}</span>`}</button>`;
+  }).join("");
+  const d = addD(M, sSel), tp = topicOf(d), view = $("dayView");
+  $("dayViewT").textContent = mdw(d);
+  if (!active(d)) { view.innerHTML = ""; $("dayViewT").textContent = ""; return; }
+  view.innerHTML = CH.map(([k,name],ci) => `<div class="block" style="--cc:var(--c-${k})">
     <h2><span class="dot"></span>${name}${tp && tp.st==="후보" ? '<span class="status on">후보</span>' : ""}<span class="theme" style="margin-left:auto">${tp ? tp.theme[ci] : "주제 미정"}</span></h2>
-    <div class="posts">${FMT.map((f,fi) => `<div class="post"><span class="fmt">${f}</span>${tp ? `<span>${tp[k][fi]}</span>` : `<span class="muted">${b ? mdw(b.fix)+" 확정 예정" : "미정"}</span>`}</div>`).join("")}</div>
+    <div class="tls">${FMT.map((f,fi) => tp ? `<button class="tl-i" data-copy="${esc(tp[k][fi])}"><span class="fmt">${f}</span><span>${tp[k][fi]}</span></button>` : `<div class="tl-i"><span class="fmt">${f}</span><span class="muted">${b ? mdw(b.fix)+" 확정 예정" : "미정"}</span></div>`).join("")}</div>
   </div>`).join("");
-  applySearch();
 }
-document.getElementById("daySeg").addEventListener("click", e => { const b = e.target.closest("button"); if (b) { sSel = +b.dataset.i; renderSchedule(); } });
-document.getElementById("sPrev").addEventListener("click", () => { sOff--; renderSchedule(); });
-document.getElementById("sNext").addEventListener("click", () => { sOff++; renderSchedule(); });
-document.getElementById("sLbl").addEventListener("click", () => { sOff = 0; sSel = null; renderSchedule(); });
+$("wkGrid").addEventListener("click", e => { const b = e.target.closest("button[data-i]"); if (b) { sSel = +b.dataset.i; renderSchedule(); } });
+$("sPrev").addEventListener("click", () => { sOff--; sSel = defIdx(addD(BASE_M,sOff*7)); renderSchedule(); });
+$("sNext").addEventListener("click", () => { sOff++; sSel = defIdx(addD(BASE_M,sOff*7)); renderSchedule(); });
+$("sNow").addEventListener("click", () => { sOff = 0; sSel = baseIdx; renderSchedule(); });
+function goWeek(d){ sOff = weekOff(mondayOf(d)); sSel = (d.getDay()+6)%7; renderSchedule(); openTab("schedule"); }
 
 // ===== 월·분기 일정 =====
 const CC = {review:"var(--c-review)",main:"var(--c-main)",blog:"var(--c-blog)",press:"var(--c-press)",blue:"var(--blue)",purple:"var(--purple)",yellow:"var(--yellow)",mint:"var(--mint)",oneoff:"var(--c-review)",g:"var(--fg5)"};
@@ -1063,12 +1274,14 @@ function showMonth(i){
   monSeg.querySelectorAll("button").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.i==i)));
   document.getElementById("calBlock").hidden = false;
   document.getElementById("monTableTitle").textContent = "월간 업무";
-  const first = new Date(y,m,1), lead = (first.getDay()+6)%7;
-  let h = ["월","화","수","목","금","토","일"].map(x => `<div class="dow">${x}</div>`).join("");
-  for (let k=0;k<lead;k++) h += `<div class="day out"></div>`;
-  for (let d = new Date(first); d.getMonth()===m; d = addD(d,1)){
-    const ev = calEvents(d), act = active(d);
-    h += `<div class="day ${isWD(d)?"":"off"} ${same(d,TODAY)?"today":""}"><div class="dn"><span class="num">${d.getDate()}</span>${act?`<small class="num">9건</small>`:""}</div>` +
+  const first = new Date(y,m,1);
+  let fw = new Date(first); while (fw.getDay()===0 || fw.getDay()===6) fw = addD(fw,1);
+  let h = ["월","화","수","목","금"].map(x => `<div class="dow">${x}</div>`).join("");
+  for (let k=1;k<fw.getDay();k++) h += `<div class="day out"></div>`;
+  for (let d = new Date(fw); d.getMonth()===m; d = addD(d,1)){
+    if (d.getDay()===0 || d.getDay()===6) continue;
+    const ev = calEvents(d), act = active(d), t = same(d,TODAY);
+    h += `<div class="day ${isWD(d)?"":"off"} ${t?"today":""} ${d<TODAY?"past":""} ${ev.length||t?"":"none"}" role="button" tabindex="0" data-d="${ymd(d)}"><div class="dn"><span class="num">${d.getDate()}<span class="dw">${DOW[d.getDay()]}요일</span></span>${act?`<small class="num">9건</small>`:""}</div>` +
       ev.map(x => `<div class="ev ${x.c==="g"?"g":x.c==="hol"?"hol":""}" style="--cc:${CC[x.c]||"var(--fg5)"}" ${x.who?`data-ps="${PS(x.who)}"`:""} ${x.tip?`data-tip="${x.tip}"`:""}>${x.t}</div>`).join("") + `</div>`;
   }
   document.getElementById("cal").innerHTML = h;
@@ -1076,10 +1289,10 @@ function showMonth(i){
   const cnt = k => rows.filter(r => r[1].kind===k).length;
   document.getElementById("monKpi").innerHTML = monKpiHtml(`${m+1}월`, pub, pubDays, cnt);
   document.getElementById("monTable").innerHTML = `<div class="tr th m4"><span>업무</span><span>일정</span><span>담당</span><span>횟수</span></div>` +
-    `<div class="tr m4" data-ps="lee kim"><span class="h">콘텐츠 발행</span><span class="num">평일 매일 · ${pubDays}일<small style="display:block;color:var(--fg40)">리뷰홈 3 · 메인홈 3 · 블로그 3</small></span>${WHO(W("lee","kim+"))}<span class="out num">${pub}건</span></div>` +
+    `<div class="tr m4" data-ps="lee kim"><span class="h">콘텐츠 발행</span><span class="num">평일 매일 · ${pubDays}일<small style="display:block;color:var(--fg60)">리뷰홈 3 · 메인홈 3 · 블로그 3</small></span>${WHO(W("lee","kim+"))}<span class="out num">${pub}건</span></div>` +
     MROWS.map(([k,label,who]) => { const r = rows.filter(x => x[1].kind===k); if (!r.length) return "";
       const sub = k==="pub" ? r.map(x => x[1].t.replace("보도 ","")).join(" / ") : k==="oneoff" ? r.map(x => x[1].t).join(" / ") : "";
-      return `<div class="tr m4" data-ps="${PS(who)}"><span class="h">${label}</span><span class="num">${r.map(x => md(x[0])).join(" · ")}${sub?`<small style="display:block;color:var(--fg40)">${sub}</small>`:""}</span>${WHO(who)}<span class="out num">${r.length}${k==="pub"?"건":"회"}</span></div>`; }).join("");
+      return `<div class="tr m4" data-ps="${PS(who)}"><span class="h">${label}</span><span class="num">${r.map(x => md(x[0])).join(" · ")}${sub?`<small style="display:block;color:var(--fg60)">${sub}</small>`:""}</span>${WHO(who)}<span class="out num">${r.length}${k==="pub"?"건":"회"}</span></div>`; }).join("");
   document.getElementById("calLegend").innerHTML = [["보도 게재","var(--c-press)"],["보도 단계","var(--fg20)"],["블로그·웹 주제","var(--mint)"],["AI 인용","var(--blue)"],["주간 성과","var(--purple)"],["상담 집계","var(--yellow)"],["공지·승인","var(--c-review)"]].map(l => `<span class="lg" style="--cc:${l[1]}"><i></i>${l[0]}</span>`).join("");
 }
 function showQuarter(){
@@ -1092,13 +1305,14 @@ function showQuarter(){
   document.getElementById("monTableTitle").textContent = "분기 업무";
   document.getElementById("monKpi").innerHTML = monKpiHtml("4분기", pub, pubDays, cnt);
   document.getElementById("monTable").innerHTML = `<div class="tr th m4"><span>업무</span><span>월별</span><span>담당</span><span>횟수</span></div>` +
-    `<div class="tr m4" data-ps="lee kim"><span class="h">콘텐츠 발행</span><span class="num">${ms.map((x,i) => `${label(i)} ${x.pub}건`).join(" · ")}<small style="display:block;color:var(--fg40)">리뷰홈 3 · 메인홈 3 · 블로그 3</small></span>${WHO(W("lee","kim+"))}<span class="out num">${pub}건</span></div>` +
+    `<div class="tr m4" data-ps="lee kim"><span class="h">콘텐츠 발행</span><span class="num">${ms.map((x,i) => `${label(i)} ${x.pub}건`).join(" · ")}<small style="display:block;color:var(--fg60)">리뷰홈 3 · 메인홈 3 · 블로그 3</small></span>${WHO(W("lee","kim+"))}<span class="out num">${pub}건</span></div>` +
     MROWS.map(([k,name,who]) => { const n = cnt(k), u = k==="pub" ? "건" : "회"; if (!n) return "";
       return `<div class="tr m4" data-ps="${PS(who)}"><span class="h">${name}</span><span class="num">${ms.map((x,i) => `${label(i)} ${cntOf(x,k)}${u}`).join(" · ")}</span>${WHO(who)}<span class="out num">${n}${u}</span></div>`; }).join("");
 }
 monSeg.addEventListener("click", e => { const b = e.target.closest("button"); if (b) b.dataset.i==="q" ? showQuarter() : showMonth(+b.dataset.i); });
+document.getElementById("cal").addEventListener("click", e => { const c = e.target.closest("[data-d]"); if (c) goDay(D(c.dataset.d)); });
 
-// ===== 주제 후보 (판매 상품 기반) =====
+// ===== 데이터 =====
 const PRODUCTS = [{"name": "상위노출 관리 (상세페이지 제작 중)", "summary": "네이버 쇼핑·쿠팡·플레이스·자사몰 채널별 상위노출 관리, 상품 정보·판매 지표·후기 관리", "channel": "메인홈", "fit": "중", "why": "'광고 끄면 주문 0', '어떤 키워드를 얼마나' 같은 셀러 고민형 질문에 답변 가능, 진행 방법 설명은 비공개 방침과 상충", "caution": "진행 방법(슬롯·타수·리워드 등) 공개 금지, '1위 보장'·'안전' 단정 금지, 사례 순위 수치는 증빙 보관 후 사용"}, {"name": "일반구매 리뷰 (실구매)", "summary": "실제 리뷰어가 구매·수령 후 3~10일 내 포토 리뷰 작성, 쿠팡 로켓은 실구매만 가능", "channel": "리뷰홈", "fit": "상", "why": "'구매평 체험단' 정의·일정·규칙 설명형 답변 구성 가능", "caution": "리뷰비·페이백 제공 사실과 대가 표시 안내 필요(공정위 추천·보증 심사지침), 리뷰비 금액 기재 금지"}, {"name": "구매형 체험단", "summary": "블로거 선구매 후 포스팅 완료 시 제품비 페이백, 스토어 구매평 동시 요청 가능", "channel": "리뷰홈", "fit": "상", "why": "블로그 후기와 구매평 동시 확보 구조로 '구매평 체험단' 질문에 직접 대응", "caution": "블로그·구매평 모두 대가 제공 표시 필요, '내돈내산' 표기 불가"}, {"name": "블로그 체험단 (배송형·방문형)", "summary": "블로거가 제품 수령·매장 방문 후 1,500자·사진 7장 이상 포스팅, 6개월 유지", "channel": "메인홈", "fit": "상", "why": "실체험 후기 기반이라 AI 답변 추천 대상, 절차·기준 수치 명확", "caution": "대가성 표시 필수, 병의원은 치료경험담 광고 금지(의료법 제56조)로 별도 검토"}, {"name": "언론보도", "summary": "원고·이미지 매체 데스크 송출 후 기사 URL 전달, 보통 2~3일 소요", "channel": "언론보도", "fit": "상", "why": "언론 기사는 AI 답변 출처로 인용 빈도 높은 형식", "caution": "증빙 없는 수치·효능 단정은 반려, 마케팅 B2B 주제는 중간 이상 매체 필요"}, {"name": "통합 AEO (SEO·AEO·GEO 연계)", "summary": "리뷰로 쌓은 신뢰를 HOW TO·FAQ·Q&A 원고로 블로그·웹·언론·영상에 발행", "channel": "메인홈", "fit": "상", "why": "자사 서비스 자체가 AEO라 실행 사례 원고로 신뢰 근거 구성 가능", "caution": "범위·일정 별도 견적, 효과 수치 자료 없음, 노출 보장 표현 금지"}, {"name": "쿠팡 TOP 리뷰어 캠페인", "summary": "쿠팡 리뷰어 랭킹 1000위 이내 리뷰어만 사전 모집 후 확정 수량 진행, 실배송·가구매(빈박스) 모두 가능 (로켓 상품은 실배송만)", "channel": "리뷰홈", "fit": "중", "why": "일반 체험단과의 차이 비교형 답변에 적합, 검색 수요는 제한적", "caution": "AI 인용 대상 원고는 실배송형 중심, 가구매형은 기존 원칙대로 네이버 유입용 키워드에서만 다룸, 수량 보장 불가·랭킹 수시 변동 명시"}, {"name": "기자단", "summary": "체험 없이 광고주 제공 사진·원고로 블로그 포스팅 배포", "channel": "메인홈", "fit": "중", "why": "체험단과의 비교 질문 수요 존재, 단독 추천 근거는 약함", "caution": "실제 체험 후기처럼 표현 금지, 광고 표기 필수"}, {"name": "블로그·인스타 인플루언서", "summary": "네이버 인플루언서 블로거·인스타 마이크로 인플루언서 모집, 모집 약 7일", "channel": "메인홈", "fit": "중", "why": "협찬 비용 구조 질문에 답변 가능, 단가는 별도 견적", "caution": "팔로워 구간별 단가 기재 금지, 협찬 표기 안내 필요"}, {"name": "라이브방송 사전모집·홈쇼핑 리뷰", "summary": "방송 시간 할인가 구매 리뷰어 사전 모집, 방송일 일괄 구매 후 리뷰", "channel": "블로그", "fit": "중", "why": "실구매 기반 운영 사례로 설명 가능, 검색 수요는 작음", "caution": "대가 제공 리뷰 표시 필요, 내부 수치 공개 시 근거 확인"}, {"name": "일반구매 리뷰 (가구매·빈박스)", "summary": "빈박스 출고 후 업체 제공 이미지로 리뷰 작성", "channel": "리뷰홈", "fit": "하", "why": "실사용 없는 후기 구조로 AI 답변 추천 대상 외", "caution": "표시광고법·플랫폼 정책 위반 소지, AI 인용 원고 금지, 네이버용 P3 키워드만 유지"}, {"name": "쿠팡·네이버 자동구매", "summary": "리뷰어 모집 없이 시스템이 구매·리뷰 작성", "channel": "리뷰홈", "fit": "하", "why": "실구매자 아닌 시스템 리뷰로 AI 추천·인용 불가", "caution": "가이드에 블라인드·계정 정지 위험 명시, 공개 콘텐츠·키워드 제외"}, {"name": "회송", "summary": "로켓·로켓그로스 상품 자동구매 후 실물 회수, 약 10일", "channel": "리뷰홈", "fit": "하", "why": "판매실적·리뷰 생성 후 회수하는 구조로 공개 불가", "caution": "공개 콘텐츠 전면 제외"}, {"name": "플레이스 리뷰 (영수증·예약자)·배포형 블로그 리뷰", "summary": "영수증 인증 방문자 리뷰, 예약자 리뷰, 대필 블로그 배포", "channel": "메인홈", "fit": "하", "why": "실방문·실체험 근거 부족", "caution": "공개 원고는 방문형 체험단·매장 정보 정비 관점으로만 작성"}, {"name": "트래픽·슬롯", "summary": "플레이스·네이버 쇼핑·쿠팡 검색 순위 상승 작업", "channel": "메인홈", "fit": "하", "why": "순위 조작 성격으로 AI 답변 인용 불가", "caution": "네이버 전용 P3 키워드만, 기본 세팅(상품명 40자·카테고리·주소)만 정책 이해 관점으로 활용"}, {"name": "카페침투·SNS 부스팅·특수 캠페인", "summary": "카페 글·댓글 세트, 조회수·시청자 증대, Q&A·화환 리뷰", "channel": "블로그", "fit": "하", "why": "광고 숨김·지표 증대 구조로 공개 설명 부적합", "caution": "기만 광고 소지, AEO 대상 제외"}];
 const PKW = [{"kw": "스마트스토어 체험단", "site": "리뷰홈", "tier": "P1", "product": "일반구매 리뷰 (실구매)", "why": "기존 '스마트스토어 리뷰'와 의도 구분, 참여율 근거 보유"}, {"kw": "쿠팡 로켓배송 리뷰", "site": "리뷰홈", "tier": "P1", "product": "일반구매 리뷰 (실구매)", "why": "로켓 상품은 실구매만 가능 규칙으로 단답 가능"}, {"kw": "스마트스토어 상품명 짓는 법", "site": "리뷰홈", "tier": "P1", "product": "통합 AEO", "why": "메인+서브+단위+모델명, 공백 포함 40자 기준 보유"}, {"kw": "쿠팡 체험단 비용", "site": "리뷰홈", "tier": "P2", "product": "일반구매 리뷰 (실구매)", "why": "비용 구성(리뷰비·제품비 페이백·입금대행) 설명 가능, 금액 비공개"}, {"kw": "쿠팡 탑리뷰어 체험단", "site": "리뷰홈", "tier": "P2", "product": "쿠팡 TOP 리뷰어 캠페인", "why": "TOP 1000 전용 구조로 차별 답변 가능"}, {"kw": "스마트스토어 한달사용 리뷰", "site": "리뷰홈", "tier": "P2", "product": "일반구매 리뷰 (실구매)", "why": "한 달 리뷰 별도 캠페인 근거 보유"}, {"kw": "스마트스토어 리뷰 블라인드", "site": "리뷰홈", "tier": "P2", "product": "일반구매 리뷰 (실구매)", "why": "블라인드 원인·대응 등 리스크 관리형 질문 수요"}, {"kw": "네이버 쇼핑 상위노출", "site": "리뷰홈", "tier": "P2", "product": "상위노출 관리", "why": "상세페이지 판매 채널, 스스상위노출과 같은 군집이라 리뷰홈 배치"}, {"kw": "와디즈 펀딩 리뷰", "site": "리뷰홈", "tier": "P3", "product": "일반구매 리뷰 (실구매)", "why": "펀딩 50건 이내 권장 기준 보유, 틈새 수요"}, {"kw": "자사몰 리뷰 늘리는 법", "site": "리뷰홈", "tier": "P3", "product": "일반구매 리뷰 (실구매)", "why": "네이버페이·카카오페이 연동 조건 근거, 틈새 수요"}, {"kw": "네이버 플레이스 리뷰 늘리는 법", "site": "메인홈", "tier": "P1", "product": "블로그 체험단 (배송형·방문형)", "why": "방문형 체험단 절차로 정책 준수 답변 가능"}, {"kw": "방문형 체험단", "site": "메인홈", "tier": "P1", "product": "블로그 체험단 (배송형·방문형)", "why": "접수 항목·업로드 기준 등 구체 근거 보유"}, {"kw": "보도자료 배포 대행", "site": "메인홈", "tier": "P1", "product": "언론보도", "why": "통과·반려 기준, 송출 일정 등 실무 근거 보유"}, {"kw": "상위노출 대행 비용", "site": "메인홈", "tier": "P2", "product": "상위노출 관리", "why": "상세페이지 견적 기준(경쟁도·기간·수정 횟수)으로 답변 가능, 금액 비공개"}, {"kw": "기자단 체험단 차이", "site": "메인홈", "tier": "P2", "product": "기자단", "why": "비교 질문형 수요, 비교표 근거 보유"}, {"kw": "체험단 광고 표기", "site": "메인홈", "tier": "P2", "product": "블로그 체험단 (배송형·방문형)", "why": "'내돈내산' 표기 불가 기준으로 규정 준수 신뢰 확보"}, {"kw": "인스타 인플루언서 협찬 비용", "site": "메인홈", "tier": "P2", "product": "블로그·인스타 인플루언서", "why": "팔로워 구간별 단가 구조 설명 가능, 금액 비공개"}, {"kw": "네이버 인플루언서 체험단", "site": "메인홈", "tier": "P2", "product": "블로그·인스타 인플루언서", "why": "요청 양식 8항목·모집 7일 근거 보유"}, {"kw": "쿠팡 상품 노출 안되는 이유", "site": "메인홈", "tier": "P2", "product": "통합 AEO", "why": "카테고리·옵션·잦은 수정·품절 근거, 쿠팡상위노출 군집"}, {"kw": "플레이스 트래픽", "site": "메인홈", "tier": "P3", "product": "트래픽·슬롯", "why": "네이버 검색 전용, AI 인용 대상 제외"}];
 const POOL = [{"site": "메인홈", "fmt": "QA", "title": "광고를 끄면 주문이 0이 되는 이유는? 광고와 상위노출의 차이", "product": "상위노출 관리", "kw": "쿠팡상위노출"}, {"site": "메인홈", "fmt": "QA", "title": "상위노출 대행 견적은 어떤 기준으로 정해지나요? 경쟁도·기간·수정 횟수", "product": "상위노출 관리", "kw": "상위노출 대행 비용"}, {"site": "메인홈", "fmt": "FAQ", "title": "상위노출 대행 FAQ: 시작 시점·진행 기간·환불·세금계산서", "product": "상위노출 관리", "kw": "상위노출 대행 비용"}, {"site": "리뷰홈", "fmt": "HT", "title": "네이버 쇼핑 상위노출, 상품 정보·판매 지표·후기 순서로 점검하는 법", "product": "상위노출 관리", "kw": "네이버 쇼핑 상위노출"}, {"site": "리뷰홈", "fmt": "QA", "title": "어떤 키워드부터, 얼마나 해야 하나요? 신상품 키워드 고르는 기준", "product": "상위노출 관리", "kw": "네이버 쇼핑 상위노출"}, {"site": "블로그", "fmt": "HT", "title": "[운영 노트] 순위 진단 상담 전에 준비할 것: 상품 링크와 목표 키워드", "product": "상위노출 관리", "kw": "스스상위노출"}, {"site": "리뷰홈", "fmt": "HT", "title": "쿠팡 로켓배송 상품, 리뷰 체험단은 실구매로만 진행하는 이유와 준비 순서", "product": "일반구매 리뷰 (실구매)", "kw": "쿠팡 로켓배송 리뷰"}, {"site": "리뷰홈", "fmt": "QA", "title": "스마트스토어 체험단 리뷰는 배송 후 언제부터 올라오나요?", "product": "일반구매 리뷰 (실구매)", "kw": "스마트스토어 체험단"}, {"site": "리뷰홈", "fmt": "FAQ", "title": "스마트스토어 체험단 접수 전 자주 묻는 질문 8가지", "product": "일반구매 리뷰 (실구매)", "kw": "스마트스토어 체험단"}, {"site": "리뷰홈", "fmt": "QA", "title": "쿠팡 체험단 비용은 어떤 항목으로 구성되나요?", "product": "일반구매 리뷰 (실구매)", "kw": "쿠팡 체험단 비용"}, {"site": "리뷰홈", "fmt": "HT", "title": "체험단 리뷰어 모집이 더딜 때 판매자가 먼저 점검할 5가지", "product": "일반구매 리뷰 (실구매)", "kw": "구매평 체험단"}, {"site": "리뷰홈", "fmt": "QA", "title": "쿠팡 TOP 리뷰어 체험단은 일반 체험단과 무엇이 다른가요?", "product": "쿠팡 TOP 리뷰어 캠페인", "kw": "쿠팡 탑리뷰어 체험단"}, {"site": "리뷰홈", "fmt": "HT", "title": "스마트스토어 한 달 사용 리뷰, 별도 캠페인으로 받는 방법", "product": "일반구매 리뷰 (실구매)", "kw": "스마트스토어 한달사용 리뷰"}, {"site": "리뷰홈", "fmt": "QA", "title": "스마트스토어 리뷰가 블라인드되면 다시 살릴 수 있나요?", "product": "일반구매 리뷰 (실구매)", "kw": "스마트스토어 리뷰 블라인드"}, {"site": "리뷰홈", "fmt": "HT", "title": "스마트스토어 상품명, 공백 포함 40자 안에서 키워드 배치하는 법", "product": "통합 AEO", "kw": "스마트스토어 상품명 짓는 법"}, {"site": "리뷰홈", "fmt": "FAQ", "title": "와디즈·자사몰 리뷰 체험단, 진행 전 확인할 질문 7가지", "product": "일반구매 리뷰 (실구매)", "kw": "와디즈 펀딩 리뷰"}, {"site": "리뷰홈", "fmt": "QA", "title": "구매형 체험단으로 블로그 후기와 스토어 구매평을 함께 받을 수 있나요?", "product": "구매형 체험단", "kw": "구매평 체험단"}, {"site": "리뷰홈", "fmt": "FAQ", "title": "쿠팡 리뷰 체험단 진행 규칙 FAQ: 쿠팡캐시·광고 클릭·중고 상품", "product": "일반구매 리뷰 (실구매)", "kw": "쿠팡리뷰체험단"}, {"site": "메인홈", "fmt": "HT", "title": "네이버 플레이스 리뷰 늘리는 법, 방문형 체험단 운영 순서", "product": "블로그 체험단 (배송형·방문형)", "kw": "네이버 플레이스 리뷰 늘리는 법"}, {"site": "메인홈", "fmt": "QA", "title": "기자단과 체험단, 우리 매장에는 무엇이 맞나요?", "product": "기자단", "kw": "기자단 체험단 차이"}, {"site": "메인홈", "fmt": "FAQ", "title": "방문형 체험단 접수 전 자주 묻는 질문 9가지", "product": "블로그 체험단 (배송형·방문형)", "kw": "방문형 체험단"}, {"site": "메인홈", "fmt": "QA", "title": "체험단 후기에 '내돈내산'을 쓰면 안 되는 이유는?", "product": "블로그 체험단 (배송형·방문형)", "kw": "체험단 광고 표기"}, {"site": "메인홈", "fmt": "QA", "title": "인스타그램 인플루언서 협찬 비용은 무엇으로 정해지나요?", "product": "블로그·인스타 인플루언서", "kw": "인스타 인플루언서 협찬 비용"}, {"site": "메인홈", "fmt": "HT", "title": "네이버 인플루언서 체험단, 모집 7일 전에 준비할 8가지", "product": "블로그·인스타 인플루언서", "kw": "네이버 인플루언서 체험단"}, {"site": "메인홈", "fmt": "HT", "title": "보도자료가 반려되지 않으려면, 기사로 통과되는 원고 쓰는 법", "product": "언론보도", "kw": "보도자료 배포 대행"}, {"site": "메인홈", "fmt": "FAQ", "title": "언론보도 대행 FAQ: 송출 일정·수정·삭제 기준", "product": "언론보도", "kw": "보도자료 배포 대행"}, {"site": "메인홈", "fmt": "QA", "title": "쿠팡 상품이 검색에 안 보이는 이유는 무엇인가요?", "product": "통합 AEO", "kw": "쿠팡 상품 노출 안되는 이유"}, {"site": "메인홈", "fmt": "QA", "title": "네이버 플레이스 순위는 무엇으로 정해지나요? 적합도와 지수 정리", "product": "블로그 체험단 (배송형·방문형)", "kw": "플레이스상위노출"}, {"site": "메인홈", "fmt": "HT", "title": "AI 검색에 인용되는 리뷰 콘텐츠, HOW TO·FAQ·Q&A로 나눠 만드는 법", "product": "통합 AEO", "kw": "AEO 마케팅"}, {"site": "블로그", "fmt": "HT", "title": "[운영 사례] 로켓배송 신제품, 실구매 체험단으로 첫 리뷰를 쌓은 과정", "product": "일반구매 리뷰 (실구매)", "kw": "쿠팡 로켓배송 리뷰"}, {"site": "블로그", "fmt": "HT", "title": "[운영 사례] 리뷰어 모집이 멈춘 스마트스토어 캠페인, 조건을 조정한 순서", "product": "일반구매 리뷰 (실구매)", "kw": "스마트스토어 체험단"}, {"site": "블로그", "fmt": "HT", "title": "[운영 사례] 동네 미용실 방문형 체험단, 접수부터 포스팅 검수까지", "product": "블로그 체험단 (배송형·방문형)", "kw": "방문형 체험단"}, {"site": "블로그", "fmt": "QA", "title": "[운영 노트] 체험단 블로거는 어떤 기준으로 선정하나요?", "product": "블로그 체험단 (배송형·방문형)", "kw": "블로그체험단"}, {"site": "블로그", "fmt": "HT", "title": "[운영 사례] 신제품 출시 보도자료가 기사로 나가기까지의 2~3일", "product": "언론보도", "kw": "보도자료 배포 대행"}, {"site": "블로그", "fmt": "FAQ", "title": "[운영 노트] 체험단 진행 중 수량 변경·중단·환불 FAQ", "product": "일반구매 리뷰 (실구매)", "kw": "리뷰체험단"}, {"site": "블로그", "fmt": "QA", "title": "[운영 노트] 라이브 방송 시간에 구매할 체험단은 어떻게 미리 모집하나요?", "product": "라이브방송 사전모집·홈쇼핑 리뷰", "kw": "라이브커머스"}, {"site": "블로그", "fmt": "HT", "title": "[운영 사례] 쿠팡 TOP 리뷰어 사전 모집, 확정 수량이 정해지는 과정", "product": "쿠팡 TOP 리뷰어 캠페인", "kw": "쿠팡 탑리뷰어 체험단"}];
@@ -1108,78 +1322,154 @@ const MARKET = [{"region": "한국", "as_of": "2026-10", "headline": "온라인 
 const MKW = [{"kw": "네이버 AI 브리핑 광고", "site": "메인홈", "tier": "P1", "why": "네이버 AI 브리핑 광고 정식 출시", "region": "한국"}, {"kw": "네이버 플레이스 별점 공개", "site": "리뷰홈", "tier": "P1", "why": "네이버 플레이스 별점 공개 전환", "region": "한국"}, {"kw": "쇼핑몰 리뷰 삭제 기준 공개", "site": "리뷰홈", "tier": "P1", "why": "쇼핑몰 후기 운영 기준 공개 의무화", "region": "한국"}, {"kw": "뒷광고 처벌 기준", "site": "리뷰홈", "tier": "P2", "why": "SNS 뒷광고 의심 게시물 여전히 2만건대", "region": "한국"}, {"kw": "챗GPT 상품 추천 노출", "site": "메인홈", "tier": "P2", "why": "챗GPT 검색 이용률 과반", "region": "한국"}, {"kw": "네이버 쇼핑 AI 에이전트", "site": "리뷰홈", "tier": "P2", "why": "네이버 쇼핑 AI 에이전트 등장", "region": "한국"}, {"kw": "건강기능식품 광고 심의", "site": "메인홈", "tier": "P2", "why": "건기식·식품 AI 가짜 전문가 광고 단속", "region": "한국"}, {"kw": "틱톡샵 입점 방법", "site": "메인홈", "tier": "P3", "why": "틱톡샵 한국 출시 지연, 해외 입점은 가능", "region": "한국"}, {"kw": "아마존 리뷰 정책", "site": "리뷰홈", "tier": "P1", "why": "아마존 변형 상품 리뷰 공유 분리", "region": "미국"}, {"kw": "아마존 바인 프로그램", "site": "리뷰홈", "tier": "P1", "why": "아마존 변형 상품 리뷰 공유 분리", "region": "미국"}, {"kw": "미국 FTC 가짜 리뷰 규정", "site": "리뷰홈", "tier": "P1", "why": "FTC 가짜 리뷰 규정 첫 공개 집행", "region": "미국"}, {"kw": "틱톡샵 미국 입점", "site": "메인홈", "tier": "P1", "why": "틱톡샵 미국, 최대 시장으로 성장", "region": "미국"}, {"kw": "K뷰티 미국 진출 마케팅", "site": "메인홈", "tier": "P2", "why": "K뷰티 대미 수출 급증, 관세 15% 부담", "region": "미국"}, {"kw": "구글 AI 모드 광고", "site": "메인홈", "tier": "P2", "why": "구글 AI 모드에 쇼핑 광고 도입", "region": "미국"}, {"kw": "챗GPT 광고", "site": "메인홈", "tier": "P2", "why": "챗GPT 광고 미국 테스트 개시", "region": "미국"}, {"kw": "미국 인플루언서 광고 표기", "site": "리뷰홈", "tier": "P3", "why": "크리에이터 광고, 독립 매체로 부상", "region": "미국"}, {"kw": "일본 스테마 규제", "site": "리뷰홈", "tier": "P1", "why": "한국 앱 SNOW 스테마 조치명령", "region": "일본"}, {"kw": "큐텐재팬 입점", "site": "메인홈", "tier": "P1", "why": "큐텐재팬, 한국 신생 브랜드 육성", "region": "일본"}, {"kw": "일본 인플루언서 PR 표기", "site": "리뷰홈", "tier": "P1", "why": "의뢰 표기 잘라낸 전재도 스테마", "region": "일본"}, {"kw": "틱톡샵 재팬", "site": "메인홈", "tier": "P2", "why": "TikTok Shop 일본 1년 GMV 약 500억엔", "region": "일본"}, {"kw": "일본 체험단 마케팅", "site": "리뷰홈", "tier": "P2", "why": "EC 리뷰 불신 확산", "region": "일본"}, {"kw": "큐텐 메가와리 준비", "site": "메인홈", "tier": "P2", "why": "큐텐재팬, 한국 신생 브랜드 육성", "region": "일본"}, {"kw": "일본 AI 검색 노출", "site": "메인홈", "tier": "P3", "why": "LINE야후 AI 에이전트 'Agent i' 통합", "region": "일본"}, {"kw": "샤오홍슈 마케팅", "site": "메인홈", "tier": "P1", "why": "샤오홍슈 AI 가짜 노트·대행 계정 단속", "region": "중국"}, {"kw": "AI 추천 광고 표기", "site": "메인홈", "tier": "P1", "why": "CCTV 315, AI '투독' 산업 고발", "region": "중국"}, {"kw": "AI 생성 리뷰 표기 의무", "site": "리뷰홈", "tier": "P1", "why": "샤오홍슈 AI 가짜 노트·대행 계정 단속", "region": "중국"}, {"kw": "샤오홍슈 체험단", "site": "리뷰홈", "tier": "P2", "why": "샤오홍슈 AI 가짜 노트·대행 계정 단속", "region": "중국"}, {"kw": "더우인 입점 방법", "site": "메인홈", "tier": "P2", "why": "더우인, 상품카드·검색 유입 비중 확대", "region": "중국"}, {"kw": "K뷰티 중국 진출 마케팅", "site": "메인홈", "tier": "P2", "why": "K-뷰티 중국 수출 반등과 채널 재편", "region": "중국"}, {"kw": "테무 알리 대응 전략", "site": "메인홈", "tier": "P3", "why": "C커머스 국내 MAU 1,450만 명대", "region": "중국"}, {"kw": "AI 답변 인용 출처", "site": "메인홈", "tier": "P1", "why": "AI 답변 인용, 리뷰·비교 콘텐츠 비중 최대", "region": "글로벌"}, {"kw": "인센티브 리뷰 표기", "site": "리뷰홈", "tier": "P1", "why": "영국 CMA, 가짜·미표기 인센티브 리뷰 첫 조사", "region": "글로벌"}, {"kw": "구글 AI 개요 트래픽 감소", "site": "메인홈", "tier": "P2", "why": "AI 개요 노출 시 1위 클릭률 58% 하락", "region": "글로벌"}, {"kw": "마이크로 인플루언서 체험단", "site": "리뷰홈", "tier": "P1", "why": "인플루언서 예산 증액·나노/마이크로 확대", "region": "글로벌"}, {"kw": "AI 생성 광고 표시 의무", "site": "메인홈", "tier": "P2", "why": "EU AI 생성물 표시 행동강령 확정", "region": "글로벌"}, {"kw": "쇼피 라이브 판매", "site": "메인홈", "tier": "P2", "why": "쇼피 9.9, 한국 셀러 라이브 주문 12배", "region": "글로벌"}, {"kw": "틱톡샵 동남아 입점", "site": "메인홈", "tier": "P3", "why": "동남아 이커머스 22.8% 성장, 콘텐츠 커머스 32%", "region": "글로벌"}, {"kw": "리테일 미디어 광고", "site": "메인홈", "tier": "P3", "why": "글로벌 광고비 11.9% 성장, 소셜 최고 성장", "region": "글로벌"}, {"kw": "AI 마케팅 대행사", "site": "메인홈", "tier": "P1", "why": "GEO·AI 솔루션사 보도 급증으로 대행사 탐색 수요 확대", "region": "AI 마케팅·광고대행사"}, {"kw": "마케팅 대행사 고르는 법", "site": "메인홈", "tier": "P1", "why": "사기성 AI 마케팅 보도 후 선택 기준 질문 증가", "region": "AI 마케팅·광고대행사"}, {"kw": "마케팅 대행사 비용", "site": "메인홈", "tier": "P1", "why": "대행사 오운드미디어가 비용 질문형 콘텐츠로 상담 유도", "region": "AI 마케팅·광고대행사"}, {"kw": "광고대행사 수수료", "site": "메인홈", "tier": "P2", "why": "'수수료 없는 이유' 콘텐츠가 대행사 대표 유입 주제", "region": "AI 마케팅·광고대행사"}, {"kw": "GEO 성과 측정 방법", "site": "메인홈", "tier": "P2", "why": "캡처 한 장 성과 보고 문제 제기, 측정 기준 부재", "region": "AI 마케팅·광고대행사"}, {"kw": "리뷰 마케팅 대행사", "site": "리뷰홈", "tier": "P1", "why": "리뷰·체험단 전문 대행사 직접 탐색 키워드", "region": "AI 마케팅·광고대행사"}, {"kw": "체험단 대행사 계약 전 확인사항", "site": "리뷰홈", "tier": "P2", "why": "네오프 제재로 대행사 주도 뒷광고 리스크 인식", "region": "AI 마케팅·광고대행사"}, {"kw": "AI 후기 광고 가상인물 표시", "site": "리뷰홈", "tier": "P3", "why": "추천·보증 심사지침 가상인물 표시 의무 신설", "region": "AI 마케팅·광고대행사"}, {"kw": "신규 브랜드 런칭 마케팅", "site": "메인홈", "tier": "P1", "why": "런칭 초기 무엇부터 할지 묻는 대표 검색어, 패키지 제안 진입점", "region": "신규 브랜드·홈페이지"}, {"kw": "네이버 서치어드바이저 등록", "site": "메인홈", "tier": "P1", "why": "신규 홈페이지 운영자의 첫 실무 검색어, 색인 전제 조건 안내 수요", "region": "신규 브랜드·홈페이지"}, {"kw": "신생 브랜드 리뷰 모으기", "site": "리뷰홈", "tier": "P1", "why": "리뷰 0개 상태의 신규 브랜드 핵심 고민, 체험단 전환 직결", "region": "신규 브랜드·홈페이지"}, {"kw": "런칭 보도자료 작성법", "site": "메인홈", "tier": "P2", "why": "초기 기업 홍보 담당 겸업 구조로 직접 작성 수요 큼", "region": "신규 브랜드·홈페이지"}, {"kw": "와디즈 펀딩 마케팅", "site": "메인홈", "tier": "P2", "why": "펀딩 후 리뷰·유통 연결까지 묻는 신생 브랜드 수요", "region": "신규 브랜드·홈페이지"}, {"kw": "오픈 초기 플레이스 리뷰", "site": "리뷰홈", "tier": "P2", "why": "신규 매장·병원 오픈 직후 리뷰 확보 문의 다수", "region": "신규 브랜드·홈페이지"}, {"kw": "신생 브랜드 AI 검색 노출", "site": "메인홈", "tier": "P2", "why": "AI 답변 첫 문장 노출 관심 증가, 신생 브랜드 특화 각도", "region": "신규 브랜드·홈페이지"}, {"kw": "홈페이지 구글 검색 등록", "site": "메인홈", "tier": "P3", "why": "서치콘솔·색인 확인 등 기초 질문, AI 개요 노출 전제", "region": "신규 브랜드·홈페이지"}];
 const MPOOL = [{"site": "리뷰홈", "fmt": "FAQ", "title": "개정 전자상거래법 후기 공개 의무 FAQ: 쇼핑몰이 첫 화면에 알려야 할 4가지", "kw": "쇼핑몰 리뷰 삭제 기준 공개", "basis": "쇼핑몰 후기 운영 기준 공개 의무화", "region": "한국"}, {"site": "리뷰홈", "fmt": "QA", "title": "네이버 플레이스 별점이 공개되면 사장님은 무엇부터 점검해야 하나요?", "kw": "네이버 플레이스 별점 공개", "basis": "네이버 플레이스 별점 공개 전환", "region": "한국"}, {"site": "리뷰홈", "fmt": "HT", "title": "뒷광고 제재 피하는 체험단 운영법: 표기 위치·문구·검수 체크리스트", "kw": "뒷광고 처벌 기준", "basis": "SNS 뒷광고 의심 게시물 여전히 2만건대", "region": "한국"}, {"site": "리뷰홈", "fmt": "QA", "title": "네이버 쇼핑 AI 에이전트는 어떤 리뷰를 근거로 상품을 추천하나요?", "kw": "네이버 쇼핑 AI 에이전트", "basis": "네이버 쇼핑 AI 에이전트 등장", "region": "한국"}, {"site": "메인홈", "fmt": "HT", "title": "네이버 AI 브리핑 광고 시작 전 확인할 5가지: 검색광고와 차이·예산 설계", "kw": "네이버 AI 브리핑 광고", "basis": "네이버 AI 브리핑 광고 정식 출시", "region": "한국"}, {"site": "메인홈", "fmt": "QA", "title": "챗GPT가 우리 상품을 추천하게 하려면 무엇이 필요한가요?", "kw": "챗GPT 상품 추천 노출", "basis": "챗GPT 검색 이용률 과반", "region": "한국"}, {"site": "메인홈", "fmt": "FAQ", "title": "건강기능식품 광고 심의·체험기 금지 표현 FAQ (2026 식약처 고시 반영)", "kw": "건강기능식품 광고 심의", "basis": "건기식·식품 AI 가짜 전문가 광고 단속", "region": "한국"}, {"site": "메인홈", "fmt": "QA", "title": "틱톡샵 한국 출시 전, 국내 셀러는 어디로 먼저 입점할 수 있나요?", "kw": "틱톡샵 입점 방법", "basis": "틱톡샵 한국 출시 지연, 해외 입점은 가능", "region": "한국"}, {"site": "블로그", "fmt": "HT", "title": "수수료·광고비 부담 줄인 소상공인 체험단 예산 재배분 사례", "kw": "체험단 예산 배분", "basis": "입점 판매자 비용 부담 매출 21.7%", "region": "한국"}, {"site": "리뷰홈", "fmt": "FAQ", "title": "미국 FTC 가짜 리뷰 규정, 한국 셀러에게도 적용되나요?", "kw": "미국 FTC 가짜 리뷰 규정", "basis": "FTC 가짜 리뷰 규정 첫 공개 집행", "region": "미국"}, {"site": "리뷰홈", "fmt": "HT", "title": "아마존 바인으로 초기 리뷰 확보하는 법: 2026 리뷰 공유 분리 이후 체크리스트", "kw": "아마존 바인 프로그램", "basis": "아마존 변형 상품 리뷰 공유 분리", "region": "미국"}, {"site": "리뷰홈", "fmt": "QA", "title": "아마존에서 체험단 방식 리뷰 확보가 가능한가요?", "kw": "아마존 리뷰 정책", "basis": "아마존 변형 상품 리뷰 공유 분리", "region": "미국"}, {"site": "메인홈", "fmt": "HT", "title": "틱톡샵 미국 입점부터 크리에이터 제휴까지 시작하는 순서", "kw": "틱톡샵 미국 입점", "basis": "틱톡샵 미국, 최대 시장으로 성장", "region": "미국"}, {"site": "메인홈", "fmt": "FAQ", "title": "구글 AI 모드 시대, 미국 검색 노출은 무엇이 달라지나요?", "kw": "구글 AI 모드 광고", "basis": "구글 AI 모드에 쇼핑 광고 도입", "region": "미국"}, {"site": "메인홈", "fmt": "QA", "title": "챗GPT 광고가 생기면 AEO는 필요 없어지나요?", "kw": "챗GPT 광고", "basis": "챗GPT 광고 미국 테스트 개시", "region": "미국"}, {"site": "블로그", "fmt": "HT", "title": "K뷰티 미국 진출 준비 체크리스트: 아마존·틱톡샵 채널별 리뷰·콘텐츠 전략", "kw": "K뷰티 미국 진출 마케팅", "basis": "K뷰티 대미 수출 급증, 관세 15% 부담", "region": "미국"}, {"site": "블로그", "fmt": "QA", "title": "미국 인플루언서 협찬, 광고 표기 없이 올리면 어떻게 되나요?", "kw": "미국 인플루언서 광고 표기", "basis": "크리에이터 광고, 독립 매체로 부상", "region": "미국"}, {"site": "리뷰홈", "fmt": "QA", "title": "일본에서 인플루언서 협찬 표기 안 하면 한국 회사도 처벌받나요?", "kw": "일본 스테마 규제", "basis": "한국 앱 SNOW 스테마 조치명령", "region": "일본"}, {"site": "리뷰홈", "fmt": "HT", "title": "일본 진출 브랜드를 위한 PR 표기 체크리스트: 게시물부터 상세페이지 전재까지", "kw": "일본 인플루언서 PR 표기", "basis": "의뢰 표기 잘라낸 전재도 스테마", "region": "일본"}, {"site": "리뷰홈", "fmt": "FAQ", "title": "일본 체험단·리뷰 마케팅 FAQ: 경품표시법 기준으로 허용과 금지 구분", "kw": "일본 체험단 마케팅", "basis": "경품표시법 집행 상시화", "region": "일본"}, {"site": "메인홈", "fmt": "HT", "title": "큐텐재팬 입점부터 메가와리 첫 참가까지 준비 순서", "kw": "큐텐재팬 입점", "basis": "큐텐재팬, 한국 신생 브랜드 육성", "region": "일본"}, {"site": "메인홈", "fmt": "QA", "title": "틱톡샵 재팬, 한국 브랜드가 지금 들어가도 늦지 않았나요?", "kw": "틱톡샵 재팬", "basis": "TikTok Shop 일본 1년 GMV 약 500억엔", "region": "일본"}, {"site": "메인홈", "fmt": "FAQ", "title": "일본 AI 검색(구글 AI 개요·Yahoo Agent i) 노출 FAQ", "kw": "일본 AI 검색 노출", "basis": "구글 검색 유입률 41%로 하락", "region": "일본"}, {"site": "블로그", "fmt": "HT", "title": "일본 소비자 65%가 리뷰 불신, 신뢰받는 후기 쌓는 정식 체험단 운영법", "kw": "일본 체험단 마케팅", "basis": "EC 리뷰 불신 확산", "region": "일본"}, {"site": "블로그", "fmt": "QA", "title": "큐텐 메가와리 전에 리뷰·콘텐츠는 언제부터 준비해야 하나요?", "kw": "큐텐 메가와리 준비", "basis": "큐텐재팬, 한국 신생 브랜드 육성", "region": "일본"}, {"site": "메인홈", "fmt": "QA", "title": "AI 답변에 우리 제품을 '심는' GEO, 중국에서는 왜 고발됐나요?", "kw": "AI 추천 광고 표기", "basis": "CCTV 315, AI '투독' 산업 고발", "region": "중국"}, {"site": "메인홈", "fmt": "HT", "title": "출처로 인용되는 AEO 콘텐츠 만드는 법: 원고 대량 배포 대신 근거 구조화", "kw": "AI 추천 광고 표기", "basis": "GEO, 디지털 마케팅의 새 전장", "region": "중국"}, {"site": "메인홈", "fmt": "FAQ", "title": "샤오홍슈 마케팅 FAQ: 협찬 표기·계정 운영·AI 콘텐츠 규칙 정리", "kw": "샤오홍슈 마케팅", "basis": "샤오홍슈 AI 가짜 노트·대행 계정 단속", "region": "중국"}, {"site": "리뷰홈", "fmt": "QA", "title": "AI로 쓴 후기, 표기하지 않으면 어떻게 되나요?", "kw": "AI 생성 리뷰 표기 의무", "basis": "샤오홍슈 AI 가짜 노트·대행 계정 단속", "region": "중국"}, {"site": "리뷰홈", "fmt": "HT", "title": "샤오홍슈 체험단, 실사용자 후기로 안전하게 운영하는 법", "kw": "샤오홍슈 체험단", "basis": "개정 반부정당경쟁법, 허위 거래·허위 평가 조직 금지", "region": "중국"}, {"site": "메인홈", "fmt": "HT", "title": "더우인 입점 방법과 검색·상품카드 노출 구조 이해", "kw": "더우인 입점 방법", "basis": "더우인, 상품카드·검색 유입 비중 확대", "region": "중국"}, {"site": "블로그", "fmt": "HT", "title": "K뷰티 중국 재진출 흐름: 더우인·티몰 글로벌 외 채널 다변화 사례 정리", "kw": "K뷰티 중국 진출 마케팅", "basis": "K-뷰티 중국 수출 반등과 채널 재편", "region": "중국"}, {"site": "메인홈", "fmt": "FAQ", "title": "테무·알리 공세 속 중소 셀러가 리뷰 신뢰로 버티는 법 FAQ", "kw": "테무 알리 대응 전략", "basis": "C커머스 국내 MAU 1,450만 명대", "region": "중국"}, {"site": "메인홈", "fmt": "QA", "title": "챗GPT·구글 AI는 어떤 사이트를 인용하나요?", "kw": "AI 답변 인용 출처", "basis": "AI 답변 인용, 리뷰·비교 콘텐츠 비중 최대", "region": "글로벌"}, {"site": "리뷰홈", "fmt": "FAQ", "title": "리뷰 이벤트·체험단 후기, 어떻게 표기해야 안전한가요? 국내외 규제 FAQ", "kw": "인센티브 리뷰 표기", "basis": "영국 CMA, 가짜·미표기 인센티브 리뷰 첫 조사", "region": "글로벌"}, {"site": "메인홈", "fmt": "HT", "title": "구글 AI 개요 이후 블로그 유입이 줄었을 때 점검하는 5단계", "kw": "구글 AI 개요 트래픽 감소", "basis": "AI 개요 노출 시 1위 클릭률 58% 하락", "region": "글로벌"}, {"site": "리뷰홈", "fmt": "HT", "title": "마이크로 인플루언서 체험단으로 신상품 후기 쌓는 법", "kw": "마이크로 인플루언서 체험단", "basis": "인플루언서 예산 증액·나노/마이크로 확대", "region": "글로벌"}, {"site": "메인홈", "fmt": "FAQ", "title": "AI로 만든 광고 이미지·영상, 표시해야 하나요? EU AI법 FAQ", "kw": "AI 생성 광고 표시 의무", "basis": "EU AI 생성물 표시 행동강령 확정", "region": "글로벌"}, {"site": "블로그", "fmt": "HT", "title": "쇼피 라이브로 동남아 첫 주문 만드는 준비 체크리스트", "kw": "쇼피 라이브 판매", "basis": "쇼피 9.9, 한국 셀러 라이브 주문 12배", "region": "글로벌"}, {"site": "메인홈", "fmt": "QA", "title": "틱톡샵으로 베트남 판매할 때 바뀐 전자상거래법, 무엇을 지켜야 하나요?", "kw": "틱톡샵 동남아 입점", "basis": "베트남 전자상거래법 시행, 라이브 판매 책임 강화", "region": "글로벌"}, {"site": "메인홈", "fmt": "QA", "title": "리테일 미디어 광고, 작은 판매자도 해야 하나요?", "kw": "리테일 미디어 광고", "basis": "글로벌 광고비 11.9% 성장, 소셜 최고 성장", "region": "글로벌"}, {"site": "메인홈", "fmt": "HT", "title": "AI 마케팅 대행사 고르는 법: 계약 전 확인할 7가지", "kw": "마케팅 대행사 고르는 법", "basis": "한경 '챗GPT에 회사 띄워준다더니…사기성 AI 마케팅 주의보'", "region": "AI 마케팅·광고대행사"}, {"site": "메인홈", "fmt": "QA", "title": "'AI 답변 노출 보장'이라는 대행사, 믿어도 되나요?", "kw": "AI 마케팅 대행사", "basis": "한경 '챗GPT에 회사 띄워준다더니…사기성 AI 마케팅 주의보'", "region": "AI 마케팅·광고대행사"}, {"site": "메인홈", "fmt": "FAQ", "title": "마케팅 대행사 비용·수수료 FAQ: 월 보수, 광고비, 성과 보수 차이", "kw": "마케팅 대행사 비용", "basis": "AMPM글로벌 오운드미디어 '마케팅 인사이드'", "region": "AI 마케팅·광고대행사"}, {"site": "메인홈", "fmt": "HT", "title": "GEO 성과는 어떻게 측정하나요? 캡처가 아닌 반복 측정 기준", "kw": "GEO 성과 측정 방법", "basis": "적정마케팅연구소 '생성형 AI 출처 인용 리포트' 발표", "region": "AI 마케팅·광고대행사"}, {"site": "리뷰홈", "fmt": "FAQ", "title": "리뷰 마케팅 대행사 맡기기 전 자주 묻는 질문 8가지", "kw": "리뷰 마케팅 대행사", "basis": "공정위, 광고대행사 네오프 뒷광고 시정명령 + AI 표시·광고 가이드라인(안)", "region": "AI 마케팅·광고대행사"}, {"site": "리뷰홈", "fmt": "HT", "title": "체험단 대행사 계약서에서 꼭 봐야 할 표기·환불·보고 조항", "kw": "체험단 대행사 계약 전 확인사항", "basis": "공정위, 광고대행사 네오프 뒷광고 시정명령 + AI 표시·광고 가이드라인(안)", "region": "AI 마케팅·광고대행사"}, {"site": "리뷰홈", "fmt": "QA", "title": "AI로 만든 후기·모델 써도 되나요? 가상인물 표시 기준 정리", "kw": "AI 후기 광고 가상인물 표시", "basis": "공정위, 광고대행사 네오프 뒷광고 시정명령 + AI 표시·광고 가이드라인(안)", "region": "AI 마케팅·광고대행사"}, {"site": "리뷰홈", "fmt": "HT", "title": "우리 스토어 리뷰 상태 5분 자가진단 체크리스트", "kw": "리뷰 마케팅 대행사", "basis": "HubSpot AI Search(AEO) Grader 무료 진단 도구", "region": "AI 마케팅·광고대행사"}, {"site": "블로그", "fmt": "HT", "title": "네이버 블로그 후기가 AI 브리핑에 인용되는 구조, 체험단 운영 사례로 보기", "kw": "AI 마케팅 대행사", "basis": "적정마케팅연구소 '생성형 AI 출처 인용 리포트' 발표", "region": "AI 마케팅·광고대행사"}, {"site": "메인홈", "fmt": "QA", "title": "대행사 비교글의 '1위'는 누가 정하나요? 공정한 비교 기준", "kw": "마케팅 대행사 고르는 법", "basis": "제스트컴퍼니 '국내 GEO 대행사 비교 TOP5' 자사 1위 비교글", "region": "AI 마케팅·광고대행사"}, {"site": "메인홈", "fmt": "HT", "title": "신규 브랜드 런칭 90일, 리뷰·언론·검색 등록 무엇부터 해야 하나요?", "kw": "신규 브랜드 런칭 마케팅", "basis": "Ahrefs 7.5만 브랜드 분석", "region": "신규 브랜드·홈페이지"}, {"site": "메인홈", "fmt": "HT", "title": "새 홈페이지가 네이버·구글에 안 나올 때 확인할 5가지", "kw": "네이버 서치어드바이저 등록", "basis": "구글: AI 개요 노출에 별도 최적화 불필요", "region": "신규 브랜드·홈페이지"}, {"site": "리뷰홈", "fmt": "HT", "title": "리뷰 0개 신생 브랜드, 첫 30개 리뷰를 정직하게 모으는 법", "kw": "신생 브랜드 리뷰 모으기", "basis": "공정위 추천보증심사지침 안내서 개정", "region": "신규 브랜드·홈페이지"}, {"site": "리뷰홈", "fmt": "QA", "title": "체험단 후기에 '경품 이벤트'를 걸면 광고 표시를 해야 하나요?", "kw": "신생 브랜드 리뷰 모으기", "basis": "공정위 추천보증심사지침 안내서 개정", "region": "신규 브랜드·홈페이지"}, {"site": "메인홈", "fmt": "HT", "title": "기자가 고르는 런칭 보도자료, 제목과 첫 문단 쓰는 법", "kw": "런칭 보도자료 작성법", "basis": "SBA 커뮤니케이션클럽 PR 전략", "region": "신규 브랜드·홈페이지"}, {"site": "블로그", "fmt": "HT", "title": "와디즈 펀딩 끝난 뒤 리뷰와 판매를 이어가는 방법", "kw": "와디즈 펀딩 마케팅", "basis": "와디즈 에디션 설랩 사례", "region": "신규 브랜드·홈페이지"}, {"site": "리뷰홈", "fmt": "FAQ", "title": "신규 오픈 매장 플레이스 리뷰 FAQ: 영수증 리뷰부터 답글 관리까지", "kw": "오픈 초기 플레이스 리뷰", "basis": "페이히어×네이버 플레이스 리뷰 알림톡", "region": "신규 브랜드·홈페이지"}, {"site": "메인홈", "fmt": "FAQ", "title": "신생 브랜드가 챗GPT·AI 검색 답변에 나오려면? 엔티티 기본 세트 FAQ", "kw": "신생 브랜드 AI 검색 노출", "basis": "매경이코노미 GEO 5대 전략", "region": "신규 브랜드·홈페이지"}, {"site": "블로그", "fmt": "QA", "title": "브랜드 소개 문구가 채널마다 다르면 AI가 헷갈리나요?", "kw": "신생 브랜드 AI 검색 노출", "basis": "TBWA 데이터랩 엔티티 SEO", "region": "신규 브랜드·홈페이지"}, {"site": "메인홈", "fmt": "QA", "title": "올리브영·네이버 지원 프로그램 선정 이력, 마케팅에 어떻게 쓰나요?", "kw": "신규 브랜드 런칭 마케팅", "basis": "올리브영 K-슈퍼루키 위드영", "region": "신규 브랜드·홈페이지"}];
 const MPRESS = [{"title": "굿투그레이트, 네이버 AI 브리핑·쇼핑 에이전트 시대 '실구매 리뷰 기반' AEO 운영 기준 공개", "cat": "AI 검색", "need": "고객사 AI 브리핑·챗GPT 노출 전후 문의·예약 변화 데이터, 자사 AEO 운영 기준 문서", "region": "한국"}, {"title": "개정 전자상거래법 시행 이후 체험단 운영 기준, 굿투그레이트가 본 리뷰 마케팅 컴플라이언스 체크포인트", "cat": "리뷰 마케팅", "need": "자사 캠페인 광고 표기 준수율·원고 검수 건수 집계, 공정위·플랫폼 정책 원문 정리", "region": "한국"}, {"title": "굿투그레이트, 미국 FTC 리뷰 규정 기준 '해외 진출 셀러 리뷰 준법 가이드' 공개", "cat": "리뷰 마케팅", "need": "FTC 소비자 리뷰 규정(16 CFR 465) 금지 항목 정리, 아마존 리뷰 정책 요약, 자사 국내 체험단 표기·운영 기준", "region": "미국"}, {"title": "검색이 광고판으로… 굿투그레이트 '구글 AI 모드·챗GPT 광고 시대의 AI 답변 노출 전략' 분석", "cat": "AI 검색", "need": "Pew 클릭률 조사·구글 AI 모드 광고 발표 인용, 자사 AEO 고객 AI 답변 인용 전후 사례 수치", "region": "미국"}, {"title": "굿투그레이트, '일본 스테마 규제 한국 기업도 예외 없어'…일본 진출 셀러 PR 표기 준수 가이드 공개", "cat": "업계 동향", "need": "소비자청 SNOW·高光製薬 조치명령 원문, 자사 일본 체험단 운영 표기 기준 문서", "region": "일본"}, {"title": "굿투그레이트, K뷰티 일본 진출 브랜드 대상 크리에이터·체험단 운영 및 AI 검색 노출 지원 확대", "cat": "리뷰 마케팅", "need": "일본향 운영 사례(브랜드 동의), 큐텐·TikTok Shop 성과 지표, 서비스 범위·준법 절차 설명 자료", "region": "일본"}, {"title": "굿투그레이트, 중국 'AI 답변 조작' 고발 계기로 출처 기반 AEO 운영 원칙 공개", "cat": "AI 검색", "need": "CCTV 315 보도 요약, 자사 AEO 운영 기준(광고 표기·출처 명시) 문서, 고객사 AI 인용 개선 사례", "region": "중국"}, {"title": "중국·한국 가짜 후기 규제 강화 흐름 속 실사용 체험단 수요 증가", "cat": "업계 동향", "need": "중국 반부정당경쟁법·샤오홍슈 단속 자료, 국내 체험단 광고 표기 준수 현황, 자사 캠페인 접수 추이", "region": "중국"}, {"title": "굿투그레이트 \"AI 답변 인용의 3분의 1은 리뷰·비교 콘텐츠\"… 실사용 후기 기반 AEO 전략 제시", "cat": "AI 검색", "need": "5W 인용 조사·Ahrefs 클릭률 자료 + 자사 AEO 캠페인 전후 AI 언급 사례", "region": "글로벌"}, {"title": "영국·EU 리뷰 표기 단속 본격화… 굿투그레이트, 해외 진출 셀러용 체험단 표기 준수 기준 공개", "cat": "업계 동향", "need": "CMA 조사 발표문·EU AI 표시 강령 + 자사 체험단 표기 운영 기준", "region": "글로벌"}, {"title": "굿투그레이트, '2026 하반기 리뷰 캠페인 데이터 리포트' 발표…카테고리별 첫 리뷰 확보 기간·광고 표기 준수율 공개", "cat": "리뷰 마케팅", "need": "2026 하반기 자사 캠페인 집계(캠페인 수, 카테고리별 리뷰 확보 소요일, #광고·#협찬 표기 준수율), 집계 기준·기간 명시, 고객사 비식별 처리", "region": "AI 마케팅·광고대행사"}, {"title": "굿투그레이트, '노출 보장 없는 AI 검색 대응' 원칙 공개…동의받은 사례만 게시·측정 기준 공개", "cat": "AI 검색", "need": "AEO/GEO 서비스 측정 방식(질문 세트·반복 측정 주기), 고객 사례 게시 동의서, 공정위 AI 광고 가이드라인(안) 준수 체크리스트, 대표 코멘트", "region": "AI 마케팅·광고대행사"}, {"title": "굿투그레이트, 신생 브랜드 '런칭 90일 신뢰 구축' 패키지 공개…실사용 리뷰·보도자료·AI 검색 노출 통합", "cat": "AI 검색", "need": "패키지 구성·단가표, 시범 적용 신규 브랜드 2~3곳의 리뷰 수·검색 노출 전후 수치, 표시 의무 준수 프로세스 문서", "region": "신규 브랜드·홈페이지"}, {"title": "굿투그레이트 \"신생 브랜드 첫 리뷰, 추천보증 표시 기준부터\"…공정위 개정 안내서 반영 체험단 운영 기준 발표", "cat": "리뷰 마케팅", "need": "자체 체험단 표시 문구 표준안, 2025-12 개정 안내서 대조표, 운영 캠페인 수·표시 준수율 내부 집계", "region": "신규 브랜드·홈페이지"}];
-let poolSite = "", poolFmt = "", poolSrc = "";
-function renderPool(){
-  const fitCls = f => f==="상" ? "s" : f==="중" ? "m" : "l";
-  document.getElementById("poolKpi").innerHTML = `
-    <div class="card tint blue"><span class="t14s">판매 상품</span><div class="v"><span class="big num">${PRODUCTS.length}개</span><span class="delta">AEO 적합 상 ${PRODUCTS.filter(p=>p.fit==="상").length}개</span></div></div>
-    <div class="card"><span class="t14s">추가 키워드</span><div class="v"><span class="big num">${PKW.length+MKW.length}개</span><span class="delta muted">상품 ${PKW.length} · 시장 ${MKW.length}</span></div></div>
-    <div class="card"><span class="t14s">주제 후보</span><div class="v"><span class="big num">${POOL.length+MPOOL.length}개</span><span class="delta muted">상품 ${POOL.length} · 시장 ${MPOOL.length}</span></div></div>
-    <div class="card tint purple"><span class="t14s">보도 후보</span><div class="v"><span class="big num">${PRESS_IDEAS.length+MPRESS.length}개</span><span class="delta">언론보도 탭</span></div></div>`;
-  const sites = ["","리뷰홈","메인홈","블로그"], fmts = ["","HT","QA","FAQ"];
-  document.getElementById("poolSite").innerHTML = sites.map(s => `<button aria-pressed="${s===poolSite}" data-v="${s}">${s||"전체 채널"}</button>`).join("");
-  document.getElementById("poolFmt").innerHTML = fmts.map(s => `<button aria-pressed="${s===poolFmt}" data-v="${s}">${s||"전체 형식"}</button>`).join("");
-  const siteC = {"리뷰홈":"review","메인홈":"main","블로그":"blog"};
-  const ALL = [...POOL.map(p => ({...p, src:"상품", ref:p.product})), ...MPOOL.map(p => ({...p, src:"시장", ref:`시장 · ${p.region}`}))];
-  document.getElementById("poolSrc").innerHTML = ["","상품","시장"].map(s => `<button aria-pressed="${s===poolSrc}" data-v="${s}">${s||"전체 출처"}</button>`).join("");
-  const list = ALL.filter(p => (!poolSite || p.site===poolSite) && (!poolFmt || p.fmt===poolFmt) && (!poolSrc || p.src===poolSrc));
-  document.getElementById("poolCnt").textContent = `${list.length}개`;
-  document.getElementById("poolTable").innerHTML = list.length ? `<div class="tr th pool"><span>채널</span><span class="pfmt">형식</span><span>제목 후보</span><span>근거 · 키워드</span></div>` + list.map(p => `<div class="tr pool" data-ps="lee kim"><span><span class="tag" style="--cc:var(--c-${siteC[p.site]||"blog"})">${p.site}</span></span><span class="pfmt"><span class="fmt" style="--cc:var(--c-${siteC[p.site]||"blog"})">${p.fmt}</span></span><span${p.basis?` data-tip="${esc(p.title+"\n근거 "+p.basis)}"`:""}>${p.title}</span><span class="out">${p.ref}<br>${p.kw}</span></div>`).join("") : `<p class="muted t12">후보 없음</p>`;
-  document.getElementById("prodCnt").textContent = `${PRODUCTS.length}개`;
-  document.getElementById("prodList").innerHTML = PRODUCTS.map(p => `<li data-tip="${esc(`${p.name}\n${p.why}${p.caution?"\n주의 "+p.caution:""}`)}"><span class="fit ${fitCls(p.fit)}" title="AEO 적합도">${p.fit}</span><span><b>${p.name}</b><small>${p.summary} · ${p.channel}</small>${p.caution?`<small class="cau">${p.caution}</small>`:""}</span></li>`).join("") || `<li><span></span><span class="muted t12">분석 중</span></li>`;
-  document.getElementById("landReuse").innerHTML = LAND.reuse.map(x => `<li>${x}</li>`).join("");
-  document.getElementById("landRisk").innerHTML = LAND.risk.map(x => `<li>${x}</li>`).join("");
-  // 키워드 탭 상품 키워드
+
+// ===== 키워드 =====
+const ALLT = [...POOL.map(p => ({...p, src:"상품", ref:p.product})), ...MPOOL.map(p => ({...p, src:"시장", ref:p.region}))];
+const PI = [...PRESS_IDEAS.map(x => ({...x, ref:x.product})), ...MPRESS.map(x => ({...x, ref:`시장 · ${x.region}`}))];
+const CAT_C = {"AI 검색":"main","리뷰 마케팅":"review","운영 사례":"blog","업계 동향":"press"};
+const KW_IDS = ["kwR1","kwR2","kwR3","kwM1","kwM2","kwM3"];
+const topicsOfKw = kw => ALLT.filter(t => t.kw===kw || t.title.includes(kw)).length;
+let kwTier = "", kwSrc = "", kwQ = "";
+function initKeywords(){
   const tgt = {"리뷰홈":{P1:"kwR1",P2:"kwR2",P3:"kwR3"},"메인홈":{P1:"kwM1",P2:"kwM2",P3:"kwM3"}};
-  document.querySelectorAll(".chip.prod,.chip.mkt").forEach(c => c.remove());
-  PKW.forEach(k => { const id = (tgt[k.site]||tgt["메인홈"])[k.tier] || "kwM3"; const el = document.getElementById(id); if (!el) return;
-    el.insertAdjacentHTML("beforeend", `<span class="chip prod ${k.tier==="P1"?"p1":""}" data-tip="${esc(`${k.kw}\n${k.product} · ${k.why}`)}">${k.kw}</span>`); });
-  MKW.forEach(k => { const id = (tgt[k.site]||tgt["메인홈"])[k.tier] || "kwM3"; const el = document.getElementById(id); if (!el) return;
-    el.insertAdjacentHTML("beforeend", `<span class="chip mkt ${k.tier==="P1"?"p1":""}" data-tip="${esc(`${k.kw}\n시장 · ${k.region} · ${k.why}`)}">${k.kw}</span>`); });
-  document.getElementById("kwCntR").textContent = document.querySelectorAll("#kwR1 .chip,#kwR2 .chip,#kwR3 .chip").length+"개";
-  document.getElementById("kwCntM").textContent = document.querySelectorAll("#kwM1 .chip,#kwM2 .chip,#kwM3 .chip").length+"개";  // 보도 후보
-  const PI = [...PRESS_IDEAS.map(x => ({...x, ref:x.product})), ...MPRESS.map(x => ({...x, ref:`시장 · ${x.region}`}))];
-  document.getElementById("pressIdeaBlock").hidden = !PI.length;
-  document.getElementById("pressIdeaCnt").textContent = PI.length+"개";
-  const catC = {"AI 검색":"main","리뷰 마케팅":"review","운영 사례":"blog","업계 동향":"press"};
-  document.getElementById("pressIdeas").innerHTML = PI.map(x => `<div class="tr press" data-ps="ksi kim"><span class="d">후보</span><span class="pl" style="--cc:var(--c-${catC[x.cat]||"press"})"><span class="tag">${x.cat}</span></span><span class="h">${x.title}<small>${x.ref} · ${x.need}</small></span><span class="status">미배정</span></div>`).join("");
-  applySearch();
+  const add = (k, cls, sub) => { const el = $((tgt[k.site]||tgt["메인홈"])[k.tier] || "kwM3"); if (el) el.insertAdjacentHTML("beforeend", `<span class="chip ${cls} ${k.tier==="P1"?"p1":""}" data-sub="${esc(sub)}">${k.kw}</span>`); };
+  PKW.forEach(k => add(k, "prod", `${k.product} · ${k.why}`));
+  MKW.forEach(k => add(k, "mkt", `시장 · ${k.region} · ${k.why}`));
+  KW_IDS.forEach(id => { const tier = id.endsWith("1") ? "P1" : id.endsWith("2") ? "P2" : "P3"; $(id).querySelectorAll(".chip").forEach(c => {
+    const kw = c.textContent, n = topicsOfKw(kw);
+    c.dataset.kw = kw; c.dataset.tier = tier; c.dataset.src = c.classList.contains("prod") ? "상품" : c.classList.contains("mkt") ? "시장" : "기존";
+    c.setAttribute("role","button"); c.tabIndex = 0; c.dataset.tip = [kw, c.dataset.sub, n ? `관련 주제 ${n}개` : "클릭하면 복사"].filter(Boolean).join("\n");
+  }); });
+  $("kwTier").innerHTML = segBtns([["","전체"],["P1","P1"],["P2","P2"],["P3","P3"]], kwTier);
+  $("kwSrc").innerHTML = segBtns([["","전체 출처"],["기존","기존"],["상품","상품"],["시장","시장"]], kwSrc);
+  KW_IDS.forEach(id => $(id).addEventListener("click", e => { const c = e.target.closest(".chip"); if (!c) return; const n = topicsOfKw(c.dataset.kw); if (n) openPool(c.dataset.kw); else copy(c.dataset.kw, "키워드 복사 완료"); }));
 }
-document.getElementById("poolSite").addEventListener("click", e => { const b = e.target.closest("button"); if (b) { poolSite = b.dataset.v; renderPool(); } });
-document.getElementById("poolFmt").addEventListener("click", e => { const b = e.target.closest("button"); if (b) { poolFmt = b.dataset.v; renderPool(); } });
-document.getElementById("poolSrc").addEventListener("click", e => { const b = e.target.closest("button"); if (b) { poolSrc = b.dataset.v; renderPool(); } });
+function filterKw(){
+  const s = kwQ.trim().toLowerCase(); let n = 0;
+  KW_IDS.forEach(id => { let v = 0; $(id).querySelectorAll(".chip").forEach(c => { const hit = (!kwTier || c.dataset.tier===kwTier) && (!kwSrc || c.dataset.src===kwSrc) && (!s || c.dataset.kw.toLowerCase().includes(s)); c.hidden = !hit; if (hit) { v++; n++; } }); $(id).closest(".tier").hidden = !v; });
+  ["R","M"].forEach(g => { const c = ["1","2","3"].reduce((a,x) => a + $("kw"+g+x).querySelectorAll(".chip:not([hidden])").length, 0); $("kwCnt"+g).textContent = c+"개"; });
+  $("kwCnt").textContent = n+"개";
+}
+onSeg("kwTier", v => { kwTier = v; $("kwTier").innerHTML = segBtns([["","전체"],["P1","P1"],["P2","P2"],["P3","P3"]], kwTier); filterKw(); });
+onSeg("kwSrc", v => { kwSrc = v; $("kwSrc").innerHTML = segBtns([["","전체 출처"],["기존","기존"],["상품","상품"],["시장","시장"]], kwSrc); filterKw(); });
+$("kwQ").addEventListener("input", e => { kwQ = e.target.value; filterKw(); });
+function openKw(k){ kwQ = k; $("kwQ").value = k; kwTier = ""; kwSrc = ""; onKwSeg(); filterKw(); openTab("keywords"); }
+function onKwSeg(){ $("kwTier").innerHTML = segBtns([["","전체"],["P1","P1"],["P2","P2"],["P3","P3"]], kwTier); $("kwSrc").innerHTML = segBtns([["","전체 출처"],["기존","기존"],["상품","상품"],["시장","시장"]], kwSrc); }
+
+// ===== 주제 후보 =====
+let poolTab = "t", poolSite = "", poolFmt = "", poolSrc = "", poolQ = "", poolN = 30;
+const fitCls = f => f==="상" ? "s" : f==="중" ? "m" : "l";
+const prodRef = p => (ALLT.find(t => t.src==="상품" && (t.ref===p.name || p.name.startsWith(t.ref))) || {}).ref;
+function renderPool(){
+  $("poolTabs").innerHTML = segBtns([["t",`주제 ${ALLT.length}`],["p",`판매 상품 ${PRODUCTS.length}`],["l","상세페이지"]], poolTab);
+  $("pT").hidden = poolTab!=="t"; $("pP").hidden = poolTab!=="p"; $("pL").hidden = poolTab!=="l";
+  $("poolSite").innerHTML = segBtns([["","전체 채널"],["리뷰홈","리뷰홈"],["메인홈","메인홈"],["블로그","블로그"]], poolSite);
+  $("poolFmt").innerHTML = segBtns([["","전체 형식"],["HT","HT"],["QA","QA"],["FAQ","FAQ"]], poolFmt);
+  $("poolSrc").innerHTML = segBtns([["","전체 출처"],["상품","상품"],["시장","시장"]], poolSrc);
+  const s = poolQ.trim().toLowerCase();
+  const list = ALLT.filter(p => (!poolSite || p.site===poolSite) && (!poolFmt || p.fmt===poolFmt) && (!poolSrc || p.src===poolSrc) && (!s || (p.title+" "+p.kw+" "+p.ref+" "+(p.basis||"")).toLowerCase().includes(s)));
+  $("poolCnt").textContent = `${list.length}개`;
+  $("poolTable").innerHTML = list.slice(0,poolN).map(p => `<button class="pi" data-copy="${esc(p.title)}" style="--cc:var(--c-${SITE_C[p.site]||"blog"})"><span class="fmt">${p.fmt}</span><span class="pt"><span>${p.title}</span><small>${p.site} · ${p.ref} · ${p.kw}</small></span></button>`).join("") || `<p class="muted">조건에 맞는 주제 없음</p>`;
+  $("poolMore").hidden = list.length <= poolN;
+  $("poolMore").textContent = `더 보기 (${list.length-poolN}개)`;
+}
+function renderProducts(){
+  $("prodList").innerHTML = ["상","중","하"].map(f => { const ps = PRODUCTS.filter(p => p.fit===f); if (!ps.length) return "";
+    return `<div class="pgroup"><h2><span class="fit ${fitCls(f)}">${f}</span>AEO 적합도 ${f}<span class="cnt num">${ps.length}개</span></h2><div class="pgrid">${ps.map(p => { const ref = prodRef(p), n = ref ? ALLT.filter(t => t.ref===ref).length : 0;
+      return `<div class="pcard"><b>${p.name}</b><p>${p.summary}</p><p class="muted">${p.channel} · ${p.why}</p>${p.caution?`<p class="cau">${p.caution}</p>`:""}${n?`<button class="lnk" data-ref="${esc(ref)}">주제 ${n}개 보기</button>`:""}</div>`; }).join("")}</div></div>`; }).join("");
+  $("landReuse").innerHTML = LAND.reuse.map(x => `<li>${x}</li>`).join("");
+  $("landRisk").innerHTML = LAND.risk.map(x => `<li>${x}</li>`).join("");
+}
+function openPool(q){ poolTab = "t"; poolSite = poolFmt = poolSrc = ""; poolQ = q; poolN = 30; $("poolQ").value = q; renderPool(); openTab("pool"); }
+onSeg("poolTabs", v => { poolTab = v; renderPool(); });
+onSeg("poolSite", v => { poolSite = v; poolN = 30; renderPool(); });
+onSeg("poolFmt", v => { poolFmt = v; poolN = 30; renderPool(); });
+onSeg("poolSrc", v => { poolSrc = v; poolN = 30; renderPool(); });
+$("poolQ").addEventListener("input", e => { poolQ = e.target.value; poolN = 30; renderPool(); });
+$("poolMore").addEventListener("click", () => { poolN += 30; renderPool(); });
+$("prodList").addEventListener("click", e => { const b = e.target.closest("[data-ref]"); if (b) { openPool(b.dataset.ref); poolSrc = "상품"; renderPool(); } });
 
 // ===== 시장 동향 =====
-let mkReg = "", mkKind = "";
+let mkReg = "", mkKind = "", mkQ = "", mkN = 20;
 const KIND_C = {"광고":"var(--c-main)","마케팅":"var(--blue)","리뷰":"var(--c-review)","바이럴":"var(--c-blog)","AI 검색":"var(--c-press)","커머스":"var(--mint)","규제":"var(--yellow)"};
+const TRENDS = MARKET.flatMap(m => m.trends.map(t => ({...t, region:m.region})));
 function renderMarket(){
-  const regs = MARKET.map(m => m.region);
-  document.getElementById("mkRegion").innerHTML = ["",...regs].map(r => `<button aria-pressed="${r===mkReg}" data-v="${r}">${r||"전체"}</button>`).join("");
+  $("mkRegion").innerHTML = segBtns([["","전체"],...MARKET.map(m => [m.region,m.region])], mkReg);
   const asOf = MARKET.map(m => m.as_of).filter(Boolean).sort().pop();
-  document.getElementById("mkAsOf").textContent = asOf ? `${asOf.replace("-",".")} 기준 · 출처 링크 포함` : "";
-  const sel = MARKET.filter(m => !mkReg || m.region===mkReg);
-  const trends = sel.flatMap(m => m.trends.map(t => ({...t, region:m.region})));
-  const kinds = [...new Set(trends.map(t => t.kind))];
-  document.getElementById("mkKind").innerHTML = ["",...kinds].map(k => `<button aria-pressed="${k===mkKind}" data-v="${k}">${k||"전체 분야"}</button>`).join("");
-  const tl = trends.filter(t => !mkKind || t.kind===mkKind);
-  const nk = MKW.filter(k => !mkReg || k.region===mkReg).length, np = MPOOL.filter(k => !mkReg || k.region===mkReg).length;
-  document.getElementById("mkKpi").innerHTML = `
-    <div class="card tint blue"><span class="t14s">조사 범위</span><div class="v"><span class="big num">${sel.length}곳</span><span class="delta">${mkReg ? mkReg : "국가 5 · 업계 2"}</span></div></div>
-    <div class="card"><span class="t14s">주요 동향</span><div class="v"><span class="big num">${trends.length}건</span><span class="delta muted">출처 ${new Set(trends.map(t=>t.url)).size}곳</span></div></div>
-    <div class="card"><span class="t14s">추가 키워드</span><div class="v"><span class="big num">${nk}개</span><span class="delta muted">키워드 탭 '시장' 표시</span></div></div>
-    <div class="card tint purple"><span class="t14s">주제 후보</span><div class="v"><span class="big num">${np}개</span><span class="delta">주제 후보 탭</span></div></div>`;
-  document.getElementById("mkHeads").innerHTML = MARKET.map(m => `<button class="mkh" data-v="${m.region}" aria-pressed="${m.region===mkReg}"><b>${m.region}<small>동향 ${m.trends.length}</small></b><span>${m.headline}</span></button>`).join("");
-  document.getElementById("mkCnt").textContent = tl.length+"건";
-  document.getElementById("mkTable").innerHTML = tl.length ? `<div class="tr th mk"><span>지역</span><span>분야</span><span>내용</span><span>출처</span></div>` + tl.map(t => `<div class="tr mk"><span class="d">${t.region}</span><span><span class="tag" style="--cc:${KIND_C[t.kind]||"var(--fg5)"}">${t.kind}</span></span><span class="h">${t.title}<small>${t.detail}</small></span><span class="out">${t.source}<br>${t.date||""}${t.url?`<br><a href="${esc(t.url)}" target="_blank" rel="noopener">원문</a>`:""}</span></div>`).join("") : `<p class="muted t12">조사 결과 없음</p>`;
-  document.getElementById("mkImp").innerHTML = sel.flatMap(m => m.implications.map(x => `<li><span><b style="font-weight:600">${m.region}</b> · ${x}</span></li>`)).join("") || `<li>조사 결과 없음</li>`;
+  $("mkAsOf").textContent = asOf ? `${asOf.replace("-",".")} 기준` : "";
+  const m = MARKET.find(x => x.region===mkReg);
+  $("mkHeads").hidden = !!m; $("mkSum").hidden = !m;
+  $("mkHeads").innerHTML = MARKET.map(x => `<button class="mkh" data-v="${esc(x.region)}"><b>${x.region}<small class="num">${x.trends.length}건</small></b><span>${x.headline}</span></button>`).join("");
+  if (m) { const n = ALLT.filter(t => t.ref===m.region).length; $("mkSumT").textContent = m.region; $("mkHead").textContent = m.headline; $("mkImp").innerHTML = m.implications.map(x => `<li>${x}</li>`).join(""); $("mkTopics").hidden = !n; $("mkTopics").textContent = `주제 ${n}개 보기`; }
+  const base = TRENDS.filter(t => !mkReg || t.region===mkReg);
+  const kinds = [...new Set(base.map(t => t.kind))];
+  $("mkKind").innerHTML = segBtns([["","전체 분야"],...kinds.map(k => [k,k])], mkKind);
+  const s = mkQ.trim().toLowerCase();
+  const tl = base.filter(t => (!mkKind || t.kind===mkKind) && (!s || (t.title+" "+t.detail+" "+t.source).toLowerCase().includes(s)));
+  $("mkCnt").textContent = tl.length+"건";
+  $("mkTable").innerHTML = tl.slice(0,mkN).map(t => `<article class="mi"><div class="mi-h"><span class="tag" style="--cc:${KIND_C[t.kind]||"var(--fg5)"}">${t.kind}</span><span class="t12 muted">${t.region}</span></div><b>${t.title}</b><p>${t.detail}</p><small>${t.source} · ${t.date||""}${t.url?` · <a href="${esc(t.url)}" target="_blank" rel="noopener">원문</a>`:""}</small></article>`).join("") || `<p class="muted">조건에 맞는 동향 없음</p>`;
+  $("mkMore").hidden = tl.length <= mkN;
+  $("mkMore").textContent = `더 보기 (${tl.length-mkN}건)`;
 }
-document.getElementById("mkRegion").addEventListener("click", e => { const b = e.target.closest("button"); if (b) { mkReg = b.dataset.v; mkKind = ""; renderMarket(); } });
-document.getElementById("mkHeads").addEventListener("click", e => { const b = e.target.closest("button"); if (b) { mkReg = mkReg===b.dataset.v ? "" : b.dataset.v; mkKind = ""; renderMarket(); } });
-document.getElementById("mkKind").addEventListener("click", e => { const b = e.target.closest("button"); if (b) { mkKind = b.dataset.v; renderMarket(); } });
+onSeg("mkRegion", v => { mkReg = v; mkKind = ""; mkN = 20; renderMarket(); });
+$("mkHeads").addEventListener("click", e => { const b = e.target.closest("button"); if (b) { mkReg = b.dataset.v; mkKind = ""; mkN = 20; renderMarket(); } });
+onSeg("mkKind", v => { mkKind = v; mkN = 20; renderMarket(); });
+$("mkQ").addEventListener("input", e => { mkQ = e.target.value; mkN = 20; renderMarket(); });
+$("mkMore").addEventListener("click", () => { mkN += 20; renderMarket(); });
+$("mkTopics").addEventListener("click", () => openPool(mkReg));
+function openMarket(region, title){ mkReg = region; mkKind = ""; mkQ = title; mkN = 20; $("mkQ").value = title; renderMarket(); openTab("market"); }
+
+// ===== 전체 검색 =====
+let IDX = [], palSel = 0, palRes = [];
+function buildIndex(){
+  const out = [];
+  Object.entries(titles).forEach(([k,v]) => out.push({g:"메뉴", t:v, s:"", go:() => openTab(k)}));
+  KW_IDS.forEach(id => $(id).querySelectorAll(".chip").forEach(c => out.push({g:"키워드", t:c.dataset.kw, s:`${id[2]==="R"?"리뷰홈":"메인홈"} ${c.dataset.tier} · ${c.dataset.src}`, go:() => openKw(c.dataset.kw)})));
+  Object.entries(TOPICS).forEach(([k,tp]) => { const d = D(k); CH.forEach(([c,n]) => tp[c].forEach((t,i) => out.push({g:"발행 일정", t, s:`${mdw(d)} · ${n} · ${FMT[i]} · ${tp.st}`, go:() => goWeek(d)}))); });
+  ALLT.forEach(p => out.push({g:"주제 후보", t:p.title, s:`${p.site} ${p.fmt} · ${p.ref} · ${p.kw}`, go:() => openPool(p.title)}));
+  PRESS.forEach((p,i) => out.push({g:"언론보도", t:p[3], s:`${mdw(D(p[0]))} 게재 · ${p[2]}`, go:() => openPress(i)}));
+  PI.forEach(x => out.push({g:"보도 후보", t:x.title, s:`${x.cat} · ${x.ref}`, go:() => { pressTab = "i"; renderPress(); openTab("press"); }}));
+  TRENDS.forEach(t => out.push({g:"시장·업계 동향", t:t.title, s:`${t.region} · ${t.kind} · ${t.source}`, go:() => openMarket(t.region, t.title)}));
+  PRODUCTS.forEach(p => out.push({g:"판매 상품", t:p.name, s:p.summary, go:() => { poolTab = "p"; renderPool(); openTab("pool"); }}));
+  IDX = out;
+}
+const hl = (t, terms) => { let h = esc(t); terms.forEach(x => { if (x) h = h.replace(new RegExp(x.replace(/[.*+?^${}()|[\]\\]/g,"\\$&"), "ig"), m => `<mark>${m}</mark>`); }); return h; };
+function renderPal(){
+  const s = $("palQ").value.trim().toLowerCase(), terms = s.split(/\s+/).filter(Boolean);
+  const hits = terms.length ? IDX.filter(x => terms.every(k => (x.t+" "+x.s).toLowerCase().includes(k))) : IDX.filter(x => x.g==="메뉴");
+  const cnt = {}, shown = [];
+  hits.forEach(x => { cnt[x.g] = (cnt[x.g]||0)+1; if (!terms.length || cnt[x.g] <= 5) shown.push(x); });
+  palRes = shown; palSel = Math.min(palSel, Math.max(0, shown.length-1));
+  let g = "", h = "";
+  shown.forEach((x,i) => { if (x.g!==g) { g = x.g; h += `<div class="pal-g">${g}<span class="num">${cnt[g]}</span></div>`; } h += `<button class="pal-i ${i===palSel?"sel":""}" data-i="${i}" role="option" aria-selected="${i===palSel}"><span>${hl(x.t,terms)}</span>${x.s?`<small>${hl(x.s,terms)}</small>`:""}</button>`; });
+  $("palList").innerHTML = h || `<p class="pal-e">검색 결과 없음</p>`;
+  const el = $("palList").querySelector(".sel"); if (el) el.scrollIntoView({block:"nearest"});
+}
+function openPal(){ closeOverlays(); $("pal").hidden = false; $("palQ").value = ""; palSel = 0; renderPal(); $("palQ").focus(); }
+function closePal(){ $("pal").hidden = true; }
+function pickPal(i){ const x = palRes[i]; if (!x) return; closePal(); x.go(); }
+$("btnSearch").addEventListener("click", openPal);
+$("palX").addEventListener("click", closePal);
+$("pal").addEventListener("click", e => { if (e.target.id==="pal") closePal(); const b = e.target.closest(".pal-i"); if (b) pickPal(+b.dataset.i); });
+$("palQ").addEventListener("input", () => { palSel = 0; renderPal(); });
+$("palQ").addEventListener("keydown", e => {
+  if (e.key==="ArrowDown") { e.preventDefault(); palSel = Math.min(palSel+1, palRes.length-1); renderPal(); }
+  else if (e.key==="ArrowUp") { e.preventDefault(); palSel = Math.max(palSel-1, 0); renderPal(); }
+  else if (e.key==="Enter") { e.preventDefault(); pickPal(palSel); }
+});
+document.addEventListener("keydown", e => {
+  const typing = /INPUT|TEXTAREA/.test(document.activeElement.tagName);
+  if ((e.metaKey||e.ctrlKey) && (e.key==="k" || e.key==="/")) { e.preventDefault(); openPal(); return; }
+  if (e.key==="Escape") { closePal(); closeOverlays(); return; }
+  if (typing || e.metaKey || e.ctrlKey || e.altKey) return;
+  if (e.key==="/") { e.preventDefault(); openPal(); return; }
+  const v = location.hash.slice(1);
+  if (v==="daily" && (e.key==="ArrowLeft" || e.key==="ArrowRight")) { moveDay(e.key==="ArrowLeft" ? -1 : 1); }
+});
 
 // ===== 시작 =====
-renderToday(); renderRight(); renderPress(); renderDaily(); renderSchedule(); showMonth(curM); renderPool(); renderMarket();
-openTab(location.hash.slice(1));
+initKeywords(); filterKw(); renderProducts(); renderToday(); renderRight(); renderPress(); renderDaily(); renderSchedule(); showMonth(curM); renderPool(); renderMarket(); buildIndex();
+showTab(location.hash.slice(1));
 </script>
 </body>
 </html>
