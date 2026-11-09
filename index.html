@@ -871,7 +871,8 @@ const tipOf = (title, desc, who) => esc([title, desc, who && who.length ? whoTex
 
 // ===== 언론보도 =====
 const PRESS = [
-  ["2026-11-16","blog","운영 사례","병원·음식점 플레이스 운영 사례로 본 개선 포인트","익명 사례 2~3건"],
+  ["2026-11-10","blog","운영 사례","병원·음식점 플레이스 운영 사례로 본 개선 포인트","익명 사례 2~3건",["2026-11-04","2026-11-05","2026-11-06","2026-11-09","2026-11-09","2026-11-10"]],
+  ["2026-11-16","press","업계 동향","체험단 후기 '내돈내산' 표기 금지, 대가성 표시 기준 지키는 체험단 운영","공정위 추천·보증 심사지침 조항, 자사 포스팅 검수 항목 정리",["2026-11-10","2026-11-11","2026-11-12","2026-11-13","2026-11-13","2026-11-16"]],
   ["2026-11-23","review","리뷰 마케팅","신상품 첫 리뷰까지 평균 며칠? 체험단 운영 데이터 분석","자체 캠페인 데이터 필요"],
   ["2026-11-30","press","업계 동향","연말 쇼핑 시즌, 셀러의 리뷰 관리 대응법","플랫폼 정책 요약"],
   ["2026-12-07","main","AI 검색","굿투그레이트의 AI 활용 마케팅, AI 노출 진단부터 콘텐츠 실행까지 연결하는 AEO·GEO 서비스","서비스 단계 소개: AI 노출 진단 → HT·QA·FAQ 원고 제작 → 웹·언론 발행 → AI 인용 확인"],
@@ -891,12 +892,13 @@ const POFF = [-7,-6,-5,-4,-3,0];
 const PD_CACHE = new Map();
 function pressDates(p){
   if (PD_CACHE.has(p[0])) return PD_CACHE.get(p[0]);
+  if (p[5]) { const ds = p[5].map(D); PD_CACHE.set(p[0], ds); return ds; }   // 단계 날짜 직접 지정 [조율, 주제 컨펌, 원고·배너, 초안 컨펌, 최종 컨펌, 게재]
   const pd = D(p[0]), ds = new Array(6);
   ds[5] = pd; ds[4] = prevWD(addD(pd,-3));
   for (let k=3;k>=0;k--){ let n = addD(pd,POFF[k]); const lim = addD(ds[k+1],-1); if (n > lim) n = lim; ds[k] = prevWD(n); }
   PD_CACHE.set(p[0], ds); return ds;
 }
-const PREP = {name:"첫 보도 준비",short:"보도 준비",desc:"첫 보도(11/16) 키워드·주제 후보와 근거 자료 정리",freq:"11/4~11/6",who:W("ksi","kim"),kind:"prep"};
+const PREP = {name:"첫 보도 준비",short:"보도 준비",desc:"첫 보도(11/10) 키워드·주제 후보와 근거 자료 정리",freq:"11/4~11/6",who:W("ksi","kim"),kind:"prep"};
 
 // ===== 블로그·웹 주간 주제 확정 =====
 const BLOG_WEEKS = [];
@@ -1113,9 +1115,9 @@ function renderToday(){
   const days = weekDays(BASE_M).filter(active);
   $("kWeek").textContent = (days.length*9)+"건";
   $("kWeekSub").textContent = `${md(BASE_M)}~${md(addD(BASE_M,4))} · 발행일 ${days.length}일`;
-  const thisP = PRESS.find(p => same(D(p[0]), BASE_M)), nextP = PRESS.find(p => D(p[0]) > BASE_M);
+  const thisP = PRESS.find(p => D(p[0]) >= BASE_M && D(p[0]) <= addD(BASE_M,6)), nextP = PRESS.find(p => D(p[0]) > BASE_M);
   $("kPress").textContent = thisP ? "1건" : nextP ? "준비 중" : "0건";
-  $("kPressSub").textContent = thisP ? `${md(BASE_M)} 게재 · ${thisP[2]}` : nextP ? `${md(D(nextP[0]))} 게재 준비` : "";
+  $("kPressSub").textContent = thisP ? `${md(D(thisP[0]))} 게재 · ${thisP[2]}` : nextP ? `${md(D(nextP[0]))} 게재 준비` : "";
   const nb = blogWeek(addD(BASE_M,7)), ns = weekStatus(addD(BASE_M,7));
   $("kNext").textContent = nb ? mdw(nb.fix) : "—";
   $("kNextSub").textContent = nb ? (ns.big==="미정" ? "주제 미정" : ns.big==="후보" ? "일부 후보" : "확정") : "";
@@ -1267,7 +1269,7 @@ function monthStats(y,m){
 }
 const monKpiHtml = (label, pub, pubDays, cnt) => `
     <div class="card tint blue"><span class="t14s">${label} 발행</span><div class="v"><span class="big num">${pub}건</span><span class="delta num">발행일 ${pubDays}일 × 9건</span></div></div>
-    <div class="card"><span class="t14s">언론보도 게재</span><div class="v"><span class="big num">${cnt("pub")}건</span><span class="delta muted">월요일</span></div></div>
+    <div class="card"><span class="t14s">언론보도 게재</span><div class="v"><span class="big num">${cnt("pub")}건</span><span class="delta muted">주 1회</span></div></div>
     <div class="card"><span class="t14s">블로그·웹 주제 확정</span><div class="v"><span class="big num">${cnt("blogfix")}회</span><span class="delta muted">주 1회</span></div></div>
     <div class="card tint purple"><span class="t14s">보도 컨펌</span><div class="v"><span class="big num">${cnt("step1")+cnt("step3")+cnt("step4")}회</span><span class="delta">주제 · 초안 · 최종</span></div></div>`;
 function showMonth(i){
