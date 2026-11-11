@@ -627,7 +627,7 @@ mark{background:var(--yellow);color:var(--ink);border-radius:2px}
           <li>스스상위노출은 리뷰홈, 쿠팡상위노출은 메인홈에서 다룸 (두 홈페이지 간 키워드 경쟁 방지)</li>
           <li>'상품' 표시는 판매 상품 가이드, '시장' 표시는 국내외 시장·업계 동향에서 뽑은 추가분, 검색량 확인 후 등급 확정</li>
           <li>블로그·웹사이트 키워드·주제는 이서연·김영광이 매주 함께 선정, 보고 후 확정</li>
-          <li>언론보도 키워드·내용은 김승일·김영광이 매주 함께 조율, 화요일 주제 컨펌</li>
+          <li>언론보도는 이서연·김승일·김영광 3명이 정·부 구분 없이 매주 함께 조율, 화요일 주제 컨펌</li>
           <li>언론보도 키워드는 고정 목록 없이 주마다 보도 주제에 맞춰 정하고, 넥스트몽에 걸리는 단어는 바꿔 쓰기</li>
         </ul>
       </div>
@@ -811,9 +811,9 @@ mark{background:var(--yellow);color:var(--ink);border-radius:2px}
   </div>
   <div class="rsec">
     <h2>담당</h2>
-    <div class="notif" data-ps="lee"><span class="ic" style="--pc:var(--c-main)">서</span><span class="tx"><span>이서연</span><small>블로그·웹사이트 업로드 주담당, 키워드·주제·내용은 김영광과 함께</small></span></div>
-    <div class="notif" data-ps="ksi"><span class="ic" style="--pc:var(--yellow)">승</span><span class="tx"><span>김승일</span><small>언론보도 김영광과 함께 진행 (정·부 구분 없음)</small></span></div>
-    <div class="notif" data-ps="kim"><span class="ic" style="--pc:var(--c-blog)">영</span><span class="tx"><span>김영광</span><small>언론보도 김승일과 함께 진행 (정·부 구분 없음), 블로그·웹사이트 키워드·주제 함께 기획, 성과 확인</small></span></div>
+    <div class="notif" data-ps="lee"><span class="ic" style="--pc:var(--c-main)">서</span><span class="tx"><span>이서연</span><small>블로그·웹사이트 업로드 주담당, 키워드·주제·내용은 김영광과 함께. 언론보도 김승일·김영광과 함께 진행 (정·부 구분 없음)</small></span></div>
+    <div class="notif" data-ps="ksi"><span class="ic" style="--pc:var(--yellow)">승</span><span class="tx"><span>김승일</span><small>언론보도 이서연·김영광과 함께 진행 (정·부 구분 없음)</small></span></div>
+    <div class="notif" data-ps="kim"><span class="ic" style="--pc:var(--c-blog)">영</span><span class="tx"><span>김영광</span><small>언론보도 이서연·김승일과 함께 진행 (정·부 구분 없음), 블로그·웹사이트 키워드·주제 함께 기획, 성과 확인</small></span></div>
     <div class="notif" data-ps="t"><span class="ic" style="--pc:var(--c-press)">컨</span><span class="tx"><span>팀장</span><small>모든 주제 보고·컨펌 (블로그·웹 주제 확정, 보도 주제·초안·최종안)</small></span></div>
   </div>
 </aside>
@@ -881,12 +881,12 @@ const PRESS = [
   ["2026-12-28","blog","운영 사례","2026년 운영 결산과 2027 전망: 캠페인 성과·AI 검색 변화","연간 실적 공개 승인 · 대표 코멘트"]
 ];
 const STEPS = [
-  {name:"보도 내용 조율",short:"내용 조율",desc:"보도 키워드·주제·근거 후보 함께 정리",who:W("ksi","kim")},
-  {name:"주제 컨펌",short:"주제 컨펌",desc:"팀장에게 주제·핵심 메시지 보고 후 확정",who:W("ksi","kim","t")},
-  {name:"원고·배너 제작",short:"원고·배너",desc:"확정 주제로 원고 초안·배너 제작, 내용 함께 점검",who:W("ksi","kim")},
-  {name:"초안 컨펌 후 수정",short:"초안 컨펌",desc:"팀장에게 초안 보고 후 의견 반영해 당일 수정",who:W("t","ksi","kim")},
-  {name:"최종 컨펌 후 발행 요청",short:"최종 컨펌",desc:"팀장 최종안 컨펌 후 매체에 발행 요청",who:W("t","ksi","kim")},
-  {name:"보도 게재",short:"보도 게재",desc:"게재 확인 후 관련 홈페이지 글과 상호 링크",who:W("ksi","kim")}
+  {name:"보도 내용 조율",short:"내용 조율",desc:"보도 키워드·주제·근거 후보 함께 정리",who:W("lee","ksi","kim")},
+  {name:"주제 컨펌",short:"주제 컨펌",desc:"팀장에게 주제·핵심 메시지 보고 후 확정",who:W("lee","ksi","kim","t")},
+  {name:"원고·배너 제작",short:"원고·배너",desc:"확정 주제로 원고 초안·배너 제작, 내용 함께 점검",who:W("lee","ksi","kim")},
+  {name:"초안 컨펌 후 수정",short:"초안 컨펌",desc:"팀장에게 초안 보고 후 의견 반영해 당일 수정",who:W("t","lee","ksi","kim")},
+  {name:"최종 컨펌 후 발행 요청",short:"최종 컨펌",desc:"팀장 최종안 컨펌 후 매체에 발행 요청",who:W("t","lee","ksi","kim")},
+  {name:"보도 게재",short:"보도 게재",desc:"게재 확인 후 관련 홈페이지 글과 상호 링크",who:W("lee","ksi","kim")}
 ];
 const POFF = [-7,-6,-5,-4,-3,0];
 const PD_CACHE = new Map();
@@ -898,7 +898,7 @@ function pressDates(p){
   for (let k=3;k>=0;k--){ let n = addD(pd,POFF[k]); const lim = addD(ds[k+1],-1); if (n > lim) n = lim; ds[k] = prevWD(n); }
   PD_CACHE.set(p[0], ds); return ds;
 }
-const PREP = {name:"첫 보도 준비",short:"보도 준비",desc:"첫 보도(11/10) 키워드·주제 후보와 근거 자료 정리",freq:"11/4~11/6",who:W("ksi","kim"),kind:"prep"};
+const PREP = {name:"첫 보도 준비",short:"보도 준비",desc:"첫 보도(11/10) 키워드·주제 후보와 근거 자료 정리",freq:"11/4~11/6",who:W("lee","ksi","kim"),kind:"prep"};
 
 // ===== 블로그·웹 주간 주제 확정 =====
 const BLOG_WEEKS = [];
@@ -957,7 +957,7 @@ const WK = {
 };
 const ONEOFF = {
   "2026-11-03":{name:"업무 공지",short:"업무 공지",desc:"AEO·SEO 발행 일정·담당 공지",freq:"1회",who:W("t"),kind:"oneoff"},
-  "2026-12-17":{name:"연간 실적 공개 승인",short:"실적 승인",desc:"12/28 결산 보도에 쓸 연간 실적 공개 범위 승인",freq:"1회",who:W("t","ksi+","kim+"),kind:"oneoff"}
+  "2026-12-17":{name:"연간 실적 공개 승인",short:"실적 승인",desc:"12/28 결산 보도에 쓸 연간 실적 공개 범위 승인",freq:"1회",who:W("t","lee+","ksi+","kim+"),kind:"oneoff"}
 };
 function weeklyOn(d){
   const out = [], days = [0,1,2,3,4].map(i=>addD(mondayOf(d),i)).filter(active);
@@ -1173,9 +1173,9 @@ function renderPress(){
   $("pressCnt").textContent = PRESS.length+"건";
   $("pressTable").innerHTML = `<div class="tr th press"><span>게재</span><span>분류</span><span>주제 후보 · 준비할 것</span><span>상태</span></div>` + PRESS.map((p,i) => {
     const ds = pressDates(p), s = pressState(p);
-    return `<div class="tr press ${i===pressSel?"sel":""}" role="button" tabindex="0" data-i="${i}" data-ps="ksi kim"><span class="d num">${mdw(ds[5])}</span><span class="pl" style="--cc:var(--c-${p[1]})"><span class="tag">${p[2]}</span></span><span class="h">${p[3]}<small>${p[4]} · 조율 ${md(ds[0])} · 주제 컨펌 ${md(ds[1])} · 초안 ${md(ds[3])} · 최종 ${md(ds[4])}</small></span><span class="st"><span class="status ${s.cls}">${s.st}</span><span class="prog" aria-hidden="true">${STEPS.map((_,k) => `<i class="${k<s.n?"f":""}"></i>`).join("")}</span></span></div>`;
+    return `<div class="tr press ${i===pressSel?"sel":""}" role="button" tabindex="0" data-i="${i}" data-ps="lee ksi kim"><span class="d num">${mdw(ds[5])}</span><span class="pl" style="--cc:var(--c-${p[1]})"><span class="tag">${p[2]}</span></span><span class="h">${p[3]}<small>${p[4]} · 조율 ${md(ds[0])} · 주제 컨펌 ${md(ds[1])} · 초안 ${md(ds[3])} · 최종 ${md(ds[4])}</small></span><span class="st"><span class="status ${s.cls}">${s.st}</span><span class="prog" aria-hidden="true">${STEPS.map((_,k) => `<i class="${k<s.n?"f":""}"></i>`).join("")}</span></span></div>`;
   }).join("");
-  $("pressIdeas").innerHTML = PI.map(x => `<div class="tr press idea" data-ps="ksi kim"><span class="pl" style="--cc:var(--c-${CAT_C[x.cat]||"press"})"><span class="tag">${x.cat}</span></span><span class="h">${x.title}<small>${x.ref} · ${x.need}</small></span></div>`).join("");
+  $("pressIdeas").innerHTML = PI.map(x => `<div class="tr press idea" data-ps="lee ksi kim"><span class="pl" style="--cc:var(--c-${CAT_C[x.cat]||"press"})"><span class="tag">${x.cat}</span></span><span class="h">${x.title}<small>${x.ref} · ${x.need}</small></span></div>`).join("");
 }
 function openPress(i){ pressSel = i; pressTab = "s"; renderPress(); openTab("press"); }
 onSeg("pressTabs", v => { pressTab = v; renderPress(); });
