@@ -812,8 +812,8 @@ mark{background:var(--yellow);color:var(--ink);border-radius:2px}
   <div class="rsec">
     <h2>담당</h2>
     <div class="notif" data-ps="lee"><span class="ic" style="--pc:var(--c-main)">서</span><span class="tx"><span>이서연</span><small>블로그·웹사이트 업로드 주담당, 키워드·주제·내용은 김영광과 함께</small></span></div>
-    <div class="notif" data-ps="ksi"><span class="ic" style="--pc:var(--yellow)">승</span><span class="tx"><span>김승일</span><small>언론보도 원고·업로드 주담당, 키워드·내용은 김영광과 함께</small></span></div>
-    <div class="notif" data-ps="kim"><span class="ic" style="--pc:var(--c-blog)">영</span><span class="tx"><span>김영광</span><small>블로그·웹사이트·언론보도 키워드·주제 함께 기획, 성과 확인</small></span></div>
+    <div class="notif" data-ps="ksi"><span class="ic" style="--pc:var(--yellow)">승</span><span class="tx"><span>김승일</span><small>언론보도 김영광과 함께 진행 (정·부 구분 없음)</small></span></div>
+    <div class="notif" data-ps="kim"><span class="ic" style="--pc:var(--c-blog)">영</span><span class="tx"><span>김영광</span><small>언론보도 김승일과 함께 진행 (정·부 구분 없음), 블로그·웹사이트 키워드·주제 함께 기획, 성과 확인</small></span></div>
     <div class="notif" data-ps="t"><span class="ic" style="--pc:var(--c-press)">컨</span><span class="tx"><span>팀장</span><small>모든 주제 보고·컨펌 (블로그·웹 주제 확정, 보도 주제·초안·최종안)</small></span></div>
   </div>
 </aside>
@@ -882,11 +882,11 @@ const PRESS = [
 ];
 const STEPS = [
   {name:"보도 내용 조율",short:"내용 조율",desc:"보도 키워드·주제·근거 후보 함께 정리",who:W("ksi","kim")},
-  {name:"주제 컨펌",short:"주제 컨펌",desc:"팀장에게 주제·핵심 메시지 보고 후 확정",who:W("ksi","kim+","t")},
-  {name:"원고·배너 제작",short:"원고·배너",desc:"확정 주제로 원고 초안·배너 제작, 내용 함께 점검",who:W("ksi","kim+")},
-  {name:"초안 컨펌 후 수정",short:"초안 컨펌",desc:"팀장에게 초안 보고 후 의견 반영해 당일 수정",who:W("t","ksi")},
-  {name:"최종 컨펌 후 발행 요청",short:"최종 컨펌",desc:"팀장 최종안 컨펌 후 매체에 발행 요청",who:W("t","ksi")},
-  {name:"보도 게재",short:"보도 게재",desc:"게재 확인 후 관련 홈페이지 글과 상호 링크",who:W("ksi","kim+")}
+  {name:"주제 컨펌",short:"주제 컨펌",desc:"팀장에게 주제·핵심 메시지 보고 후 확정",who:W("ksi","kim","t")},
+  {name:"원고·배너 제작",short:"원고·배너",desc:"확정 주제로 원고 초안·배너 제작, 내용 함께 점검",who:W("ksi","kim")},
+  {name:"초안 컨펌 후 수정",short:"초안 컨펌",desc:"팀장에게 초안 보고 후 의견 반영해 당일 수정",who:W("t","ksi","kim")},
+  {name:"최종 컨펌 후 발행 요청",short:"최종 컨펌",desc:"팀장 최종안 컨펌 후 매체에 발행 요청",who:W("t","ksi","kim")},
+  {name:"보도 게재",short:"보도 게재",desc:"게재 확인 후 관련 홈페이지 글과 상호 링크",who:W("ksi","kim")}
 ];
 const POFF = [-7,-6,-5,-4,-3,0];
 const PD_CACHE = new Map();
@@ -957,7 +957,7 @@ const WK = {
 };
 const ONEOFF = {
   "2026-11-03":{name:"업무 공지",short:"업무 공지",desc:"AEO·SEO 발행 일정·담당 공지",freq:"1회",who:W("t"),kind:"oneoff"},
-  "2026-12-17":{name:"연간 실적 공개 승인",short:"실적 승인",desc:"12/28 결산 보도에 쓸 연간 실적 공개 범위 승인",freq:"1회",who:W("t","ksi+"),kind:"oneoff"}
+  "2026-12-17":{name:"연간 실적 공개 승인",short:"실적 승인",desc:"12/28 결산 보도에 쓸 연간 실적 공개 범위 승인",freq:"1회",who:W("t","ksi+","kim+"),kind:"oneoff"}
 };
 function weeklyOn(d){
   const out = [], days = [0,1,2,3,4].map(i=>addD(mondayOf(d),i)).filter(active);
